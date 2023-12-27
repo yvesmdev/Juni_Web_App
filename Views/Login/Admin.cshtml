@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.IsAdmin = "classic";//assert that it is an admin page
+}
+
+
+<div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="container">
+        <div class="login-content">
+            <div class="login-logo">
+                <a href="index.html">
+                    <img class="align-content" src="~/admin/images/logo3.png" alt="">
+                </a>
+            </div>
+            <div class="login-form">
+                <form action="@Url.Action("LoginUser","Admin")" method="post">
+                    <div class="form-group">
+                        <label>Addresse Email</label>
+                        <input type="email" class="form-control" name="admin_email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de Passe</label>
+                        <input type="password" class="form-control" name="admin_password" placeholder="Password">
+                    </div>
+
+                    @{
+                        if (!ViewBag.LoginSuccess)
+                        {
+                            <p style="color:red; text-align:center;">Mot de passe ou émail incorrect</p>
+                        }
+                    }
+                    <!-- <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Se Souvenir de Moi
+                        </label>
+                        <label class="pull-right">
+                            <a href="#">Mot de passe oublié? Contactez l'adminstrateur'</a>
+                        </label>
+
+                    </div>-->
+
+                    <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Se connecter</button>
+                    <!--<div class="social-login-content">
+                        <div class="social-button">
+                            <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
+                            <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign in with twitter</button>
+                        </div>
+                    </div>-->
+                    <!--<div class="register-link m-t-15 text-center">
+                        <p>Pas de compte? <a href="#"> S'enregister</a></p>
+                    </div>-->
+                    <p style="color:red; text-align:center;">Mot de passe oublié? Contactez l'adminstrateur</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript code to change background color
+    document.body.style.backgroundColor = '#343A40';
+</script>

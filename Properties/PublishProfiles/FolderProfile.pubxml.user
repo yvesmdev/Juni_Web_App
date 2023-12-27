@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <History>False|2023-12-27T12:56:24.4538885Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=localhost%3bport=3306%3bInitial Catalog=achatbtm_juni_db%3bUser Id=achatbtm_root%3bpassword=juniApp7%40</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
