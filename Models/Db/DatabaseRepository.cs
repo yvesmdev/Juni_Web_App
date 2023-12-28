@@ -559,11 +559,11 @@ namespace Juni_Web_App.Models.Db
                 {
                     CurUser = new User();
                     CurUser.id = Convert.ToInt32(DbReader["user_id"]);
-                    CurUser.name = (string)DbReader["name"];
-                    CurUser.surname = (string)DbReader["surname"];
+                    CurUser.name = DbReader["name"] as string ?? CurUser.name;
+                    CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.phone_number = (string)DbReader["phone_number"];                    
-                    CurUser.username = (string)DbReader["username"];
-                    CurUser.email = (string)DbReader["email"];
+                    CurUser.username = DbReader["username"] as string ?? CurUser.username;
+                    CurUser.email = DbReader["email"] as string ?? CurUser.email; 
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
                 }
                 DbCon.Close();
