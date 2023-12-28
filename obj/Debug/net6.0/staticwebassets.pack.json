@@ -1,0 +1,2769 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Juni_Web_App.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Juni_Web_App.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\css\\main.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\css\\main.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\css\\normalize.min.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\css\\normalize.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\img\\Thumbs.db",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\img\\Thumbs.db"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\img\\logo.png",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\index.html",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\index.html"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\js\\custom.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\js\\custom.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\js\\jquery-1.11.0.min.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\js\\jquery-1.11.0.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\js\\jquery.nav.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\js\\jquery.nav.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shAutoloader.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shAutoloader.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAS3.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAS3.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAppleScript.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAppleScript.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushBash.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushBash.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCSharp.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCSharp.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushColdFusion.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushColdFusion.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCpp.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCpp.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCss.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCss.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDelphi.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDelphi.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDiff.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDiff.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushErlang.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushErlang.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushGroovy.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushGroovy.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJScript.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJScript.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJava.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJava.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJavaFX.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJavaFX.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPerl.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPerl.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPhp.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPhp.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPlain.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPlain.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPowerShell.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPowerShell.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPython.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPython.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushRuby.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushRuby.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSass.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSass.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushScala.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushScala.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSql.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSql.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushVb.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushVb.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushXml.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushXml.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shCore.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shCore.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shLegacy.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shLegacy.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCore.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCore.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreDefault.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreDefault.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreDjango.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreDjango.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreEclipse.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreEclipse.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreEmacs.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreEmacs.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreFadeToGrey.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreFadeToGrey.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreMDUltra.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreMDUltra.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreMidnight.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreMidnight.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreRDark.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shCoreRDark.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeDefault.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeDefault.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeDjango.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeDjango.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeEclipse.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeEclipse.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeEmacs.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeEmacs.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeFadeToGrey.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeFadeToGrey.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeMDUltra.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeMDUltra.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeMidnight.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeMidnight.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeRDark.css",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\styles\\shThemeRDark.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\cs-skin-elastic.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\cs-skin-elastic.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\chosen\\chosen-sprite.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\chosen\\chosen-sprite.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\chosen\\chosen-sprite@2x.png",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\chosen\\chosen-sprite@2x.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\chosen\\chosen.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\chosen\\chosen.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\chosen\\chosen.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\chosen\\chosen.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\datatable\\buttons.bootstrap.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\datatable\\buttons.bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\datatable\\buttons.dataTables.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\datatable\\buttons.dataTables.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\datatable\\dataTables.bootstrap.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\datatable\\dataTables.bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\lib\\vector-map\\jqvmap.min.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\lib\\vector-map\\jqvmap.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\style.css.map",
+      "PackagePath": "staticwebassets\\admin\\assets\\css\\style.css.map"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\fonts\\icomoon\\icomoon.eot",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\icomoon\\icomoon.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\fonts\\icomoon\\icomoon.svg",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\icomoon\\icomoon.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\fonts\\icomoon\\icomoon.ttf",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\icomoon\\icomoon.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\fonts\\icomoon\\icomoon.woff",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\icomoon\\icomoon.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\fonts\\icomoon\\index.html",
+      "PackagePath": "staticwebassets\\admin\\assets\\fonts\\icomoon\\index.html"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\dashboard.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\chartjs-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\chartjs-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\datatables-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\datatables-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\flot-chart-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\flot-chart-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\fullcalendar-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\fullcalendar-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\gmap-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\gmap-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\peitychart-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\peitychart-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\vector-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\vector-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\init\\weather-init.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\init\\weather-init.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\chosen\\chosen.jquery.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\chosen\\chosen.jquery.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\chosen\\chosen.jquery.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\chosen\\chosen.jquery.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\chosen\\chosen.proto.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\chosen\\chosen.proto.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\chosen\\chosen.proto.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\chosen\\chosen.proto.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\buttons.bootstrap.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\buttons.bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\buttons.colVis.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\buttons.colVis.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\buttons.flash.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\buttons.flash.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\buttons.html5.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\buttons.html5.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\buttons.print.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\buttons.print.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\dataTables.bootstrap.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\dataTables.bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\dataTables.buttons.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\dataTables.buttons.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\datatables.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\datatables.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\jquery-1.12.4.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\jquery-1.12.4.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\jquery.dataTables.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\jquery.dataTables.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\jszip.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\jszip.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\pdfmake.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\pdfmake.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\data-table\\vfs_fonts.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\data-table\\vfs_fonts.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\gmap\\gmapApi.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\gmap\\gmapApi.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\gmap\\gmaps.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\gmap\\gmaps.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\lib\\gmap\\gmaps.min.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\lib\\gmap\\gmaps.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\main.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\vmap.sampledata.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\vmap.sampledata.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\js\\widgets.js",
+      "PackagePath": "staticwebassets\\admin\\assets\\js\\widgets.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\scss\\style.css",
+      "PackagePath": "staticwebassets\\admin\\assets\\scss\\style.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\scss\\style.css.map",
+      "PackagePath": "staticwebassets\\admin\\assets\\scss\\style.css.map"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\scss\\style.scss",
+      "PackagePath": "staticwebassets\\admin\\assets\\scss\\style.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\.gitignore",
+      "PackagePath": "staticwebassets\\admin\\images\\.gitignore"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\admin.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\admin.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\admin_logo.jpeg",
+      "PackagePath": "staticwebassets\\admin\\images\\admin_logo.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\1.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\2.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\3.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\4.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\5.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\6.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\6.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\64-1.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\64-1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\avatar\\64-2.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\avatar\\64-2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\admin\\images\\favicon.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\logo.png",
+      "PackagePath": "staticwebassets\\admin\\images\\logo.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\logo.psd",
+      "PackagePath": "staticwebassets\\admin\\images\\logo.psd"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\logo2.png",
+      "PackagePath": "staticwebassets\\admin\\images\\logo2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\images\\logo3.png",
+      "PackagePath": "staticwebassets\\admin\\images\\logo3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\Fevicon.png",
+      "PackagePath": "staticwebassets\\img\\Fevicon.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\Thumbs.db",
+      "PackagePath": "staticwebassets\\img\\Thumbs.db"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\admin\\client_icon.png",
+      "PackagePath": "staticwebassets\\img\\admin\\client_icon.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\admin\\revenue_icon.png",
+      "PackagePath": "staticwebassets\\img\\admin\\revenue_icon.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\admin\\sales_icon.png",
+      "PackagePath": "staticwebassets\\img\\admin\\sales_icon.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\.DS_Store",
+      "PackagePath": "staticwebassets\\img\\blog\\.DS_Store"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\add.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\add.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\author.png",
+      "PackagePath": "staticwebassets\\img\\blog\\author.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\blog1.png",
+      "PackagePath": "staticwebassets\\img\\blog\\blog1.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\blog2.png",
+      "PackagePath": "staticwebassets\\img\\blog\\blog2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\blog3.png",
+      "PackagePath": "staticwebassets\\img\\blog\\blog3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\c1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\c1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\c2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\c2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\c3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\c3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\c4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\c4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\c5.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\c5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\c6.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\c6.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\cat-post\\cat-post-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\cat-post\\cat-post-1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\cat-post\\cat-post-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\cat-post\\cat-post-2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\cat-post\\cat-post-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\cat-post\\cat-post-3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\causes\\causes-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\causes\\causes-1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\causes\\causes-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\causes\\causes-2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\causes\\causes-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\causes\\causes-3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\feature-img1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\feature-img1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\latest-post\\l-post-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\latest-post\\l-post-1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\latest-post\\l-post-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\latest-post\\l-post-2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\latest-post\\l-post-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\latest-post\\l-post-3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\latest-post\\l-post-4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\latest-post\\l-post-4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\main-blog\\m-blog-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\main-blog\\m-blog-1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\main-blog\\m-blog-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\main-blog\\m-blog-2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\main-blog\\m-blog-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\main-blog\\m-blog-3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\main-blog\\m-blog-4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\main-blog\\m-blog-4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\main-blog\\m-blog-5.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\main-blog\\m-blog-5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\next.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\next.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\popular-post\\post1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\popular-post\\post1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\popular-post\\post2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\popular-post\\post2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\popular-post\\post3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\popular-post\\post3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\popular-post\\post4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\popular-post\\post4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\post-img1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\post-img1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\post-img2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\post-img2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\prev.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\prev.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\cart.jpg",
+      "PackagePath": "staticwebassets\\img\\cart.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\cart\\cart1.png",
+      "PackagePath": "staticwebassets\\img\\cart\\cart1.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\cart\\cart2.png",
+      "PackagePath": "staticwebassets\\img\\cart\\cart2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\cart\\cart3.png",
+      "PackagePath": "staticwebassets\\img\\cart\\cart3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\category\\c1.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\c1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\category\\c2.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\c2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\category\\c3.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\c3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\category\\c4.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\c4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\category\\c5.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\c5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\category\\s-p1.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\s-p1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\.DS_Store",
+      "PackagePath": "staticwebassets\\img\\gallery\\.DS_Store"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\r1.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\r1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\r2.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\r2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\r3.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\r3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\r5.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\r5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\r7.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\r7.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\gallery\\r8.jpg",
+      "PackagePath": "staticwebassets\\img\\gallery\\r8.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\hero-banner.png",
+      "PackagePath": "staticwebassets\\img\\home\\hero-banner.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\hero-banner2.png",
+      "PackagePath": "staticwebassets\\img\\home\\hero-banner2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\hero-slide1.png",
+      "PackagePath": "staticwebassets\\img\\home\\hero-slide1.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\hero-slide2.png",
+      "PackagePath": "staticwebassets\\img\\home\\hero-slide2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\hero-slide3.png",
+      "PackagePath": "staticwebassets\\img\\home\\hero-slide3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\parallax-bg.png",
+      "PackagePath": "staticwebassets\\img\\home\\parallax-bg.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\home\\parallax-bg2.png",
+      "PackagePath": "staticwebassets\\img\\home\\parallax-bg2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-01.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-01.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-02.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-02.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-03.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-03.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-04.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-04.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-05.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-05.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-06.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-06.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-07.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-07.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\Image-08.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\Image-08.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\ins-1.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\ins-1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\ins-2.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\ins-2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\ins-3.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\ins-3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\ins-4.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\ins-4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\ins-5.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\ins-5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\instagram\\ins-6.jpg",
+      "PackagePath": "staticwebassets\\img\\instagram\\ins-6.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\login.jpg",
+      "PackagePath": "staticwebassets\\img\\login.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\card.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\card.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\habit_femmes.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\habit_femmes.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\men_brown_wallet_1.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\men_brown_wallet_1.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\men_brown_wallet_2.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\men_brown_wallet_2.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\men_brown_wallet_3.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\men_brown_wallet_3.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\men_steven_madden_1.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\men_steven_madden_1.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\men_steven_madden_2.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\men_steven_madden_2.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\men_steven_madden_3.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\men_steven_madden_3.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\sullivan_bag_1.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\sullivan_bag_1.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\sullivan_bag_2.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\sullivan_bag_2.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\sullivan_bag_3.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\sullivan_bag_3.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\tag_watch_1.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\tag_watch_1.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\tag_watch_2.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\tag_watch_2.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\tag_watch_3.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\tag_watch_3.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\women_pringle_blue_sky_dress_1.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\women_pringle_blue_sky_dress_1.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\women_pringle_blue_sky_dress_2.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\women_pringle_blue_sky_dress_2.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\img\\women_pringle_blue_sky_dress_3.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\img\\women_pringle_blue_sky_dress_3.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\montre.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\montre.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\porte_monnaie.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\porte_monnaie.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-1.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-1.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-2.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-3.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-4.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-4.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-5.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-5.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-6.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-6.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-7.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-7.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-8.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-8.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product-sm-9.png",
+      "PackagePath": "staticwebassets\\img\\product\\product-sm-9.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product1.png",
+      "PackagePath": "staticwebassets\\img\\product\\product1.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product2.png",
+      "PackagePath": "staticwebassets\\img\\product\\product2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product3.png",
+      "PackagePath": "staticwebassets\\img\\product\\product3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product4.png",
+      "PackagePath": "staticwebassets\\img\\product\\product4.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product5.png",
+      "PackagePath": "staticwebassets\\img\\product\\product5.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product6.png",
+      "PackagePath": "staticwebassets\\img\\product\\product6.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product7.png",
+      "PackagePath": "staticwebassets\\img\\product\\product7.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\product8.png",
+      "PackagePath": "staticwebassets\\img\\product\\product8.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\review-1.png",
+      "PackagePath": "staticwebassets\\img\\product\\review-1.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\review-2.png",
+      "PackagePath": "staticwebassets\\img\\product\\review-2.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\review-3.png",
+      "PackagePath": "staticwebassets\\img\\product\\review-3.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\sac.jpeg",
+      "PackagePath": "staticwebassets\\img\\product\\sac.jpeg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\product\\soulier.png",
+      "PackagePath": "staticwebassets\\img\\product\\soulier.png"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r1.jpg",
+      "PackagePath": "staticwebassets\\img\\r1.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r10.jpg",
+      "PackagePath": "staticwebassets\\img\\r10.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r11.jpg",
+      "PackagePath": "staticwebassets\\img\\r11.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r12.jpg",
+      "PackagePath": "staticwebassets\\img\\r12.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r2.jpg",
+      "PackagePath": "staticwebassets\\img\\r2.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r3.jpg",
+      "PackagePath": "staticwebassets\\img\\r3.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r4.jpg",
+      "PackagePath": "staticwebassets\\img\\r4.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r5.jpg",
+      "PackagePath": "staticwebassets\\img\\r5.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r6.jpg",
+      "PackagePath": "staticwebassets\\img\\r6.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r7.jpg",
+      "PackagePath": "staticwebassets\\img\\r7.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r8.jpg",
+      "PackagePath": "staticwebassets\\img\\r8.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\r9.jpg",
+      "PackagePath": "staticwebassets\\img\\r9.jpg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\main.scss",
+      "PackagePath": "staticwebassets\\scss\\main.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\style.scss",
+      "PackagePath": "staticwebassets\\scss\\style.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_blog.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_blog.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_btn.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_btn.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_cart.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_cart.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_category.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_category.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_checkout.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_checkout.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_confirmation.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_confirmation.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_contact.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_contact.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_footer.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_footer.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_header.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_header.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_home.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_home.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_instagram.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_instagram.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_login.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_login.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_mixins.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_register.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_register.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_reset.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_reset.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_responsive.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_responsive.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_section-intro.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_section-intro.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_single-product.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_single-product.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_tracking.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_tracking.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\scss\\theme\\_variables.scss",
+      "PackagePath": "staticwebassets\\scss\\theme\\_variables.scss"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\bootstrap\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\vendors\\bootstrap\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\vendors\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\contact.js",
+      "PackagePath": "staticwebassets\\vendors\\contact.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\css\\all.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-brands-400.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-brands-400.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-regular-400.eot",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-regular-400.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-regular-400.woff",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-regular-400.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-solid-900.eot",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-solid-900.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-solid-900.woff",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-solid-900.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\fontawesome\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\vendors\\fontawesome\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\jquery.ajaxchimp.min.js",
+      "PackagePath": "staticwebassets\\vendors\\jquery.ajaxchimp.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\jquery.form.js",
+      "PackagePath": "staticwebassets\\vendors\\jquery.form.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\vendors\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\jquery\\jquery-3.2.1.min.js",
+      "PackagePath": "staticwebassets\\vendors\\jquery\\jquery-3.2.1.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\.DS_Store",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\.DS_Store"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\fonts\\Linearicons-Free.eot",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\fonts\\Linearicons-Free.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\fonts\\Linearicons-Free.svg",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\fonts\\Linearicons-Free.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\fonts\\Linearicons-Free.ttf",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\fonts\\Linearicons-Free.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\fonts\\Linearicons-Free.woff",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\fonts\\Linearicons-Free.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\fonts\\Linearicons-Free.woff2",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\fonts\\Linearicons-Free.woff2"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\linericon\\style.css",
+      "PackagePath": "staticwebassets\\vendors\\linericon\\style.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\mail-script.js",
+      "PackagePath": "staticwebassets\\vendors\\mail-script.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\nice-select\\jquery.nice-select.min.js",
+      "PackagePath": "staticwebassets\\vendors\\nice-select\\jquery.nice-select.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\nice-select\\nice-select.css",
+      "PackagePath": "staticwebassets\\vendors\\nice-select\\nice-select.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\nouislider\\nouislider.min.css",
+      "PackagePath": "staticwebassets\\vendors\\nouislider\\nouislider.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\nouislider\\nouislider.min.js",
+      "PackagePath": "staticwebassets\\vendors\\nouislider\\nouislider.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\owl-carousel\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\vendors\\owl-carousel\\owl.carousel.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\owl-carousel\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\vendors\\owl-carousel\\owl.carousel.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\owl-carousel\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\vendors\\owl-carousel\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\skrollr.min.js",
+      "PackagePath": "staticwebassets\\vendors\\skrollr.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\Italic.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\Italic.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\agenda.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\agenda.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\alarm-clock.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\alarm-clock.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\alert.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\alert.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\align-center.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\align-center.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\align-justify.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\align-justify.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\align-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\align-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\align-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\align-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\anchor.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\anchor.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\android.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\android.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-double-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-double-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-double-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-double-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-double-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-double-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-double-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-double-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\angle-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\angle-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\announcement.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\announcement.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\apple.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\apple.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\archive.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\archive.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-circle-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-circle-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-circle-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-circle-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-circle-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-circle-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-circle-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-circle-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-top-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-top-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-top-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-top-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrow.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrow.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrows-corner.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrows-corner.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrows-horizontal.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrows-horizontal.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\arrows-vertical.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\arrows-vertical.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\back-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\back-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\back-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\back-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bag.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bag.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bar-chart-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bar-chart-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bar-chart.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bar-chart.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\basketball.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\basketball.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bell.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bell.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\blackboard.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\blackboard.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bolt-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bolt-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bolt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bolt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\book.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\book.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bookmark-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bookmark-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\bookmark.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\bookmark.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\briefcase.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\briefcase.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\brush-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\brush-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\brush.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\brush.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\calendar.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\calendar.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\camera.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\camera.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\car.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\car.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\check-box.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\check-box.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\check.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\check.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\clip.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\clip.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\clipboard.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\clipboard.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\close.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\close.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\cloud-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\cloud-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\cloud-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\cloud-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\cloud.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\cloud.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\comment-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\comment-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\comment.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\comment.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\comments-smiley.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\comments-smiley.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\comments.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\comments.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-backward.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-backward.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-eject.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-eject.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-forward.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-forward.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-pause.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-pause.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-play.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-play.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-record.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-record.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-shuffle.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-shuffle.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-skip-backward.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-skip-backward.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-skip-forward.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-skip-forward.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\control-stop.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\control-stop.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\credit-card.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\credit-card.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\crown.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\crown.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\css3.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\css3.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\cup.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\cup.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\cut.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\cut.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\dashboard.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\dashboard.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\desktop.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\desktop.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\direction-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\direction-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\direction.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\direction.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\download.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\download.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\dribbble.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\dribbble.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\dropbox-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\dropbox-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\dropbox.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\dropbox.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\drupal.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\drupal.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\email.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\email.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\envelope.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\envelope.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\eraser.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\eraser.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\exchange-vertical.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\exchange-vertical.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\export.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\export.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\eye.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\eye.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\face-sad.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\face-sad.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\face-smile.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\face-smile.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\facebook.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\facebook.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\file.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\file.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\files.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\files.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\filter.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\filter.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\flag-alt-2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\flag-alt-2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\flag-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\flag-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\flag.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\flag.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\flickr-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\flickr-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\flickr.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\flickr.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\folder.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\folder.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\fullscreen.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\fullscreen.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\gallery.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\gallery.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\game.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\game.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\gift.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\gift.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\github.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\github.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\google.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\google.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-drag.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-drag.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-open.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-open.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-point-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-point-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-point-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-point-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-point-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-point-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-point-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-point-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hand-stop.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hand-stop.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\harddrive.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\harddrive.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\harddrives.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\harddrives.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\headphone-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\headphone-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\headphone.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\headphone.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\heart-broken.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\heart-broken.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\heart.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\heart.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\help-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\help-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\help.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\help.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\home.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\home.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\html5.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\html5.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\hummer.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\hummer.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\id-badge.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\id-badge.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\image.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\image.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\import.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\import.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\infinite.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\infinite.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\info-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\info-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\info.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\info.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\ink-pen.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\ink-pen.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\instagram.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\instagram.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\joomla.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\joomla.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\jsfiddle.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\jsfiddle.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\key.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\key.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layers-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layers-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layers.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layers.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-accordion-list.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-accordion-list.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-accordion-merged.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-accordion-merged.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-accordion-separated.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-accordion-separated.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-column2-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-column2-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-column2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-column2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-column3-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-column3-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-column3.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-column3.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-column4-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-column4-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-column4.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-column4.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-cta-btn-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-cta-btn-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-cta-btn-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-cta-btn-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-cta-center.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-cta-center.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-cta-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-cta-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-cta-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-cta-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid2-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid2-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid2-thumb.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid2-thumb.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid3-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid3-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid3.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid3.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid4-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid4-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-grid4.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-grid4.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-line-solid.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-line-solid.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-list-large-image.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-list-large-image.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-list-post.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-list-post.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-list-thumb-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-list-thumb-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-list-thumb.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-list-thumb.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-center-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-center-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-center.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-center.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-left-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-left-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-overlay-alt-2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-overlay-alt-2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-overlay-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-overlay-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-overlay.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-overlay.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-right-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-right-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-media-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-media-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-menu-full.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-menu-full.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-menu-separated.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-menu-separated.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-menu-v.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-menu-v.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-menu.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-menu.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-placeholder.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-placeholder.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-sidebar-2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-sidebar-2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-sidebar-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-sidebar-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-sidebar-none.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-sidebar-none.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-sidebar-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-sidebar-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-slider-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-slider-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-slider.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-slider.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-tab-min.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-tab-min.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-tab-v.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-tab-v.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-tab-window.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-tab-window.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-tab.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-tab.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-width-default-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-width-default-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-width-default.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-width-default.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout-width-full.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout-width-full.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\layout.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\layout.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\light-bulb.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\light-bulb.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\line-dashed.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\line-dashed.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\line-dotted.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\line-dotted.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\line-double.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\line-double.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\link.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\link.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\linkedin.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\linkedin.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\linux.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\linux.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\list-ol.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\list-ol.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\list.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\list.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\location-arrow.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\location-arrow.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\location-pin.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\location-pin.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\lock.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\lock.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\loop.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\loop.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\magnet.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\magnet.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\map-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\map-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\map.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\map.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\marker-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\marker-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\marker.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\marker.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\medall-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\medall-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\medall.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\medall.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\menu-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\menu-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\menu.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\menu.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\microphone-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\microphone-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\microphone.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\microphone.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\microsoft-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\microsoft-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\microsoft.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\microsoft.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\minus.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\minus.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\mobile.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\mobile.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\money.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\money.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\more-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\more-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\more.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\more.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\mouse-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\mouse-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\mouse.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\mouse.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\music-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\music-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\music.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\music.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\na.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\na.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\new-window.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\new-window.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\notepad.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\notepad.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\package.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\package.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\paint-bucket.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\paint-bucket.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\paint-roller.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\paint-roller.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\palette.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\palette.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\panel.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\panel.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\paragraph.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\paragraph.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pencil-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pencil-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pencil-alt2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pencil-alt2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pencil.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pencil.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pie-chart.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pie-chart.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pin-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pin-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pin.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pin.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pin2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pin2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pinterest-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pinterest-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pinterest.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pinterest.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\plug.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\plug.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\plus.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\plus.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\power-off.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\power-off.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\printer.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\printer.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\pulse.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\pulse.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\quote-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\quote-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\quote-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\quote-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\receipt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\receipt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\reddit.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\reddit.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\reload.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\reload.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\rocket.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\rocket.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\rss-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\rss-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\rss.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\rss.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\ruler-alt-2.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\ruler-alt-2.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\ruler-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\ruler-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\ruler-pencil.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\ruler-pencil.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\ruler.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\ruler.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\save-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\save-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\save.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\save.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\search.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\search.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\server.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\server.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\settings.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\settings.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\share-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\share-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\share.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\share.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\sharethis-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\sharethis-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\sharethis.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\sharethis.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shield.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shield.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shift-left-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shift-left-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shift-left.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shift-left.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shift-right-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shift-right-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shift-right.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shift-right.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shine.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shine.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shopping-cart-full.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shopping-cart-full.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shopping-cart.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shopping-cart.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\shortcode.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\shortcode.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\signal.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\signal.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\skype.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\skype.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\slice.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\slice.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\smallcap.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\smallcap.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\soundcloud.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\soundcloud.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\split-h.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\split-h.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\split-v-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\split-v-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\split-v.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\split-v.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\spray.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\spray.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\stack-overflow.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\stack-overflow.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\stamp.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\stamp.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\star.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\star.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\stats-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\stats-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\stats-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\stats-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\support.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\support.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\tablet.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\tablet.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\tag.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\tag.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\target.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\target.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\text.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\text.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\themify-favicon-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\themify-favicon-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\themify-favicon.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\themify-favicon.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\themify-logo.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\themify-logo.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\thought.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\thought.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\thumb-down.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\thumb-down.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\thumb-up.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\thumb-up.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\ticket.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\ticket.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\time.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\time.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\timer.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\timer.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\trash.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\trash.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\trello.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\trello.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\truck.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\truck.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\tumblr-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\tumblr-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\tumblr.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\tumblr.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\twitter-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\twitter-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\twitter.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\twitter.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\underline.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\underline.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\unlink.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\unlink.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\unlock.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\unlock.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\upload.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\upload.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\uppercase.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\uppercase.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\user.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\user.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\vector.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\vector.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\video-camera.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\video-camera.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\video-clapper.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\video-clapper.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\view-grid.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\view-grid.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\view-list-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\view-list-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\view-list.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\view-list.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\vimeo-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\vimeo-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\vimeo.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\vimeo.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\volume.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\volume.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\wallet.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\wallet.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\wand.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\wand.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\wheelchair.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\wheelchair.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\widget-alt.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\widget-alt.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\widget.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\widget.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\widgetized.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\widgetized.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\window.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\window.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\wordpress.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\wordpress.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\world.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\world.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\write.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\write.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\yahoo.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\yahoo.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\youtube.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\youtube.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\zip.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\zip.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\zoom-in.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\zoom-in.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\SVG\\zoom-out.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\SVG\\zoom-out.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\Themify IconFonts 5-23-2014.json",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\Themify IconFonts 5-23-2014.json"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\demo-files\\demo.css",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\demo-files\\demo.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\fonts\\themify.eot",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\fonts\\themify.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\fonts\\themify.svg",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\fonts\\themify.svg"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\fonts\\themify.ttf",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\fonts\\themify.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\fonts\\themify.woff",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\fonts\\themify.woff"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\ie7\\ie7.css",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\ie7\\ie7.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\ie7\\ie7.js",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\ie7\\ie7.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\index.html",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\index.html"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\readme.txt",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\readme.txt"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\vendors\\themify-icons\\themify-icons.css",
+      "PackagePath": "staticwebassets\\vendors\\themify-icons\\themify-icons.css"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Juni_Web_App.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Juni_Web_App.props",
+      "PackagePath": "build\\Juni_Web_App.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Juni_Web_App.props",
+      "PackagePath": "buildMultiTargeting\\Juni_Web_App.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Juni_Web_App.props",
+      "PackagePath": "buildTransitive\\Juni_Web_App.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

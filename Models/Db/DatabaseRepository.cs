@@ -431,7 +431,7 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM Configuration WHERE key_name='delivery_fee'", DbCon);                
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='delivery_fee'", DbCon);                
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())

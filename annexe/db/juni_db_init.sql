@@ -1,6 +1,6 @@
 -- USE juni_db;
 
-USE mlinsdon_wp_bc4ac;
+
 
 -- Drop tables if they exist (in reverse order of creation to maintain foreign key integrity)
 DROP TABLE IF EXISTS product_image;
@@ -101,8 +101,8 @@ INSERT INTO user_role (role_title) VALUES ('admin'), ('customer'), ('agent');
 
 INSERT INTO user_profile (name, surname, phone_number, password, username, email, user_role_id) 
 VALUES ('Yves', 'Matanga', '0722264804', 'password123', 'yvesm', 'yves.matanga.dev@gmail.com', 1),
-       ('Bruce', 'Mbuangi', '0816451525', '1234', 'mbuangib', 'mbuangib@gmail.com', 2),
-       ('Bonaventure', 'Smith', '0816451525', 'securepass', 'jane_smith', 'jane_smith@gmail.com', 2);
+       ('Laetitia', 'Kalala', '0816451525', 'kalala123', 'askjuni@outlook.com', 'askjuni@outlook.com', 1),
+       ('Bonaventure', 'Kapay', '0816451525', 'kapay123', 'bonakap@gmail.com', 'bonakap@gmail.com', 1);
       
 INSERT INTO product_category (title) VALUES ('Autre'), ('Electronique'), ('Habits'), ('Souliers'), ('Sacs');
 
