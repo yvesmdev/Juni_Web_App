@@ -1,0 +1,361 @@
+﻿@{
+    ViewBag.IsAdmin = "classic";//assert that it is an admin page
+}
+
+<!-- Left Panel -->
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="@Url.Action("SalesDashboard","Admin")"><i class="menu-icon fa fa-money"></i>Tableau de Vente</a>
+                </li>
+                <li >
+                    <a href="@Url.Action("InventoryDashboard","Admin")"><i class="menu-icon fa fa-laptop"></i>Inventaire</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("OrderDashboard","Admin")"><i class="menu-icon fa fa-shopping-cart"></i>Commande</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("AccountDashboard","Admin")"><i class="menu-icon fa fa-user"></i>Utulisateurs</a>
+                </li>
+                <li class="active">
+                    <a href="@Url.Action("ClientAccountDashboard","Admin")"><i class="menu-icon fa fa-mobile"></i>Clients</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("AgentAccountDashboard","Admin")"><i class="menu-icon fa fa-group"></i>Agents</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("AdminAccountDashboard","Admin")"><i class="menu-icon fa fa-gear"></i>Adminstrateurs</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside>
+<!-- /#left-panel -->
+<!-- Right Panel -->
+<div id="right-panel" class="right-panel">
+    <!-- Header-->
+    <header id="header" class="header">
+        <div class="top-left">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="./"><img src="~/admin/images/logo3.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="~/admin/images/logo2.png" alt="Logo"></a>
+                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="header-left">
+                    <!--<button class="search-trigger"><i class="fa fa-search"></i></button>
+                    <div class="form-inline">
+                        <form class="search-form">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        </form>
+                    </div>-->
+
+                    <div class="dropdown for-notification">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                            <span class="count bg-danger">@(ViewBag.IncompleteOrderList.Count)</span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="notification">
+                            @{
+                                if ((ViewBag.IncompleteOrderList.Count) > 0)
+                                {
+                                    List<Order> IncompleteOrderList = ViewBag.IncompleteOrderList;
+
+                                    <p class="red">Vous avez @ViewBag.IncompleteOrderList.Count Notification(s)</p>
+                                    for (int ii = 0; ii < ViewBag.IncompleteOrderList.Count; ii++)
+                                    {
+                                        <a class="dropdown-item media" href="#">
+                                            <i class="fa fa-check"></i>
+                                            <p>@(IncompleteOrderList[ii].OrderUniqueId) - Nouvelle commande</p>
+                                        </a>
+
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="dropdown for-message">
+                        <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-envelope"></i>
+                            <span class="count bg-primary">4</span>
+                        </button>-->
+                        <div class="dropdown-menu" aria-labelledby="message">
+
+                            <p class="red">You have 4 Mails</p>
+
+
+                            <a class="dropdown-item media" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="~/admin/images/avatar/1.jpg"></span>
+                                <div class="message media-body">
+                                    <span class="name float-left">Jonathan Smith</span>
+                                    <span class="time float-right">Just now</span>
+                                    <p>Hello, this is an example msg</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item media" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="~/admin/images/avatar/2.jpg"></span>
+                                <div class="message media-body">
+                                    <span class="name float-left">Jack Sanders</span>
+                                    <span class="time float-right">5 minutes ago</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item media" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="~/admin/images/avatar/3.jpg"></span>
+                                <div class="message media-body">
+                                    <span class="name float-left">Cheryl Wheeler</span>
+                                    <span class="time float-right">10 minutes ago</span>
+                                    <p>Hello, this is an example msg</p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item media" href="#">
+                                <span class="photo media-left"><img alt="avatar" src="~/admin/images/avatar/4.jpg"></span>
+                                <div class="message media-body">
+                                    <span class="name float-left">Rachel Santos</span>
+                                    <span class="time float-right">15 minutes ago</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="~/admin/images/admin_logo.jpeg" alt="User Avatar">
+                    </a>
+
+                    <div class="user-menu dropdown-menu">
+                        <!-- <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+                         <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+                          <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>-->
+
+                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Se deconnecter</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- /#header -->
+    <!-- Content -->
+    <div class="content">
+        <!-- Animated -->
+        <div class="animated fadeIn">
+            <!-- Widgets  -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-2">
+                                    <i class="pe-7s-cart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">@ViewBag.ClientCount</span></div>
+                                        <div class="stat-heading">Nombre des Clients</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-2">
+                                    <i class="pe-7s-cart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">@ViewBag.AgentCount</span></div>
+                                        <div class="stat-heading">Nombre d'Agents</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="stat-widget-five">
+                                <div class="stat-icon dib flat-color-2">
+                                    <i class="pe-7s-cart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <div class="text-left dib">
+                                        <div class="stat-text"><span class="count">@ViewBag.AdminCount</span></div>
+                                        <div class="stat-heading">Nombre d'Adminstrateurs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Widgets -->
+
+            <!--  Inventory  -->
+            <div class="content">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">Tous les Clients</strong>
+                                </div>
+                                <div class="card-body">
+                                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Numero</th>
+                                                <th>Prenom</th>
+                                                <th>Nom</th>
+                                                
+                                                <th>Email</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+
+                                                int i = 0;
+                                                foreach (User CurUser in ViewBag.UserList)
+                                                {                                                   
+                                                    <tr>
+                                                        <td>@(CurUser.phone_number)</td>
+                                                        <td>@(CurUser.name)</td>
+                                                        <td>@(CurUser.surname)</td>
+                                                        
+                                                        <td>@(CurUser.email)</td>
+                                                        <td>
+                                                            <button class="btn btn-primary" id="see_button_@(++i)" data-toggle="collapse" data-target="#clientPanel" onclick="openProductModal('@(i)','@(CurUser.phone_number)','@(CurUser.name)','@(CurUser.surname)','@(Juni_Web_App.Models.User.UserTypeMessage(CurUser.user_role_id))','@(CurUser.email)')">Voir</button>
+                                                            <!--<button class="btn btn-success">Confirmer</button>-->
+                                                            <!-- <button class="btn btn-danger">Archiver</button>-->
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div><!-- .animated -->
+            </div><!-- .content -->
+            <!--  /Inventory -->
+                      
+            <div class="container mt-5">
+
+                <!--  style="background-color: #fff; border: solid 1px #fff; border-radius:10px; padding-top:20px;padding-left:20px; padding-right:20px;"-->
+                <!-- productShow Frame (Collapsed by default) -->
+                <div class="collapse" id="clientPanel">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h4 class="text-center mb-4">Détails du Client </h4>
+
+                            <table class="table" id="orderInfoTable">
+                                <tbody>
+                                 <tr>
+                                        <td class="col-6"> Numero Client: <span id="clientId"> </span></td>
+                                        <td class="col-6">Type:  <span id="clientType"> </span> </td>
+                                </tr>
+                                <tr>
+                                        <td class="col-6"> Prenom: <span id="clientName"> </span> </td>
+                                        <td class="col-6"> Nom: <span id="clientSurname"> </span> </td>
+                                </tr>
+                                <tr>
+                                <td class="col-6">Email: </td>
+                                <td class="col-6"><span id="clientEmail"> </span> </td>
+                                </tr>                             
+                                
+                                </tbody>
+                            </table>
+                         
+
+                            <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#clientPanel" aria-expanded="false" aria-controls="clientPanel">
+                                Ok
+                            </button>
+                            <!-- Toggle Button -->
+                            <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#clientPanel" aria-expanded="false" aria-controls="clientPanel">
+                                Fermer l'Onglet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        <!-- .animated -->
+    </div>
+    <!-- /.content -->
+
+
+    <div class="clearfix"></div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner bg-white">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2023
+                </div>
+                <div class="col-sm-6 text-right">
+                    Designed by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /.site-footer -->
+</div>
+<!-- /#right-panel -->
+
+<script src="~/admin/assets/js/lib/data-table/datatables.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/jszip.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/vfs_fonts.js"></script>
+<script src="~/admin/assets/js/lib/data-table/buttons.html5.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/buttons.print.min.js"></script>
+<script src="~/admin/assets/js/lib/data-table/buttons.colVis.min.js"></script>
+<script src="~/admin/assets/js/init/datatables-init.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#bootstrap-data-table-export').DataTable();
+    });
+       
+    function openProductModal(id,clientId,clientName,clientSurname, clientType,clientEmail ) {
+        // Populate the form with the passed parameters
+        $('#clientId').text(" "+clientId);
+        $('#clientName').text(" "+clientName);
+        $('#clientSurname').text(" "+clientSurname);
+        $('#clientType').text(" "+clientType);
+        $('#clientEmail').text(" "+clientEmail);
+
+        var element = document.getElementById("see_button_"+id)        
+        $('#clientPanel').collapse('show');    
+    
+    }
+</script>

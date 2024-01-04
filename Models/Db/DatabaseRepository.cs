@@ -571,6 +571,61 @@ namespace Juni_Web_App.Models.Db
             return CurUser;
         }
 
+        public static List<User> GetUserList()
+        {
+            List<User> UserList = new List<User>();
+            
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                while (DbReader.Read())
+                {
+                    User CurUser = new User();
+                    CurUser.id = Convert.ToInt32(DbReader["user_id"]);
+                    CurUser.name = DbReader["name"] as string ?? CurUser.name;
+                    CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
+                    CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.username = DbReader["username"] as string ?? CurUser.username;
+                    CurUser.email = DbReader["email"] as string ?? CurUser.email;
+                    CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
+
+                    UserList.Add(CurUser);
+                }
+                DbCon.Close();
+            }
+            return UserList;
+        }
+
+        public static List<User> GetUserListByType(int user_role_id)
+        {
+            List<User> UserList = new List<User>();
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE user_role_id="+user_role_id, DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                while (DbReader.Read())
+                {
+                    User CurUser = new User();
+                    CurUser.id = Convert.ToInt32(DbReader["user_id"]);
+                    CurUser.name = DbReader["name"] as string ?? CurUser.name;
+                    CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
+                    CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.username = DbReader["username"] as string ?? CurUser.username;
+                    CurUser.email = DbReader["email"] as string ?? CurUser.email;
+                    CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
+
+                    UserList.Add(CurUser);
+                }
+                DbCon.Close();
+            }
+            return UserList;
+        }
 
         public static Order GetOrderById(string orderID)
         {

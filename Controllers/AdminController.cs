@@ -15,6 +15,87 @@ namespace Juni_Web_App.Controllers
 
         }
 
+        public IActionResult AccountDashboard()
+        {
+            //Get user list
+            List<User> UserList = DatabaseRepository.GetUserList();
+            List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
+            List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
+            List<User> AdminList = DatabaseRepository.GetUserListByType((int)UserRole.Admin);
+
+            ViewBag.UserList = UserList;
+            ViewBag.ClientCount = ClientList.Count;
+            ViewBag.AgentCount = AgentList.Count;
+            ViewBag.AdminCount = AdminList.Count;
+            //ViewBag.AgentList = AgentList;
+
+            //get order list
+            List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
+            ViewBag.IncompleteOrderList = IncompleteOrderList;
+
+            return View();
+        }
+
+        public IActionResult AdminAccountDashboard()
+        {
+            //Get user list            
+            List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
+            List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
+            List<User> AdminList = DatabaseRepository.GetUserListByType((int)UserRole.Admin);
+
+            ViewBag.UserList = AdminList;
+            ViewBag.ClientCount = ClientList.Count;
+            ViewBag.AgentCount = AgentList.Count;
+            ViewBag.AdminCount = AdminList.Count;
+            //ViewBag.AgentList = AgentList;
+
+            //get order list
+            List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
+            ViewBag.IncompleteOrderList = IncompleteOrderList;
+
+            return View();
+        }
+
+        public IActionResult AgentAccountDashboard()
+        {
+            //Get user list
+           
+            List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
+            List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
+            List<User> AdminList = DatabaseRepository.GetUserListByType((int)UserRole.Admin);
+
+            ViewBag.UserList = AgentList;
+            ViewBag.ClientCount = ClientList.Count;
+            ViewBag.AgentCount = AgentList.Count;
+            ViewBag.AdminCount = AdminList.Count;
+            //ViewBag.AgentList = AgentList;
+
+            //get order list
+            List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
+            ViewBag.IncompleteOrderList = IncompleteOrderList;
+
+            return View();
+        }
+
+        public IActionResult ClientAccountDashboard()
+        {
+            //Get user list
+            
+            List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
+            List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
+            List<User> AdminList = DatabaseRepository.GetUserListByType((int)UserRole.Admin);
+            ViewBag.UserList = ClientList;
+            ViewBag.ClientCount = ClientList.Count;
+            ViewBag.AgentCount = AgentList.Count;
+            ViewBag.AdminCount = AdminList.Count;
+            //ViewBag.AgentList = AgentList;
+
+            //get order list
+            List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
+            ViewBag.IncompleteOrderList = IncompleteOrderList;
+            return View();
+        }
+
         public IActionResult SalesDashboard()
         {
             

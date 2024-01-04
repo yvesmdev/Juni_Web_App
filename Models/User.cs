@@ -9,5 +9,20 @@
         public string username { get; set; }
         public int user_role_id { get; set; }
         public string phone_number { get; set; }
+
+        public static string UserTypeMessage(int type)
+        {
+            switch (type)
+            {
+                case 1:
+                    return "Admin";
+                case 2:
+                    return "Client";
+                case 3:
+                    return "Agent";           
+                default:
+                    return "Inconnu";
+            }
+        }
     }
 }
