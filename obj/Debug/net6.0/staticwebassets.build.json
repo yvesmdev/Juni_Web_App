@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/SFx6juKyvACSr4VklbQMYHOsmvYRA/+Q6bwgW3xFLE=",
+  "Hash": "W4YgpEDaxs//Pxxl8nX1MMSTUZ+K+9ik0WsebpPjWdQ=",
   "Source": "Juni_Web_App",
   "BasePath": "_content/Juni_Web_App",
   "Mode": "Default",
@@ -1768,6 +1768,23 @@
       "OriginalItemSpec": "wwwroot\\css\\main.css"
     },
     {
+      "Identity": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\main_formatted.css",
+      "SourceId": "Juni_Web_App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\github-dev\\Juni_Web_App\\wwwroot\\",
+      "BasePath": "_content/Juni_Web_App",
+      "RelativePath": "css/main_formatted.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\main_formatted.css"
+    },
+    {
       "Identity": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\style.css",
       "SourceId": "Juni_Web_App",
       "SourceType": "Discovered",
@@ -1783,6 +1800,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\Untitled.ipynb",
+      "SourceId": "Juni_Web_App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\github-dev\\Juni_Web_App\\wwwroot\\",
+      "BasePath": "_content/Juni_Web_App",
+      "RelativePath": "css/Untitled.ipynb",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Untitled.ipynb"
     },
     {
       "Identity": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\admin\\client_icon.png",

@@ -405,8 +405,16 @@
       "PackagePath": "staticwebassets\\admin\\images\\logo3.png"
     },
     {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\Untitled.ipynb",
+      "PackagePath": "staticwebassets\\css\\Untitled.ipynb"
+    },
+    {
       "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\main.css",
       "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\main_formatted.css",
+      "PackagePath": "staticwebassets\\css\\main_formatted.css"
     },
     {
       "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\css\\style.css",
