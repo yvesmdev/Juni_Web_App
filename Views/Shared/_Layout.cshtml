@@ -8,8 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
     <link rel="icon" href="~/img/Fevicon.png" type="image/png">
-	 <meta property="og:image" content="https://juni-ecommerce.azurewebsites.net/img/product/women_pringle_blue_sky_dress_1.jpeg">
-	 <meta property="og:type" content="website">
+
+	@if(ViewBag.IsProduct != null){
+		<meta property="og:image" content="https://juni-ecommerce.azurewebsites.net/img/product/@ViewBag.Product.PreviewImagePaths[0]">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Vente sur l'Appli Mobile - @ViewBag.Product.Name à $@ViewBag.Product.Price">
+	}
+	
 
 	@if (ViewBag.IsAdmin == "user" || ViewBag.IsAdmin == null)
 	{
