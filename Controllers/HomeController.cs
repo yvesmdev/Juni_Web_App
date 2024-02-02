@@ -31,8 +31,13 @@ namespace Juni_Web_App.Controllers {
 
             if (product_id != null)
             {
-                DatabaseRepository.GetProductById(product_id);
+                Product CurProduct = DatabaseRepository.GetProductById(product_id);
+                ViewBag.Product = CurProduct;
             }
+            else
+            {
+				return RedirectToAction("Index", "Home");//redirect to main menu
+			}
             return View();
         }
 
