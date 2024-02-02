@@ -55,15 +55,13 @@
 					<ul class="list" style="margin-top:20px;">
 						<li><a class="active" href="#"><span>Categorie</span> : Household</a></li>
 						<li><a href="#"><span>Disponible</span> : En Stock</a></li>
-					</ul>					
-					<p>
-						@ViewBag.Product.Description
-					</p>
+						
+					</ul>						
+					<p><a href="#"><span>Description</span> :</a> @ViewBag.Product.Description</p>
 					<div class="product_count" style="margin-top:10px;">
-						<label for="qty">Quantité: @ViewBag.Product.Qty </label>						
+						<label for="qty">Quantité: @ViewBag.Product.Qty </label>	
+						<a class="button primary-btn" href="#" style="color:darkorange;">Acheter sur l'Appli Mobile</a>
 					</div>
-					<a class="button primary-btn" href="#" style="color:darkorange;">Acheter sur l'Appli Mobile</a>
-				
 				</div>
 			</div>
 		</div>
