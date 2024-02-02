@@ -23,6 +23,19 @@ namespace Juni_Web_App.Controllers {
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Product()
+        {
+            string product_id = Request.Query["product_id"];
+            string coupon_id = Request.Query["coupon_od"];
+
+            if (product_id != null)
+            {
+                DatabaseRepository.GetProductById(product_id);
+            }
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

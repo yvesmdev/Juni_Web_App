@@ -5,6 +5,138 @@
       "PackagePath": "staticwebassets\\Juni_Web_App.bundle.scp.css"
     },
     {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\js\\custom.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\js\\custom.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\js\\jquery-1.11.0.min.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\js\\jquery-1.11.0.min.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\js\\jquery.nav.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\js\\jquery.nav.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shAutoloader.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shAutoloader.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAS3.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAS3.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAppleScript.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushAppleScript.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushBash.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushBash.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCSharp.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCSharp.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushColdFusion.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushColdFusion.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCpp.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCpp.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCss.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushCss.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDelphi.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDelphi.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDiff.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushDiff.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushErlang.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushErlang.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushGroovy.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushGroovy.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJScript.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJScript.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJava.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJava.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJavaFX.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushJavaFX.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPerl.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPerl.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPhp.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPhp.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPlain.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPlain.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPowerShell.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPowerShell.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPython.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushPython.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushRuby.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushRuby.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSass.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSass.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushScala.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushScala.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSql.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushSql.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushVb.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushVb.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushXml.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shBrushXml.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shCore.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shCore.js"
+    },
+    {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shLegacy.js",
+      "PackagePath": "staticwebassets\\Aroma Shop-doc\\syntax-highlighter\\scripts\\shLegacy.js"
+    },
+    {
       "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\admin\\assets\\css\\cs-skin-elastic.css",
       "PackagePath": "staticwebassets\\admin\\assets\\css\\cs-skin-elastic.css"
     },
