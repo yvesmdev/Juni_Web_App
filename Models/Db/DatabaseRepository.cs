@@ -1229,7 +1229,7 @@ namespace Juni_Web_App.Models.Db
                 using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                 {
                     DbCon2.Open();
-                    Query = "INSERT INTO applications_docs(path,app_id) VALUES(@path,@app_id)";
+                    Query = "INSERT INTO application_docs(path,app_id) VALUES(@path,@app_id)";
                     MySqlCommand DbCommand2 = new MySqlCommand(Query, DbCon2);
                     DbCommand2.Parameters.AddWithValue("@path", rel_filename);
                     DbCommand2.Parameters.AddWithValue("@app_id", applicationID);
