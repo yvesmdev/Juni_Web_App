@@ -441,6 +441,10 @@
       "PackagePath": "staticwebassets\\img\\admin\\sales_icon.png"
     },
     {
+      "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\application\\identité_1_0722264804.pdf",
+      "PackagePath": "staticwebassets\\img\\application\\identité_1_0722264804.pdf"
+    },
+    {
       "Id": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\.DS_Store",
       "PackagePath": "staticwebassets\\img\\blog\\.DS_Store"
     },

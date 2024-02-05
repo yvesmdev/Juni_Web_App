@@ -181,6 +181,16 @@ namespace Juni_Web_App.Controllers
             return RedirectToAction("InventoryDashboard", "Admin");//Redirect to Inventory
         }
 
+        //Approve Application
+        [HttpPost]
+        public IActionResult ApproveApplication()
+        {
+            string applicationId = Request.Form["applicationId"];
+            int status = DatabaseRepository.ApproveApplication(applicationId);
+            return RedirectToAction("ApplicationDashboard", "Admin");
+        }
+
+      
         //Update Product
         [HttpPost]
         public IActionResult UpdateProduct()

@@ -154,16 +154,16 @@ namespace Juni_Web_App.Controllers.MobileAPI
         public string CreateApplication([FromBody] string jSonString)
         {
             try
-            {
+           {
                 AgentApplication CurAgentApplication = JsonConvert.DeserializeObject<AgentApplication>(jSonString);
                 DatabaseRepository.writeToFile("application.txt", CurAgentApplication.CellNumber);
                 string response = DatabaseRepository.AddApplication(CurAgentApplication)+"";
                 return response + "";
-            }
+           }
             catch (Exception ex)
-            {
+           {
                 return $"[Error: {ex.Message}";
-            }
+           }
 
         }
         #endregion

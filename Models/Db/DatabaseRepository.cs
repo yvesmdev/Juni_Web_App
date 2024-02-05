@@ -1,5 +1,7 @@
 ﻿using Juni_Web_App.Models.Mobile;
 using MySql.Data.MySqlClient;
+using System.Data;
+using System.Security.Cryptography;
 
 namespace Juni_Web_App.Models.Db
 {
@@ -181,7 +183,8 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM agent_application ORDER BY id DESC", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM agent_application LEFT JOIN application_docs ON " +
+                    " agent_application.id = application_docs.app_id ORDER BY agent_application.id DESC", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
                 {
@@ -195,13 +198,48 @@ namespace Juni_Web_App.Models.Db
                     CurApplication.Municipality = (string)DbReader["municipality"];
                     CurApplication.City = (string)DbReader["city"];
                     CurApplication.Province = (string)DbReader["province"];
-                    CurApplication.IsApproved = (bool)DbReader["application_approved"];
-                    CurApplication.Date = (string)DbReader["application_date"];
+                    CurApplication.IdFileName = (string)DbReader["path"];
+                    CurApplication.IsApproved = Convert.ToUInt64(DbReader["application_approved"]) > 0 ? true : false;
+                    CurApplication.Date = DbReader.GetDateTime(DbReader.GetOrdinal("application_date")).ToString("yyyy-MM-dd");
                     ApplicationList.Add(CurApplication);
                 }
                 DbCon.Close();
             }
             return ApplicationList;
+        }
+
+
+        public static AgentApplication GetAgentApplicationById(string id)
+        {
+            var CurApplication = new AgentApplication();
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM agent_application LEFT JOIN application_docs ON " +
+                    "agent_application.id = application_docs.app_id WHERE id="+id, DbCon);
+                DatabaseRepository.writeToFile("sql.txt", DbCommand.CommandText);
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    CurApplication = new AgentApplication();
+                    CurApplication.id = Convert.ToInt32(DbReader["id"]);
+                    CurApplication.CellNumber = (string)DbReader["tel"];
+                    CurApplication.Name = (string)DbReader["full_name"];
+                    CurApplication.Email = (string)DbReader["email"];
+                    CurApplication.StreetAddress = (string)DbReader["street_address"];
+                    CurApplication.Suburb = (string)DbReader["suburb"];
+                    CurApplication.Municipality = (string)DbReader["municipality"];
+                    CurApplication.City = (string)DbReader["city"];
+                    CurApplication.Province = (string)DbReader["province"];
+                    CurApplication.IdFileName = (string)DbReader["path"];
+                    CurApplication.IsApproved = Convert.ToUInt64(DbReader["application_approved"]) > 0 ? true : false;
+                    CurApplication.Date = DbReader.GetDateTime(DbReader.GetOrdinal("application_date")).ToString("yyyy-MM-dd");
+                    
+                }
+                DbCon.Close();
+            }
+            return CurApplication;
         }
 
 
@@ -593,6 +631,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.id = Convert.ToInt32(DbReader["user_id"]);
                     CurUser.name = DbReader["name"] as string ?? CurUser.name;
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
+                    CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.phone_number = (string)DbReader["phone_number"];                    
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email; 
@@ -620,6 +659,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.name = DbReader["name"] as string ?? CurUser.name;
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email;
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
@@ -649,6 +689,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.phone_number = (string)DbReader["phone_number"];
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
+                    CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email;
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
 
@@ -1014,7 +1055,7 @@ namespace Juni_Web_App.Models.Db
             return total;
         }
         #region
-
+        
         public static int GetTotalForDelivery()
         {
             int count = 0;
@@ -1144,11 +1185,12 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Open();
 
                 string Query = "INSERT INTO agent_application(tel,full_name,email,street_address,suburb,municipality,city,province,application_date,application_approved)" +
-                    " VALUES(@tel,@fullName,@streetAddress,@suburb,@municipality,@city,@province,@applicationDate,@applicationStatus); SELECT LAST_INSERT_ID()";
+                    " VALUES(@tel,@fullName,@email,@streetAddress,@suburb,@municipality,@city,@province,@applicationDate,@applicationStatus); SELECT LAST_INSERT_ID()";
 
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                 DbCommand.Parameters.AddWithValue("@tel", CurApplication.CellNumber);
                 DbCommand.Parameters.AddWithValue("@fullName", CurApplication.Name);
+                DbCommand.Parameters.AddWithValue("@email", CurApplication.Email);
                 DbCommand.Parameters.AddWithValue("@streetAddress", CurApplication.StreetAddress);
                 DbCommand.Parameters.AddWithValue("@suburb", CurApplication.Suburb);
                 DbCommand.Parameters.AddWithValue("@municipality", CurApplication.Municipality);
@@ -1175,7 +1217,7 @@ namespace Juni_Web_App.Models.Db
                 using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                 {
                     DbCon2.Open();
-                    Query = "INSERT INTO product_image(path,product_id) VALUES(@path,@app_id)";
+                    Query = "INSERT INTO applications_docs(path,app_id) VALUES(@path,@app_id)";
                     MySqlCommand DbCommand2 = new MySqlCommand(Query, DbCon2);
                     DbCommand2.Parameters.AddWithValue("@path", rel_filename);
                     DbCommand2.Parameters.AddWithValue("@app_id", applicationID);
@@ -1188,6 +1230,57 @@ namespace Juni_Web_App.Models.Db
             return orderSuccess;
         }
 
+        public static int ApproveApplication(string application_id)
+        {
+            int success = 0;
+            AgentApplication CurApplication = DatabaseRepository.GetAgentApplicationById(application_id);           
+            using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+            {
+                DbCon2.Open();
+                MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM user_profile WHERE phone_number='" + CurApplication.CellNumber + "'", DbCon2);
+                MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
+                using (MySqlConnection DbCon3 = new MySqlConnection(ConnectionString))
+                {
+                    DbCon3.Open();
+                    string Query;
+                    string CouponCode = GenerateCouponCode(CurApplication.id);
+
+                    //if it is an existing user
+                    if (DbReader2.Read())
+                    {
+                        //approve agent status
+                        Query = "UPDATE user_profile SET agent_approved=1,coupon_code='"+CouponCode+"' WHERE phone_number='"+ CurApplication.CellNumber+ "'";
+                        MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
+                        DbCommand3.ExecuteNonQuery();
+
+                        success = 1;//existing customer
+                    }
+                    else//create user and grant access
+                    {
+                        Query = "INSERT INTO user_profile (phone_number,password,username,email," +
+                            "user_role_id,agent_approved,coupon_code) VALUES(@phone,@password,@username,@email,@userRole,@agentApproved,@coupon_code)";
+                        MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
+                        DbCommand3.Parameters.AddWithValue("@phone",CurApplication.CellNumber);
+                        DbCommand3.Parameters.AddWithValue("@email", CurApplication.Email);
+                        DbCommand3.Parameters.AddWithValue("@username", CurApplication.CellNumber);
+                        DbCommand3.Parameters.AddWithValue("@userRole", (int)UserRole.Agent);
+                        DbCommand3.Parameters.AddWithValue("@agentApproved", 1);
+                        DbCommand3.Parameters.AddWithValue("@password","12345");
+                        DbCommand3.Parameters.AddWithValue("@coupon_code", CouponCode);
+                        DbCommand3.ExecuteNonQuery();
+
+                        success = 2;//new customer
+                    }
+
+                    DbCon3.Close();
+                }                        
+                DbCon2.Close();
+            }
+
+            return success;
+
+        }
+
         #endregion
 
         public static String DateNow()
@@ -1196,5 +1289,37 @@ namespace Juni_Web_App.Models.Db
             string formatDate = now.ToString("yyyy-MM-dd");
             return formatDate;
         }
+
+        static string GenerateCouponCode(int uniqueId)
+        {
+            // Combine the unique ID with a random string
+            string randomString = GenerateRandomString();
+            string combinedString = uniqueId.ToString() + randomString;
+
+            // Use a hash function to ensure a fixed length
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(combinedString));
+                string hashedString = BitConverter.ToString(hashBytes).Replace("-", "").Substring(0, 6);
+
+                return hashedString;
+            }
+        }
+
+        static string GenerateRandomString()
+        {
+            const string characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            Random random = new Random();
+
+            // Generate a random string of length 6
+            char[] randomString = new char[6];
+            for (int i = 0; i < randomString.Length; i++)
+            {
+                randomString[i] = characters[random.Next(characters.Length)];
+            }
+
+            return new string(randomString);
+        }
+
     }
 }

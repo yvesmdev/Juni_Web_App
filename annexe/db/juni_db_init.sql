@@ -25,6 +25,7 @@ CREATE TABLE user_profile (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NULL,
     surname VARCHAR(255) NULL,
+    coupon_code VARCHAR(10) NULL,
     phone_number VARCHAR(15) NOT NULL,
     password VARCHAR(255) NOT NULL,
     username VARCHAR(50) UNIQUE NULL, -- Added username with unique constraint
@@ -49,6 +50,16 @@ CREATE TABLE agent_application
  application_approved BIT DEFAULT 0,
  PRIMARY KEY(id)
 );
+
+CREATE TABLE application_docs
+(
+	doc_id INT AUTO_INCREMENT PRIMARY KEY,
+    path VARCHAR(255) NOT NULL,
+    app_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (app_id) REFERENCES agent_application(id)
+);
+
+
 
 CREATE TABLE product_category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,

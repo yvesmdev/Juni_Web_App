@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W4YgpEDaxs//Pxxl8nX1MMSTUZ+K+9ik0WsebpPjWdQ=",
+  "Hash": "cWdSQlltDk8sLaoievc54WIpVeDmSb/LKZaUqv2YFsY=",
   "Source": "Juni_Web_App",
   "BasePath": "_content/Juni_Web_App",
   "Mode": "Default",
@@ -1868,6 +1868,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\admin\\sales_icon.png"
+    },
+    {
+      "Identity": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\application\\identité_1_0722264804.pdf",
+      "SourceId": "Juni_Web_App",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\github-dev\\Juni_Web_App\\wwwroot\\",
+      "BasePath": "_content/Juni_Web_App",
+      "RelativePath": "img/application/identité_1_0722264804.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\application\\identité_1_0722264804.pdf"
     },
     {
       "Identity": "C:\\github-dev\\Juni_Web_App\\wwwroot\\img\\blog\\.DS_Store",

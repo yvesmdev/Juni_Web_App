@@ -9,7 +9,7 @@
         public string username { get; set; }
         public int user_role_id { get; set; }
         public string phone_number { get; set; }
-
+        public string coupon_code { get; set; }
         public static string UserTypeMessage(int type)
         {
             switch (type)

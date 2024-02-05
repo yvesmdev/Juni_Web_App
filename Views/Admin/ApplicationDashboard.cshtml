@@ -11,7 +11,7 @@
                 <li>
                     <a href="@Url.Action("SalesDashboard","Admin")"><i class="menu-icon fa fa-money"></i>Tableau de Vente</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="@Url.Action("InventoryDashboard","Admin")"><i class="menu-icon fa fa-laptop"></i>Inventaire</a>
                 </li>
                 <li>
@@ -20,7 +20,7 @@
                 <li>
                     <a href="@Url.Action("AccountDashboard","Admin")"><i class="menu-icon fa fa-user"></i>Utulisateurs</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="@Url.Action("ApplicationDashboard","Admin")"><i class="menu-icon fa fa-print"></i>Application Agent</a>
                 </li>
 
@@ -314,7 +314,7 @@
                                                         <td>@(CurAgent.IsApproved?"Approuvé":"En Attente")</td>
                                                         <td>
                                                             <button class="btn btn-primary" id="see_button_@(CurAgent.id)" data-toggle="collapse" data-target="#orderPanel" onclick="openProductModal('@(CurAgent.id)','@(CurAgent.Name)','@(CurAgent.CellNumber)','@(CurAgent.Email)','@(CurAgent.StreetAddress)','@(CurAgent.Suburb)','@(CurAgent.Municipality)','@(CurAgent.City)','@(CurAgent.Province)'
-                                                            ,'@(CurAgent.IsApproved?"Approuvé":"En Attente")', '@(CurAgent.Date)')">Voir</button>
+                                                            ,'@(CurAgent.IsApproved)', '@(CurAgent.Date)','@(CurAgent.IdFileName)')">Voir</button>
                                                             <!-- <button class="btn btn-danger">Archiver</button>-->
                                                         </td>
                                                     </tr>
@@ -366,15 +366,19 @@
                                     </tr>
                                     <tr>
                                         <td class="col-6"> Province: <span id="appProvince"> </span> </td>
-                                        <td class="col-6"> Numero d'identité:<b> <span id="appIdentity"> </span></b></td>
+                                        <td class="col-6"> Document d'identité:<b> <a target="_blank" id="appIdentity" href="" style="color:red;">Voir</a></b></td>
                                     </tr>
 
                                 </tbody>
                             </table>
 
-                            <button class="btn btn-info" type="button" >
-                                Approuvez
-                            </button>
+                            <form id="applicationForm" action="@Url.Action("ApproveApplication","Admin")" method="post" style="display:inline; margin-right:20px;">
+                                <!-- Your form fields here -->
+                                <!-- Hidden input field for additional data -->
+                                <input type="hidden" name="applicationId" value="" id="applicationId">
+                                <button class="btn btn-danger " type="button" onclick="submitForm()">Approuvez</button>
+                            </form>
+
 
                             <!-- Toggle Button -->
                             <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#orderPanel" aria-expanded="false" aria-controls="orderPanel">
@@ -428,24 +432,46 @@
         $('#bootstrap-data-table-export').DataTable();
     });
 
-    function openProductModal(id, name,  cell, email, street_address, suburb, municipality, city, province, approval, date) {
+    function openProductModal(id, name,  cell, email, street_address, suburb, municipality, city, province, approval, date,path) {
 
-
+        
         // Populate the form with the passed parameters
         $('#appId').text(" " + id);
         $('#appDate').text(" " + date);
-        $('#appStatus').text(" " + approval);
         $('#appCell').text(" " + cell);
-        $('#appName').text(" " + appName);        
+        $('#appName').text(" " + name);        
         $('#appStreetAddress').text(" " + street_address);
         $('#appSuburb').text(" " + suburb);
+        $('#appIdentity').attr("href","/"+path);
         $('#appMunicipality').text(" " + municipality);
-        $('#appProvince').text(" " + province);   
+        $('#appProvince').text(" " + province);  
 
+        if(approval.toLowerCase()=="true"){
+            $('#appStatus').text("Approuvé");
+        }else{
+            $('#appStatus').text("En Attente");
+        }        
+         
+
+        if (approval.toLowerCase() == "true") {
+            $('#applicationForm').hide();
+        }else{
+            $("#applicationId").val(id+"");
+            $('#applicationForm').show();
+        }
 
         var element = document.getElementById("see_button_" + id)
        
         $('#orderPanel').collapse('show');
+    }
+
+
+    function submitForm() {
+        // Get the form element
+        var form = document.getElementById("applicationForm");
+
+        // Submit the form
+        form.submit();
     }
 
 </script>
