@@ -632,7 +632,8 @@ namespace Juni_Web_App.Models.Db
                     CurUser.name = DbReader["name"] as string ?? CurUser.name;
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
-                    CurUser.phone_number = (string)DbReader["phone_number"];                    
+                    CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"])>0?true:false;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email; 
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
@@ -662,6 +663,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email;
+                    CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"]) > 0 ? true : false;
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
 
                     UserList.Add(CurUser);
@@ -678,7 +680,16 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE user_role_id="+user_role_id, DbCon);
+                MySqlCommand DbCommand;
+                if (user_role_id == (int)(UserRole.Agent))
+                {
+                     DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (agent_approved=1) OR (user_role_id=" + user_role_id+")", DbCon);
+                }
+                else
+                {
+                     DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE user_role_id=" + user_role_id, DbCon);
+                }
+                
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
@@ -692,6 +703,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email;
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
+                    CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"]) > 0 ? true : false;
 
                     UserList.Add(CurUser);
                 }
@@ -1271,6 +1283,11 @@ namespace Juni_Web_App.Models.Db
 
                         success = 2;//new customer
                     }
+
+                    //approve application
+                    Query = "UPDATE agent_application SET application_approved=1 WHERE id=" + CurApplication.id;
+                    MySqlCommand DbCommand4 = new MySqlCommand(Query, DbCon3);
+                    DbCommand4.ExecuteNonQuery();
 
                     DbCon3.Close();
                 }                        

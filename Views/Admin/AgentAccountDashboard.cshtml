@@ -245,7 +245,7 @@
                                                         
                                                         <td>@(CurUser.email)</td>
                                                         <td>
-                                                            <button class="btn btn-primary" id="see_button_@(++i)" data-toggle="collapse" data-target="#clientPanel" onclick="openProductModal('@(i)','@(CurUser.phone_number)','@(CurUser.name)','@(CurUser.surname)','@(Juni_Web_App.Models.User.UserTypeMessage(CurUser.user_role_id))','@(CurUser.email)')">Voir</button>
+                                                            <button class="btn btn-primary" id="see_button_@(++i)" data-toggle="collapse" data-target="#clientPanel" onclick="openProductModal('@(i)','@(CurUser.phone_number)','@(CurUser.name)','@(CurUser.surname)','@(Juni_Web_App.Models.User.UserTypeMessage(CurUser.user_role_id))','@(CurUser.email)','@(CurUser.coupon_code)')">Voir</button>
                                                             <!--<button class="btn btn-success">Confirmer</button>-->
                                                             <!-- <button class="btn btn-danger">Archiver</button>-->
                                                         </td>
@@ -287,8 +287,13 @@
                                 <tr>
                                 <td class="col-6">Email: </td>
                                 <td class="col-6"><span id="clientEmail"> </span> </td>
-                                </tr>                             
-                                
+                                </tr>
+
+                                    <tr>
+                                        <td class="col-6">Code Coupon: </td>
+                                        <td class="col-6"><b><span id="clientCoupon"> </span></b></td>
+                                    </tr>
+
                                 </tbody>
                             </table>
                          
@@ -349,13 +354,14 @@
         $('#bootstrap-data-table-export').DataTable();
     });
        
-    function openProductModal(id,clientId,clientName,clientSurname, clientType,clientEmail ) {
+    function openProductModal(id,clientId,clientName,clientSurname, clientType,clientEmail,clientCoupon) {
         // Populate the form with the passed parameters
         $('#clientId').text(" "+clientId);
         $('#clientName').text(" "+clientName);
         $('#clientSurname').text(" "+clientSurname);
         $('#clientType').text(" "+clientType);
         $('#clientEmail').text(" "+clientEmail);
+        $('#clientCoupon').text(" " + clientCoupon);
 
         var element = document.getElementById("see_button_"+id)        
         $('#clientPanel').collapse('show');    
