@@ -30,7 +30,24 @@ CREATE TABLE user_profile (
     username VARCHAR(50) UNIQUE NULL, -- Added username with unique constraint
     email VARCHAR(255) UNIQUE NULL,    -- Added email with unique constraint
     user_role_id INT NOT NULL DEFAULT 2,
+    agent_approved BIT DEFAULT 0,
     FOREIGN KEY (user_role_id) REFERENCES user_role(role_id)
+);
+
+CREATE TABLE agent_application
+(
+ id INT UNSIGNED AUTO_INCREMENT NOT NULL, 
+ tel VARCHAR(15) NOT NULL,
+ full_name VARCHAR(20) NOT NULL,
+ email VARCHAR(50) NOT NULL,
+ street_address VARCHAR(30) NOT NULL,
+ suburb VARCHAR(30) NOT NULL,
+ municipality VARCHAR(30) NOT NULL,
+ city VARCHAR(30) NOT NULL,
+ province VARCHAR(30) NOT NULL,
+ application_date DATE NOT NULL,
+ application_approved BIT DEFAULT 0,
+ PRIMARY KEY(id)
 );
 
 CREATE TABLE product_category (

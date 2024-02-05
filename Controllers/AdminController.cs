@@ -15,6 +15,18 @@ namespace Juni_Web_App.Controllers
 
         }
 
+        public IActionResult ApplicationDashboard()
+        {
+            List<AgentApplication> ApplicationList = DatabaseRepository.GetAgentApplicationList();
+            //get order list
+            List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
+            
+            
+            ViewBag.IncompleteOrderList = IncompleteOrderList;
+            ViewBag.ApplicationList = ApplicationList;
+            return View();
+        }
+
         public IActionResult AccountDashboard()
         {
             //Get user list
@@ -282,22 +294,5 @@ namespace Juni_Web_App.Controllers
 
             return View();
         }
-
-
-
-
-        /*
-        public IActionResult Index(string username, string password)//user name and password received
-        {
-            if(username.Equals("admin", StringComparison.OrdinalIgnoreCase))
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login","Login");
-            }
-            
-        }*/
     }
 }

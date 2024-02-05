@@ -173,6 +173,38 @@ namespace Juni_Web_App.Models.Db
             return false;
         }
 
+
+        public static List<AgentApplication> GetAgentApplicationList()
+        {
+            var ApplicationList = new List<AgentApplication>();
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM agent_application ORDER BY id DESC", DbCon);
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                while (DbReader.Read())
+                {
+                    AgentApplication CurApplication = new AgentApplication();
+                    CurApplication.id = Convert.ToInt32(DbReader["id"]);
+                    CurApplication.CellNumber = (string)DbReader["tel"];
+                    CurApplication.Name = (string)DbReader["full_name"];
+                    CurApplication.Email = (string)DbReader["email"];
+                    CurApplication.StreetAddress = (string)DbReader["street_address"];
+                    CurApplication.Suburb = (string)DbReader["suburb"];
+                    CurApplication.Municipality = (string)DbReader["municipality"];
+                    CurApplication.City = (string)DbReader["city"];
+                    CurApplication.Province = (string)DbReader["province"];
+                    CurApplication.IsApproved = (bool)DbReader["application_approved"];
+                    CurApplication.Date = (string)DbReader["application_date"];
+                    ApplicationList.Add(CurApplication);
+                }
+                DbCon.Close();
+            }
+            return ApplicationList;
+        }
+
+
         public static List<Product> GetProductList()
         {
             var ProductList = new List<Product>();
@@ -782,29 +814,7 @@ namespace Juni_Web_App.Models.Db
             }
             return OrderList;
         }
-        /*
-        public static Product GetProductById(int id)
-        {
-            Product CurProduct = null;
-            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
-            {
-                DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM product WHERE product_id="+id, DbCon);
 
-                MySqlDataReader DbReader = DbCommand.ExecuteReader();
-                if (DbReader.Read())
-                {
-                    CurProduct = new Product();                    
-                    CurProduct.Name = (string)DbReader["name"];
-                    CurProduct.Description = (string)DbReader["description"];
-                    CurProduct.Price = Convert.ToDouble(DbReader["price"])+"";
-                    CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
-                    CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);                    
-                }
-                DbCon.Close();
-            }
-            return CurProduct;
-        }*/
         public static List<Order> GetAllOrderForCollection()
         {
             List<Order> OrderList = new List<Order>();
@@ -1120,5 +1130,71 @@ namespace Juni_Web_App.Models.Db
         }
 
         #endregion
+
+
+
+        #region  
+        //application
+        public static bool AddApplication(AgentApplication CurApplication)
+        {
+
+            bool orderSuccess = false;
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+
+                string Query = "INSERT INTO agent_application(tel,full_name,email,street_address,suburb,municipality,city,province,application_date,application_approved)" +
+                    " VALUES(@tel,@fullName,@streetAddress,@suburb,@municipality,@city,@province,@applicationDate,@applicationStatus); SELECT LAST_INSERT_ID()";
+
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@tel", CurApplication.CellNumber);
+                DbCommand.Parameters.AddWithValue("@fullName", CurApplication.Name);
+                DbCommand.Parameters.AddWithValue("@streetAddress", CurApplication.StreetAddress);
+                DbCommand.Parameters.AddWithValue("@suburb", CurApplication.Suburb);
+                DbCommand.Parameters.AddWithValue("@municipality", CurApplication.Municipality);
+                DbCommand.Parameters.AddWithValue("@city", CurApplication.City);
+                DbCommand.Parameters.AddWithValue("@province", CurApplication.Province);
+                CurApplication.Date = DatabaseRepository.DateNow();//get current date
+                DbCommand.Parameters.AddWithValue("@applicationDate", CurApplication.Date);
+                DbCommand.Parameters.AddWithValue("@applicationStatus", CurApplication.IsApproved);
+               
+
+                int applicationID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files
+                DatabaseRepository.writeToFile("db.txt", applicationID + "");
+
+                DbCon.Close();
+
+                //save the file
+                int id = CurApplication.IdFileName.IndexOf(".");
+                string newName = "identité_"+applicationID + "_" + CurApplication.CellNumber +CurApplication.IdFileName.Substring(id);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "application", newName);
+                File.WriteAllBytes(path, CurApplication.IdFileContent);
+
+                string rel_filename = "img/application/" + newName;
+
+                using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+                {
+                    DbCon2.Open();
+                    Query = "INSERT INTO product_image(path,product_id) VALUES(@path,@app_id)";
+                    MySqlCommand DbCommand2 = new MySqlCommand(Query, DbCon2);
+                    DbCommand2.Parameters.AddWithValue("@path", rel_filename);
+                    DbCommand2.Parameters.AddWithValue("@app_id", applicationID);
+                    DbCommand2.ExecuteNonQuery();
+                    DbCon2.Close();
+                }
+
+                orderSuccess = true;
+            }
+            return orderSuccess;
+        }
+
+        #endregion
+
+        public static String DateNow()
+        {
+            DateTime now = DateTime.Now;
+            string formatDate = now.ToString("yyyy-MM-dd");
+            return formatDate;
+        }
     }
 }
