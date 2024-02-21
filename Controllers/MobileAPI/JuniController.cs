@@ -67,6 +67,13 @@ namespace Juni_Web_App.Controllers.MobileAPI
             return DatabaseRepository.GetUserByUsername(username);
         }
 
+        //GET: api/juni/get_coupon_profile/{coupon}
+        [HttpGet("get_coupon_profile/{coupon}")]
+        public CouponProfile GetCouponProfile(string coupon)
+        {
+            return DatabaseRepository.GetCouponProfileById(coupon);
+        }
+
         //POST: api/juni/order
         //[Route("api/juni/order")]
         //[HttpPost]

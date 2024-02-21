@@ -60,6 +60,12 @@ CREATE TABLE application_docs
 );
 
 
+CREATE TABLE IF NOT EXISTS agent_market
+( 
+agent_id INT NOT NULL REFERENCES user_profile(user_id),
+product_id INT NOT NULL REFERENCES product(product_id),
+PRIMARY KEY (agent_id,product_id)
+);
 
 CREATE TABLE product_category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -123,7 +129,7 @@ CREATE TABLE order_details(
 
 -- Insert sample data
 INSERT INTO configuration(key_name,value) 
-VALUES('delivery_fee','10'),('notification_mail','yves.matanga.dev@gmail.com;askjuni@outlook.com');
+VALUES('delivery_fee','10'),('notification_mail','yves.matanga.dev@gmail.com;askjuni@outlook.com'),('agent_comission_perc','0.05'),('client_coupon_discount_perc','0.05');
 
 INSERT INTO user_role (role_title) VALUES ('admin'), ('customer'), ('agent');
 

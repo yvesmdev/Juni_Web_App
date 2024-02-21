@@ -1307,6 +1307,82 @@ namespace Juni_Web_App.Models.Db
             return formatDate;
         }
 
+
+        public static CouponProfile GetCouponProfileById(string couponCode)
+        {
+            CouponProfile CurCouponProfile = null;
+            User CurUser = null;
+            MySqlConnection DbCon;
+            MySqlCommand DbCommand;
+            MySqlDataReader DbReader;
+
+            using (DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE coupon_code='" + couponCode + "'", DbCon);
+                DbReader = DbCommand.ExecuteReader();
+
+                if (DbReader.Read())
+                {
+                    CurUser = new User();
+                    CurUser.id = Convert.ToInt32(DbReader["user_id"]);
+                    CurUser.name = DbReader["name"] as string ?? CurUser.name;
+                    CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
+                    CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
+                    CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"]) > 0 ? true : false;
+                    CurUser.username = DbReader["username"] as string ?? CurUser.username;
+                    CurUser.email = DbReader["email"] as string ?? CurUser.email;
+                    CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
+                }
+                DbCon.Close();
+            }
+
+            if(CurUser != null)
+            {
+                CurCouponProfile = new CouponProfile();
+                CurCouponProfile.Agent = CurUser;//store Agent details
+            }
+
+
+            var ProductList = new List<Product>();
+
+            using (DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                DbCommand = new MySqlCommand("SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile " +
+                    "ON user_profile.user_id = agent_market.agent_id WHERE user_profile.coupon_code='"+couponCode+"'", DbCon);
+
+                DbReader = DbCommand.ExecuteReader();
+
+                while (DbReader.Read())
+                {
+                    Product CurProduct = new Product();
+                    CurProduct.id = Convert.ToInt32(DbReader["product_id"]);
+                    CurProduct.Name = (string)DbReader["name"];
+                    CurProduct.Description = (string)DbReader["description"];
+                    CurProduct.Price = "" + DbReader["price"];
+                    CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
+                    CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);
+                    CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
+                    ProductList.Add(CurProduct);
+                }
+                DbCon.Close();
+            }
+
+            if(ProductList.Count > 0 && CurCouponProfile != null)
+            {
+                CurCouponProfile.ProductList = ProductList;//add product list
+            }
+
+            if(CurCouponProfile != null)
+            {
+                CurCouponProfile.Id = couponCode;
+            }
+
+            return CurCouponProfile;//return current coupon profile
+        }
+
         static string GenerateCouponCode(int uniqueId)
         {
             // Combine the unique ID with a random string

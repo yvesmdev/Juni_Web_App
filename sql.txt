@@ -1,1 +1,1 @@
-SELECT * FROM agent_application LEFT JOIN application_docs ON agent_application.id = application_docs.app_id WHERE id=1
+SELECT * FROM agent_application LEFT JOIN application_docs ON agent_application.id = application_docs.app_id WHERE id=4
