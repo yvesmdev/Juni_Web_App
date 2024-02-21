@@ -54,6 +54,23 @@ namespace Juni_Web_App.Controllers.MobileAPI
             return DatabaseRepository.GetDeliveryFee();
         }
 
+
+        //GET: api/juni/client_discount_perc 
+        [HttpGet("get_client_discount_perc")]
+        public string GetClientDiscountPerc()
+        {
+            return DatabaseRepository.GetClientDiscountPerc();
+        }
+
+
+        //GET: api/juni/client_discount_perc 
+        [HttpGet("get_agent_commission_perc")]
+        public string GetAgentCommisionPerc()
+        {
+            return DatabaseRepository.GetAgentCommissionPerc();
+        }
+
+
         //GET: api/juni/generate_order_id/{order_type}
         [HttpGet("generate_order_id/{order_type}")]
         public string GenerateOrderID(string order_type)

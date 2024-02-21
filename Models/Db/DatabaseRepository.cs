@@ -513,6 +513,45 @@ namespace Juni_Web_App.Models.Db
             return deliveryFee;
         }
 
+        //Delivery
+        public static string GetClientDiscountPerc()
+        {
+            string perc = null;
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='client_coupon_discount_perc'", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    perc = (string)DbReader["value"];
+                }
+                DbCon.Close();
+            }
+            return perc;
+        }
+
+        public static string GetAgentCommissionPerc()
+        {
+            string perc = null;
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='agent_comission_perc'", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    perc = (string)DbReader["value"];
+                }
+                DbCon.Close();
+            }
+            return perc;
+        }
+
         //Generate Unique Order ID
         public static string GetOrderUniqueID(int orderType)
         {
