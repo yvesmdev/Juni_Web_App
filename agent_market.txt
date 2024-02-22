@@ -1,1 +1,1 @@
-Montre T-rex SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile ON user_profile.user_id = agent_market.agent_id WHERE user_profile.coupon_code='BF3981'
+Blouse Bleu SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile ON user_profile.user_id = agent_market.agent_id WHERE user_profile.coupon_code='BF3981'
