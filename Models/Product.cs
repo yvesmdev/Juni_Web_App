@@ -31,7 +31,6 @@ namespace Juni_Web_App.Models
             this.CategoryId = catid;
         }
 
-
         public string GetSerialisedImages()
         {
             return JsonConvert.SerializeObject(this.PreviewImagePaths);
@@ -41,6 +40,8 @@ namespace Juni_Web_App.Models
         public string Name { get; set; }
         public string Price { get; set; }
         public string Description { get; set; }
+        public double Discount { get; set; }
+        public bool IsDiscounted { get; set; }
         public int Qty { get; set; }
         public int CategoryId { get; set; }
         public List<string> PreviewImagePaths { get; set; }

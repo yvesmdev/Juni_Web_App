@@ -115,6 +115,7 @@ CREATE TABLE order_table(
   order_date DATETIME NOT NULL DEFAULT NOW(),-- order current time
   order_type_id INT NOT NULL REFERENCES order_type(id),
   deliveryFee DECIMAL(10,2) NOT NULL DEFAULT 0,
+  coupon_code VARCHAR(10) NULL,
   order_unique_id VARCHAR(20) NOT NULL UNIQUE,
   completed BIT NOT NULL DEFAULT 0  
 );
@@ -124,6 +125,9 @@ CREATE TABLE order_details(
   product_id INT NOT NULL REFERENCES product(product_id),
   product_qty INT NOT NULL,
   product_price DECIMAL(10,2) NOT NULL,  
+  product_agent_price_discount DECIMAL(10,2) NULL DEFAULT 0,
+  product_agent_price_profit DECIMAL(10,2) NULL DEFAULT 0,
+  product_agent_discounted BIT NULL DEFAULT 0,
   PRIMARY KEY(order_id,product_id)
 );
 

@@ -1,14 +1,52 @@
-﻿using Juni_Web_App.Models.Mobile;
+﻿using Juni_Web.Models;
+using Juni_Web_App.Models.Mobile;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Security.Cryptography;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace Juni_Web_App.Models.Db
 {
     public class DatabaseRepository
     {
+
+
         public static string ConnectionString = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("ConnectionStrings")["DefaultConnection"];
 
+        public static string TwilioAccountSid = "AC754bf25d79d2c69f53bc21ff7f4cb2e5";
+        public static string TwilioAuthToken = "e21834908216bb118969063213bc491f";
+        public static string TwilioPhoneNumber = "+14155238886";
+
+
+        #region 
+        //mesaging
+        public static void SendWhatsAppMessage(string receiverPhoneNumber, string messageBody)
+        {
+            // Send WhatsApp message in a separate thread
+            Thread sendThread = new Thread(() =>
+            {
+                try
+                {
+                    TwilioClient.Init(TwilioAccountSid, TwilioAuthToken);
+                    // Send WhatsApp message
+                    var message = MessageResource.Create(
+                        to: new PhoneNumber($"whatsapp:{receiverPhoneNumber}"),
+                        from: new PhoneNumber($"whatsapp:{TwilioPhoneNumber}"),
+                        body: messageBody
+                    );
+                    Console.WriteLine($"Message sent successfully! SID: {message.Sid}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to send message: {ex.Message}");
+                }
+            });
+            sendThread.Start();
+        }
+
+        #endregion
 
         //
         public static void writeToFile(string filename, string content)
@@ -608,8 +646,8 @@ namespace Juni_Web_App.Models.Db
             {
                 DbCon.Open();
 
-                string Query = "INSERT INTO order_table(customer_id,sender_fullname,sender_cell,dispatch_address,dest_fullname,dest_cell,dest_gift_message,order_date,order_type_id,deliveryFee,order_unique_id,completed)" +
-                    " VALUES(@customerID,@senderFullname,@senderCell,@dispatchAddress,@destFullname,@destCell,@destGiftMessage,@orderDate,@orderTypeId,@deliveryFee,@orderUniqueId,@completed); SELECT LAST_INSERT_ID()";
+                string Query = "INSERT INTO order_table(customer_id,sender_fullname,sender_cell,dispatch_address,dest_fullname,dest_cell,dest_gift_message,order_date,order_type_id,deliveryFee,order_unique_id,completed,coupon_code,is_discounted)" +
+                    " VALUES(@customerID,@senderFullname,@senderCell,@dispatchAddress,@destFullname,@destCell,@destGiftMessage,@orderDate,@orderTypeId,@deliveryFee,@orderUniqueId,@completed,@couponCode,@isDiscounted); SELECT LAST_INSERT_ID()";
 
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                 DbCommand.Parameters.AddWithValue("@customerID",ClientOrder.ClientId);
@@ -624,16 +662,26 @@ namespace Juni_Web_App.Models.Db
                 DbCommand.Parameters.AddWithValue("@deliveryFee", ClientOrder.DeliveryFee);
                 DbCommand.Parameters.AddWithValue("@orderUniqueId", ClientOrder.OrderUniqueId);
                 DbCommand.Parameters.AddWithValue("@completed", ClientOrder.OrderCompleted);
+                DbCommand.Parameters.AddWithValue("@couponCode", ClientOrder.CouponCode);
+                DbCommand.Parameters.AddWithValue("@isDiscounted", ClientOrder.IsDiscounted);
 
                 int orderID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files
-                DatabaseRepository.writeToFile("db.txt", orderID+"");
+                //DatabaseRepository.writeToFile("db.txt", orderID+"");
 
                 DbCon.Close();
+
+                double agentProfit = 0;
+                double commission_perc = double.Parse(GetAgentCommissionPerc().Replace('.', ','));//get commission percentage
+               
+
+                string product_report = "";
+                int count = 0;
 
                 using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                 {
                     DbCon2.Open();
-                    Query = "INSERT INTO order_details (order_id,product_id,product_qty,product_price) VALUES(@orderID,@productID,@productQty,@productPrice)";
+                    Query = "INSERT INTO order_details (order_id,product_id,product_qty,product_price,product_agent_price_discount, product_agent_price_profit," +
+                        "product_agent_discounted) VALUES(@orderID,@productID,@productQty,@productPrice,@productDiscount,@productAgentProfit,@productDiscounted)";
 
                     foreach(var product in ClientOrder.Products) {
                         using (var DataCommand = new MySqlCommand(Query, DbCon2))
@@ -642,16 +690,144 @@ namespace Juni_Web_App.Models.Db
                             DataCommand.Parameters.AddWithValue("@productID", product.id);
                             DataCommand.Parameters.AddWithValue("@productQty", product.Qty);
                             DataCommand.Parameters.AddWithValue("@productPrice", product.Price);
+                            DataCommand.Parameters.AddWithValue("@productDiscount", product.Discount);
+                            DataCommand.Parameters.AddWithValue("@productAgentProfit", product.Discount);
+                            DataCommand.Parameters.AddWithValue("@productDiscounted", product.IsDiscounted);
+
+                            if (product.IsDiscounted)
+                            {
+                                double price_ = (double.Parse(product.Price) + product.Discount);
+                                double unit_profit = price_ * commission_perc * product.Qty;
+                                agentProfit += unit_profit;
+                                var ProductData = GetProductById(product.id + "");
+                                product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + " x " + product.Qty + " x " + commission_perc + ": $" + unit_profit+"\n";
+                            }
                             DataCommand.ExecuteNonQuery();
                         }
                     }
+                    product_report += "*Total: $" + agentProfit + "*";
                     orderSuccess = true;
                     DbCon2.Close();
+                }
+
+                if (agentProfit > 0 && ClientOrder.IsDiscounted)//just making sure
+                {
+                    if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
+                    {
+                        User CurAgent = GetUserByUsername(ClientOrder.CouponCode);
+                        if (CurAgent != null)
+                        {
+                            UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
+                            double balance = GetAgentBalance(CurAgent.id+"");
+                            string message = "*Rapport Juni*\nVous avez effectué un profit de $" + agentProfit + " sur\n" +
+                                "la commande " + ClientOrder.OrderUniqueId + "\n Mot de Paiement: Carte Crédit à livrer.\n" +product_report+
+                                "*Solde: $" + balance + "*\nRassurez vous de la livraison du produit\n";
+
+                            SendWhatsAppMessage("+27722264804", message);
+                        }
+                    }
+                    else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
+                    {
+
+                    }
+                    else if (ClientOrder.OrderType == (int)OrderType.ProductDelivery)//do nothing
+                    {
+
+                    }
+                    else if (ClientOrder.OrderType == (int)OrderType.ProductCollection)// do nothing
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                 }
                 
 
             }
             return orderSuccess;
+        }
+        
+        public static int UpdateAgentBalance(string agent_id, double amount)
+        {
+            User CurAgent = GetUserByUsername(agent_id);//find agent
+            if(CurAgent == null)
+            {
+                return -1;
+            }
+
+            bool agentRegistered = IsAgentBankRegistered(CurAgent.id+"");
+            if (agentRegistered)
+            {
+                using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+                {
+                    DbCon.Open();
+
+                    string Query = "UPDATE agent_bank SET balance = balance + @newBalance WHERE agent_id=@agentId";
+                    MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                    DbCommand.Parameters.AddWithValue("@agentId", CurAgent.id);
+                    DbCommand.Parameters.AddWithValue("@newBalance", amount);
+
+                    int productID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
+                    DbCon.Close();
+                }
+            }
+            else
+            {
+                using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+                {
+                    DbCon.Open();
+
+                    string Query = "INSERT INTO agent_bank(agent_id,balance) VALUES(@agentId,@balance)";
+                    MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                    DbCommand.Parameters.AddWithValue("@agentId", CurAgent.id);
+                    DbCommand.Parameters.AddWithValue("@balance", amount);     
+
+                    int productID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
+                    DbCon.Close();
+                }
+
+            }
+
+            return 1;
+
+        }
+
+        public static double GetAgentBalance(string username)
+        {
+            double balance = 0;
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT balance FROM agent_bank WHERE (agent_id='" + username + "')", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    balance = Convert.ToDouble(DbReader["balance"]);
+                }
+                DbCon.Close();
+            }
+            return balance;
+        }
+
+        public static bool IsAgentBankRegistered(string username)
+        {
+            bool flag = false;
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT agent_id FROM agent_bank WHERE (agent_id='" + username + "')", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    flag = true;
+                }
+                DbCon.Close();
+            }
+            return flag;
         }
 
         public static User GetUserByUsername(string username)
@@ -661,7 +837,7 @@ namespace Juni_Web_App.Models.Db
             {
                 DbCon.Open();
                 MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (email='"+username+"') OR " +
-                    "(username='"+username+"') OR (phone_number='"+username+"')", DbCon);
+                    "(username='"+username+"') OR (phone_number='"+username+"') OR (coupon_code='"+username+"')", DbCon);
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())

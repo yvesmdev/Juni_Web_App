@@ -20,6 +20,9 @@ namespace Juni_Web_App.Models
                 
         public List<Product> Products { get; set; }//list of products
 
+        public string CouponCode { get; set; }
+        public bool IsDiscounted { get; set; }
+
         //--sender & destinator info
         public string Address { get; set; }//destination address
         public string SenderCell { get; set; }

@@ -60,3 +60,9 @@ C:\github-dev\Juni_Web_App\obj\Debug\net6.0\Juni_Web_App.pdb
 C:\github-dev\Juni_Web_App\obj\Debug\net6.0\Juni_Web_App.genruntimeconfig.cache
 C:\github-dev\Juni_Web_App\obj\Debug\net6.0\ref\Juni_Web_App.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\aroma-master\vendors\themify-icons\Themify IconFonts 5-23-2014.json
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Twilio.dll

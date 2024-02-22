@@ -135,14 +135,14 @@ namespace Juni_Web_App.Controllers.MobileAPI
             try
             {
                 Order ClientOrder = JsonConvert.DeserializeObject<Order>(jSonString);
-                DatabaseRepository.writeToFile("order.txt", ClientOrder.OrderUniqueId);                
+                //DatabaseRepository.writeToFile("order.txt", ClientOrder.OrderUniqueId);                
                 string response = DatabaseRepository.AddOrder(ClientOrder) + "";
                 return response + "";              
 
-            }
+           }
             catch (Exception ex)
             {
-                return $"[Error: {ex.Message}";
+               return $"[Error: {ex.Message}";
             }
 
         }
