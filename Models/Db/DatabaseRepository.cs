@@ -1531,7 +1531,7 @@ namespace Juni_Web_App.Models.Db
             {
                 DbCon.Open();
 
-                string Query = "DELETE agent_market WHERE product_id=" + product_id + " AND agent_id=" + agent_id;
+                string Query = "DELETE FROM agent_market WHERE (product_id=" + product_id + ") AND (agent_id=" + agent_id+")";
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);          
 
                 int num_rows_affected = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
