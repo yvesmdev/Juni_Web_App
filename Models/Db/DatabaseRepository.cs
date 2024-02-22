@@ -1431,10 +1431,14 @@ namespace Juni_Web_App.Models.Db
             MySqlCommand DbCommand;
             MySqlDataReader DbReader;
 
+            string query;
+
             using (DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (coupon_code='" + username + "')  OR (phone_number='"+username+"') OR (", DbCon);
+                query = "SELECT * FROM user_profile WHERE (coupon_code='" + username + "')  OR (phone_number='" + username + "') OR (email='" + username + "') OR (user_id=" + username + ")";
+                DatabaseRepository.writeToFile("agent_market1.txt", query);
+                DbCommand = new MySqlCommand(query, DbCon);
                 DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -1462,8 +1466,11 @@ namespace Juni_Web_App.Models.Db
             using (DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                string query = "SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile " +
-                    "ON user_profile.user_id = agent_market.agent_id WHERE user_profile.coupon_code='" + couponCode + "'";
+                query = "SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile " +
+                    "ON user_profile.user_id = agent_market.agent_id WHERE  (user_profile.coupon_code='" + username + "')  OR (user_profile.phone_number='" + username + "') OR (user_profile.email='" + username + "') OR (user_profile.user_id=" + username + ")";
+
+                DatabaseRepository.writeToFile("agent_market2.txt", query);
+
                 DbCommand = new MySqlCommand(query, DbCon);
                 DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
@@ -1481,7 +1488,7 @@ namespace Juni_Web_App.Models.Db
                     CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
                     CurCouponProfile.ProductList.Add(CurProduct);
 
-                    DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name + " " + query);
+                   // DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name + " " + query);
                 }
                 DbCon.Close();
 
@@ -1494,10 +1501,12 @@ namespace Juni_Web_App.Models.Db
             }*/
             if (CurCouponProfile != null)
             {
-                CurCouponProfile.Id = couponCode;
+                CurCouponProfile.Id = CurUser.coupon_code;
             }
             return CurCouponProfile;//return current coupon profile
         }
+
+
         static string GenerateCouponCode(int uniqueId)
         {
             // Combine the unique ID with a random string

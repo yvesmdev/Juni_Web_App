@@ -92,7 +92,7 @@ namespace Juni_Web_App.Controllers.MobileAPI
         [HttpGet("get_agent_market/{agentId}")]
         public CouponProfile GetAgentMarket(string agentId)
         {
-            return DatabaseRepository.GetCouponProfileById(agentId);
+            return DatabaseRepository.GetAgentMarketById(agentId);
         }
 
         //POST: api/juni/order

@@ -1,0 +1,1 @@
+SELECT * FROM user_profile WHERE (coupon_code='1')  OR (phone_number='1') OR (email='1') OR (user_id=1)
