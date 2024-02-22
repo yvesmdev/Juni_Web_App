@@ -95,6 +95,19 @@ namespace Juni_Web_App.Controllers.MobileAPI
             return DatabaseRepository.GetAgentMarketById(agentId);
         }
 
+        [HttpGet("add_to_agent_market/{product_id}/{agent_id}")]
+        public int AddToAgentMarket(string product_id, string agent_id)
+        {
+            return DatabaseRepository.AddProductToAgentMarket(product_id, agent_id);
+        }
+
+        [HttpGet("remove_from_agent_market/{product_id}/{agent_id}")]
+        public int RemoveFromAgentMarket(string product_id, string agent_id)
+        {
+            return DatabaseRepository.RemoveProductFromAgentMarket(product_id, agent_id);
+        }
+
+
         //POST: api/juni/order
         //[Route("api/juni/order")]
         //[HttpPost]

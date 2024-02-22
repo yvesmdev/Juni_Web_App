@@ -1507,6 +1507,40 @@ namespace Juni_Web_App.Models.Db
         }
 
 
+        public static int AddProductToAgentMarket(string product_id, string agent_id)
+        {
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+
+                string Query = "INSERT INTO agent_market(product_id,agent_id) VALUES(@productId,@agentId);";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@productId", product_id);
+                DbCommand.Parameters.AddWithValue("@agentId", agent_id);
+
+                int num_rows_affected = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
+                DbCon.Close();
+                return num_rows_affected;
+            }
+
+        }
+
+        public static int RemoveProductFromAgentMarket(string product_id, string agent_id)
+        {
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+
+                string Query = "DELETE agent_market WHERE product_id=" + product_id + " AND agent_id=" + agent_id;
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);          
+
+                int num_rows_affected = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
+                DbCon.Close();
+                return num_rows_affected;
+            }
+
+        }
+
         static string GenerateCouponCode(int uniqueId)
         {
             // Combine the unique ID with a random string
