@@ -88,6 +88,13 @@ namespace Juni_Web_App.Controllers.MobileAPI
             return DatabaseRepository.GetCouponProfileById(coupon);
         }
 
+        //GET: api/juni/get_coupon_profile/{coupon}
+        [HttpGet("get_agent_market/{agentId}")]
+        public CouponProfile GetAgentMarket(string agentId)
+        {
+            return DatabaseRepository.GetCouponProfileById(agentId);
+        }
+
         //POST: api/juni/order
         //[Route("api/juni/order")]
         //[HttpPost]
