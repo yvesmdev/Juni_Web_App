@@ -95,6 +95,14 @@ namespace Juni_Web_App.Controllers.MobileAPI
             return DatabaseRepository.GetAgentMarketById(agentId);
         }
 
+        //GET: api/juni/get_coupon_profile/{coupon}
+        [HttpGet("get_agent_balance/{agentId}")]
+        public string GetAgentBalance(string agentId)
+        {
+            return DatabaseRepository.GetAgentBalance(agentId)+"";
+        }
+
+
         [HttpGet("add_to_agent_market/{product_id}/{agent_id}")]
         public int AddToAgentMarket(string product_id, string agent_id)
         {

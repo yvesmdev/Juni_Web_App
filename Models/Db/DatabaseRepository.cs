@@ -1597,7 +1597,7 @@ namespace Juni_Web_App.Models.Db
                     CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
                     CurCouponProfile.ProductList.Add(CurProduct);
 
-                    DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name+ " "+query);
+                    //DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name+ " "+query);
                 }
                 DbCon.Close();
 
@@ -1614,6 +1614,9 @@ namespace Juni_Web_App.Models.Db
             }
             return CurCouponProfile;//return current coupon profile
         }
+
+
+       
 
         public static CouponProfile GetAgentMarketById(string username)
         {
