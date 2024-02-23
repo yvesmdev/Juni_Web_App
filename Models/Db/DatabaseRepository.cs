@@ -571,6 +571,34 @@ namespace Juni_Web_App.Models.Db
             return perc;
         }
 
+        public static List<Product> GetAgentSalesList(string agent_id)
+        {
+            var ProductList = new List<Product>();
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM product ORDER BY product_id DESC", DbCon);
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                while (DbReader.Read())
+                {
+                    Product CurProduct = new Product();
+                    CurProduct.id = Convert.ToInt32(DbReader["product_id"]);
+                    CurProduct.Name = (string)DbReader["name"];
+                    CurProduct.Description = (string)DbReader["description"];
+                    CurProduct.Price = "" + DbReader["price"];
+                    CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
+                    CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);
+                    CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
+                    ProductList.Add(CurProduct);
+                }
+                DbCon.Close();
+            }
+            return ProductList;
+
+        }
+
+
         public static string GetAgentCommissionPerc()
         {
             string perc = null;
@@ -671,7 +699,7 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Close();
 
                 double agentProfit = 0;
-                double commission_perc = double.Parse(GetAgentCommissionPerc().Replace('.', ','));//get commission percentage
+                double commission_perc = Convert.ToDouble(GetAgentCommissionPerc());//.Replace('.', ','));//get commission percentage
                
 
                 string product_report = "";
@@ -1616,7 +1644,6 @@ namespace Juni_Web_App.Models.Db
         }
 
 
-       
 
         public static CouponProfile GetAgentMarketById(string username)
         {

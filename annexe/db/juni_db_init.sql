@@ -117,6 +117,7 @@ CREATE TABLE order_table(
   deliveryFee DECIMAL(10,2) NOT NULL DEFAULT 0,
   coupon_code VARCHAR(10) NULL,
   order_unique_id VARCHAR(20) NOT NULL UNIQUE,
+  agent_comission_perc DECIMAL(10,2) NOT NULL DEFAULT 0,
   completed BIT NOT NULL DEFAULT 0  
 );
 
