@@ -741,7 +741,7 @@ namespace Juni_Web_App.Models.Db
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
                             double balance = GetAgentBalance(CurAgent.id + "");
-                            string message = "*Rapport Juni*\n\nVous avez obtenu un profit de $*" + agentProfit + "* sur\n" +
+                            string message = "*Rapport Juni*\n\nVous avez obtenu un profit de $" + agentProfit + " sur\n" +
                                 "la commande *" + ClientOrder.OrderUniqueId + "*\nMot de Paiement: *Carte Crédit à rétirer*\n" +
                                 "Client:*" + ClientOrder.SenderCell + "*\nCommission: *" + (commission_perc * 100) + "%*" +
                                 "\n\n" + product_report +
