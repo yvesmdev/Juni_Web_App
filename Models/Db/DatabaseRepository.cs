@@ -18,7 +18,7 @@ namespace Juni_Web_App.Models.Db
         public static string TwilioAccountSid = "AC754bf25d79d2c69f53bc21ff7f4cb2e5";
         public static string TwilioAuthToken = "e21834908216bb118969063213bc491f";
         public static string TwilioPhoneNumber = "+14155238886";
-
+        public static string WebUrl = "https://juni-ecommerce.azurewebsites.net/";
 
         #region 
         //mesaging
@@ -696,16 +696,18 @@ namespace Juni_Web_App.Models.Db
 
                             if (product.IsDiscounted)
                             {
-                                double price_ = (double.Parse(product.Price) + product.Discount);
-                                double unit_profit = price_ * commission_perc * product.Qty;
+                                double price_ = (double.Parse(product.Price.Replace('.', ',')) + product.Discount);
+                                double unit_profit = price_ * commission_perc;// don't multiply by the quantity of items * product.Qty;
                                 agentProfit += unit_profit;
                                 var ProductData = GetProductById(product.id + "");
-                                product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + " x " + product.Qty + " x " + commission_perc + ": $" + unit_profit+"\n";
+                                //product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + " x " + product.Qty + " x " + commission_perc + ": $" + unit_profit+"\n";
+                                //product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + " x " + commission_perc + ": $" + unit_profit + "\n";
+                                product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + ": $" + unit_profit + "\n";
                             }
                             DataCommand.ExecuteNonQuery();
                         }
                     }
-                    product_report += "*Total: $" + agentProfit + "*";
+                    product_report += "\n*Total: $" + agentProfit + "*";
                     orderSuccess = true;
                     DbCon2.Close();
                 }
@@ -715,19 +717,37 @@ namespace Juni_Web_App.Models.Db
                     if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
                     {
                         User CurAgent = GetUserByUsername(ClientOrder.CouponCode);
+
+                        //DatabaseRepository.writeToFile("agent.txt", CurAgent.coupon_code + "|" + CurAgent.id);
+
                         if (CurAgent != null)
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
                             double balance = GetAgentBalance(CurAgent.id+"");
-                            string message = "*Rapport Juni*\nVous avez effectué un profit de $" + agentProfit + " sur\n" +
-                                "la commande " + ClientOrder.OrderUniqueId + "\n Mot de Paiement: Carte Crédit à livrer.\n" +product_report+
-                                "*Solde: $" + balance + "*\nRassurez vous de la livraison du produit\n";
-
+                            string message = "*Rapport Juni*\n\n"+
+                                "Agent: *"+CurAgent.phone_number+"*\n"
+                                +"Vous avez obtenu un profit de $" + agentProfit + " sur la commande\n" +
+                                "*" + ClientOrder.OrderUniqueId + "*\n*Carte Crédit à livrer*\n" +
+                                "Client: *"+ClientOrder.SenderCell+ "*\nCommission: *"+(commission_perc*100)+"%*"+
+                                "\n\n" +product_report+
+                                "\n*Solde Agent: $" + balance + "*\n\nRassurez vous de la livraison du produit\n"+DatabaseRepository.WebUrl;
                             SendWhatsAppMessage("+27722264804", message);
                         }
                     }
                     else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
                     {
+                        User CurAgent = GetUserByUsername(ClientOrder.CouponCode);
+                        if (CurAgent != null)
+                        {
+                            UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
+                            double balance = GetAgentBalance(CurAgent.id + "");
+                            string message = "*Rapport Juni*\n\nVous avez obtenu un profit de $*" + agentProfit + "* sur\n" +
+                                "la commande *" + ClientOrder.OrderUniqueId + "*\nMot de Paiement: *Carte Crédit à rétirer*\n" +
+                                "Client:*" + ClientOrder.SenderCell + "*\nCommission: *" + (commission_perc * 100) + "%*" +
+                                "\n\n" + product_report +
+                                "\n*Solde Agent: $" + balance + "*\n" + DatabaseRepository.WebUrl;
+                            SendWhatsAppMessage("+27722264804", message);
+                        }
 
                     }
                     else if (ClientOrder.OrderType == (int)OrderType.ProductDelivery)//do nothing
@@ -749,15 +769,11 @@ namespace Juni_Web_App.Models.Db
             return orderSuccess;
         }
         
-        public static int UpdateAgentBalance(string agent_id, double amount)
+        public static void UpdateAgentBalance(string agent_id, double amount)
         {
-            User CurAgent = GetUserByUsername(agent_id);//find agent
-            if(CurAgent == null)
-            {
-                return -1;
-            }
-
-            bool agentRegistered = IsAgentBankRegistered(CurAgent.id+"");
+            
+            bool agentRegistered = IsAgentBankRegistered(agent_id);
+            DatabaseRepository.writeToFile("agent.txt", agentRegistered+"");
             if (agentRegistered)
             {
                 using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
@@ -766,7 +782,7 @@ namespace Juni_Web_App.Models.Db
 
                     string Query = "UPDATE agent_bank SET balance = balance + @newBalance WHERE agent_id=@agentId";
                     MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
-                    DbCommand.Parameters.AddWithValue("@agentId", CurAgent.id);
+                    DbCommand.Parameters.AddWithValue("@agentId", agent_id);
                     DbCommand.Parameters.AddWithValue("@newBalance", amount);
 
                     int productID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
@@ -781,7 +797,7 @@ namespace Juni_Web_App.Models.Db
 
                     string Query = "INSERT INTO agent_bank(agent_id,balance) VALUES(@agentId,@balance)";
                     MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
-                    DbCommand.Parameters.AddWithValue("@agentId", CurAgent.id);
+                    DbCommand.Parameters.AddWithValue("@agentId", agent_id);
                     DbCommand.Parameters.AddWithValue("@balance", amount);     
 
                     int productID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
@@ -790,7 +806,7 @@ namespace Juni_Web_App.Models.Db
 
             }
 
-            return 1;
+           
 
         }
 
