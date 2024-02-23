@@ -672,10 +672,11 @@ namespace Juni_Web_App.Models.Db
             bool orderSuccess = false;
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
+                
                 DbCon.Open();
-
-                string Query = "INSERT INTO order_table(customer_id,sender_fullname,sender_cell,dispatch_address,dest_fullname,dest_cell,dest_gift_message,order_date,order_type_id,deliveryFee,order_unique_id,completed,coupon_code,is_discounted)" +
-                    " VALUES(@customerID,@senderFullname,@senderCell,@dispatchAddress,@destFullname,@destCell,@destGiftMessage,@orderDate,@orderTypeId,@deliveryFee,@orderUniqueId,@completed,@couponCode,@isDiscounted); SELECT LAST_INSERT_ID()";
+                double commission_perc = Convert.ToDouble(GetAgentCommissionPerc());
+                string Query = "INSERT INTO order_table(customer_id,sender_fullname,sender_cell,dispatch_address,dest_fullname,dest_cell,dest_gift_message,order_date,order_type_id,deliveryFee,order_unique_id,completed,coupon_code,is_discounted,agent_comission_perc)" +
+                    " VALUES(@customerID,@senderFullname,@senderCell,@dispatchAddress,@destFullname,@destCell,@destGiftMessage,@orderDate,@orderTypeId,@deliveryFee,@orderUniqueId,@completed,@couponCode,@isDiscounted,@commissionPerc); SELECT LAST_INSERT_ID()";
 
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                 DbCommand.Parameters.AddWithValue("@customerID",ClientOrder.ClientId);
@@ -692,6 +693,7 @@ namespace Juni_Web_App.Models.Db
                 DbCommand.Parameters.AddWithValue("@completed", ClientOrder.OrderCompleted);
                 DbCommand.Parameters.AddWithValue("@couponCode", ClientOrder.CouponCode);
                 DbCommand.Parameters.AddWithValue("@isDiscounted", ClientOrder.IsDiscounted);
+                DbCommand.Parameters.AddWithValue("@commissionPerc", commission_perc);
 
                 int orderID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files
                 //DatabaseRepository.writeToFile("db.txt", orderID+"");
@@ -699,7 +701,7 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Close();
 
                 double agentProfit = 0;
-                double commission_perc = Convert.ToDouble(GetAgentCommissionPerc());//.Replace('.', ','));//get commission percentage
+                
                
 
                 string product_report = "";
@@ -721,6 +723,7 @@ namespace Juni_Web_App.Models.Db
                             DataCommand.Parameters.AddWithValue("@productDiscount", product.Discount);
                             DataCommand.Parameters.AddWithValue("@productAgentProfit", product.Discount);
                             DataCommand.Parameters.AddWithValue("@productDiscounted", product.IsDiscounted);
+                           
 
                             if (product.IsDiscounted)
                             {
