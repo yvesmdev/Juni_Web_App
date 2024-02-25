@@ -2,6 +2,9 @@
 using Juni_Web_App.Models.Mobile;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Globalization;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
@@ -20,8 +23,59 @@ namespace Juni_Web_App.Models.Db
         public static string TwilioPhoneNumber = "+27670078670";
         public static string WebUrl = "https://juni-ecommerce.azurewebsites.net/";
 
+
+        private static string MailSenderEmail = "notifications.noreply.bansosoftwares@bansoco.com"; // Your email address
+        private static string MailSenderPassword = "giftedByGrace"; // Your email password
+        private static string MailStmpDomain = "mail.bansoco.com"; //; "gauntlet.aserv.co.za";
+        private static int MailStmpPort = 587; //;465;
+
+        private static CultureInfo culture = CultureInfo.InvariantCulture;
         #region 
         //mesaging
+
+        static void SendEmailInBackground(string[] recipientEmail,string subject, string body)
+        {
+            // Configure SMTP client for cPanel webmail
+            SmtpClient smtpClient = new SmtpClient(MailStmpDomain);
+            smtpClient.Port = MailStmpPort; // Port may vary, typically 587 for TLS/STARTTLS
+            smtpClient.Credentials = new NetworkCredential(MailSenderEmail, MailSenderPassword);
+            smtpClient.EnableSsl = false; // Enable SSL/TLS encryption
+                                          //smtpClient.UseDefaultCredentials = false;
+                                          // Create a MailMessage object
+            MailMessage mail = new MailMessage(MailSenderEmail, recipientEmail[0]);
+            mail.Subject = subject;
+            mail.Body = body;
+            mail.IsBodyHtml = true; // Set to true to enable HTML formatting
+
+
+            for (int i = 1; i < recipientEmail.Length; i++)
+            {
+                mail.To.Add(recipientEmail[i]);
+            }
+
+            // Create and start a new thread to send the email
+            Thread emailThread = new Thread(() =>
+            {
+                try
+                {
+                    // Send the email
+                    smtpClient.Send(mail);
+                    Console.WriteLine("Email sent successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failed to send email. Error: " + ex.Message);
+                }
+            });
+
+            emailThread.Start();
+
+            // Wait for the email sending thread to complete (optional)
+            // emailThread.Join();
+
+            // Optionally continue with other operations after the email is sent
+        }
+
         public static void SendWhatsAppMessage(string receiverPhoneNumber, string messageBody)
         {
             // Send WhatsApp message in a separate thread
@@ -529,6 +583,49 @@ namespace Juni_Web_App.Models.Db
         }
         #endregion
 
+        //Emails
+        public static string[] GetNotificationEmails()
+        {
+            string message = null;
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='notification_mail'", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    message = (string)DbReader["value"];
+                }
+                DbCon.Close();
+            }
+
+            string[] emailList = message.Split(';');
+            return emailList;
+        }
+
+        //Emails
+        public static string[] GetNotificationCells()
+        {
+            string message = null;
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='notification_cell'", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    message = (string)DbReader["value"];
+                }
+                DbCon.Close();
+            }
+
+            string[] cellList = message.Split(';');
+            return cellList;
+        }
 
         //Delivery
 
@@ -711,13 +808,15 @@ namespace Juni_Web_App.Models.Db
 
         public static bool AddOrder(Order ClientOrder)
         {
-            
+           
             bool orderSuccess = false;
+            double total = 0;
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 
                 DbCon.Open();
-                double commission_perc = Convert.ToDouble(GetAgentCommissionPerc());
+                
+                double commission_perc = double.Parse(GetAgentCommissionPerc(), NumberStyles.Float, culture);
                 string Query = "INSERT INTO order_table(customer_id,sender_fullname,sender_cell,dispatch_address,dest_fullname,dest_cell,dest_gift_message,order_date,order_type_id,deliveryFee,order_unique_id,completed,coupon_code,is_discounted,agent_comission_perc)" +
                     " VALUES(@customerID,@senderFullname,@senderCell,@dispatchAddress,@destFullname,@destCell,@destGiftMessage,@orderDate,@orderTypeId,@deliveryFee,@orderUniqueId,@completed,@couponCode,@isDiscounted,@commissionPerc); SELECT LAST_INSERT_ID()";
 
@@ -766,11 +865,12 @@ namespace Juni_Web_App.Models.Db
                             DataCommand.Parameters.AddWithValue("@productDiscount", product.Discount);
                             DataCommand.Parameters.AddWithValue("@productAgentProfit", product.Discount);
                             DataCommand.Parameters.AddWithValue("@productDiscounted", product.IsDiscounted);
-                           
+
+                            total += double.Parse(product.Price, NumberStyles.Float, culture) * product.Qty;
 
                             if (product.IsDiscounted)
                             {
-                                double price_ = (double.Parse(product.Price) + product.Discount);
+                                double price_ = (double.Parse(product.Price, NumberStyles.Float, culture) + product.Discount);
                                 double unit_profit = price_ * commission_perc;// don't multiply by the quantity of items * product.Qty;
                                 agentProfit += unit_profit;
                                 var ProductData = GetProductById(product.id + "");
@@ -786,6 +886,44 @@ namespace Juni_Web_App.Models.Db
                     DbCon2.Close();
                 }
 
+                string orderType;
+                //-- get order type
+                if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
+                {
+                    orderType = "Carte Crédit à livrer";
+                }
+                else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
+                {
+                    orderType = "Carte Crédit à rétirer";
+                }
+                else if (ClientOrder.OrderType == (int)OrderType.ProductDelivery)//do nothing
+                {
+                    orderType = "Paiement à la livraison";
+                }
+                else if (ClientOrder.OrderType == (int)OrderType.ProductCollection)// do nothing
+                {
+                    orderType = "Paiement au retrait";
+                }
+                else
+                {
+                    orderType = "";
+                }
+                //--
+
+                string href = DatabaseRepository.WebUrl + "Login/Admin";
+                string messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre effectué<br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Gérer la commande.</a><br/>";
+                string[] emailList = GetNotificationEmails();
+                string[] cellList = GetNotificationCells();
+                string subject = "Juni - Notification de Commande";
+                SendEmailInBackground(emailList, subject, messageOwner);
+
+                string messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre effectué\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                for (int i = 0; i < cellList.Length; i++)
+                {
+                   // SendWhatsAppMessage(cellList[i], messageOwnerWApp);
+                }
+
+                //--->
                 if (agentProfit > 0 && ClientOrder.IsDiscounted)//just making sure
                 {
                     if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
@@ -795,8 +933,7 @@ namespace Juni_Web_App.Models.Db
                         if (CurAgent != null)
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
-                            double balance = GetAgentBalance(CurAgent.id+"");
-                            string orderType = "Carte Crédit à livrer";
+                            double balance = GetAgentBalance(CurAgent.id+"");                            
                             /*string message = "*Rapport Juni*\n\n"+
                                 "Agent: *"+CurAgent.phone_number+"*\n"
                                 +"Vous avez obtenu un profit de $" + agentProfit + " sur la commande\n" +
@@ -805,8 +942,8 @@ namespace Juni_Web_App.Models.Db
                                 "\n\n" +product_report+
                                 "\n*Solde Agent: $" + balance + "*\n\nRassurez vous de la livraison du produit\n"+DatabaseRepository.WebUrl;
                             */
-                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*"+CurAgent.phone_number+"*"}\r\nVous avez obtenu un profit de {"$"+agentProfit} sur\r\nla commande {"*"+ClientOrder.OrderUniqueId+"*"}\r\n{"*"+orderType+"*"}\r\nClient:{"*"+ ClientOrder.SenderCell+"*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$"+balance}\r\n{DatabaseRepository.WebUrl}";
-                            SendWhatsAppMessage("+27722264804", message);
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*"+CurAgent.phone_number+"*"}\r\nVous avez obtenu un profit de {"$"+agentProfit} sur\r\nla commande {"*"+ClientOrder.OrderUniqueId+"*"}\r\n{"*"+orderType+"*"}\r\nClient:{" *"+ ClientOrder.SenderCell+"*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$"+balance}\r\n{DatabaseRepository.WebUrl}";                                                        
+                            //SendWhatsAppMessage("+27722264804", message);
                         }
                     }
                     else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
@@ -815,16 +952,16 @@ namespace Juni_Web_App.Models.Db
                         if (CurAgent != null)
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
-                            double balance = GetAgentBalance(CurAgent.id + "");
-                            string orderType = "Carte Crédit à rétirer";
+                            double balance = GetAgentBalance(CurAgent.id + "");                            
                             /*
                             string message = "*Rapport Juni*\n\nVous avez obtenu un profit de $" + agentProfit + " sur\n" +
                                 "la commande *" + ClientOrder.OrderUniqueId + "*\nMot de Paiement: *Carte Crédit à rétirer*\n" +
                                 "Client:*" + ClientOrder.SenderCell + "*\nCommission: *" + (commission_perc * 100) + "%*" +
                                 "\n\n" + product_report +
                                 "\n*Solde Agent: $" + balance + "*\n" + DatabaseRepository.WebUrl;*/
-                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{"*" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
-                            SendWhatsAppMessage("+27722264804", message);
+                            
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";                                                        
+                            //SendWhatsAppMessage("+27722264804", message);
                         }
 
                     }
