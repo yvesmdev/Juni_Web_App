@@ -17,7 +17,7 @@ namespace Juni_Web_App.Models.Db
 
         public static string TwilioAccountSid = "AC754bf25d79d2c69f53bc21ff7f4cb2e5";
         public static string TwilioAuthToken = "e21834908216bb118969063213bc491f";
-        public static string TwilioPhoneNumber = "+14155238886";
+        public static string TwilioPhoneNumber = "+27670078670";
         public static string WebUrl = "https://juni-ecommerce.azurewebsites.net/";
 
         #region 
@@ -571,30 +571,73 @@ namespace Juni_Web_App.Models.Db
             return perc;
         }
 
-        public static List<Product> GetAgentSalesList(string agent_id)
+        public static List<Sale> GetAgentSalesList(string agent_id)
         {
-            var ProductList = new List<Product>();
+
+            User CurUser = GetUserByUsername(agent_id);
+            if(CurUser == null)
+            {
+                return null;
+            }
+
+            DatabaseRepository.writeToFile("agentssales.txt", agent_id);
+
+            List<Sale> SalesList = null;
 
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM product ORDER BY product_id DESC", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE coupon_code='"+CurUser.coupon_code+"'", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
                 {
-                    Product CurProduct = new Product();
-                    CurProduct.id = Convert.ToInt32(DbReader["product_id"]);
-                    CurProduct.Name = (string)DbReader["name"];
-                    CurProduct.Description = (string)DbReader["description"];
-                    CurProduct.Price = "" + DbReader["price"];
-                    CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
-                    CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);
-                    CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
-                    ProductList.Add(CurProduct);
+                    string orderUniqId = (string)DbReader["order_unique_id"];
+                    double commissionPerc = Convert.ToDouble(DbReader["agent_comission_perc"]);
+                    string clientCell = (string)DbReader["sender_cell"];
+                    bool isDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
+                    int orderId = Convert.ToInt32(DbReader["order_id"]);
+                        
+                    Sale CurSale = new Sale();
+                    CurSale.OrderUniqueId = orderUniqId;
+                    CurSale.commissionPerc = commissionPerc;
+                    CurSale.ClientCell = clientCell;
+                    CurSale.IsDiscounted = isDiscounted;
+                    CurSale.OrderId = orderId;
+                    CurSale.ProductList = new List<Product>();
+                    using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+                    {
+                        DbCon2.Open();
+                        MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM order_details WHERE order_id='" + orderId + "'", DbCon2);
+                        MySqlDataReader DbReader2 = DbCommand.ExecuteReader();
+                        while (DbReader2.Read())
+                        {
+                            
+                            bool prdDiscounted = Convert.ToInt32(DbReader2["product_agent_discounted"]) > 0 ? true : false;
+
+                            if (!prdDiscounted)
+                            {
+                                continue;
+                            }
+
+                            Product CurProduct = new Product();
+                            CurProduct.id = Convert.ToInt32(DbReader2["product_id"]);
+                            CurProduct = GetProductById(CurProduct.id+"");
+
+                            double discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
+                            double price = Convert.ToDouble(DbReader2["product_price"]);
+                            CurProduct.Price = (price + discount).ToString();
+
+                            CurSale.ProductList.Add(CurProduct);
+                        }
+                        DbCon2.Close();
+                    }
+
+                    SalesList.Add(CurSale);
+
                 }
                 DbCon.Close();
             }
-            return ProductList;
+            return SalesList;
 
         }
 
@@ -727,7 +770,7 @@ namespace Juni_Web_App.Models.Db
 
                             if (product.IsDiscounted)
                             {
-                                double price_ = (double.Parse(product.Price.Replace('.', ',')) + product.Discount);
+                                double price_ = (double.Parse(product.Price) + product.Discount);
                                 double unit_profit = price_ * commission_perc;// don't multiply by the quantity of items * product.Qty;
                                 agentProfit += unit_profit;
                                 var ProductData = GetProductById(product.id + "");
@@ -748,20 +791,21 @@ namespace Juni_Web_App.Models.Db
                     if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
                     {
                         User CurAgent = GetUserByUsername(ClientOrder.CouponCode);
-
                         //DatabaseRepository.writeToFile("agent.txt", CurAgent.coupon_code + "|" + CurAgent.id);
-
                         if (CurAgent != null)
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
                             double balance = GetAgentBalance(CurAgent.id+"");
-                            string message = "*Rapport Juni*\n\n"+
+                            string orderType = "Carte Crédit à livrer";
+                            /*string message = "*Rapport Juni*\n\n"+
                                 "Agent: *"+CurAgent.phone_number+"*\n"
                                 +"Vous avez obtenu un profit de $" + agentProfit + " sur la commande\n" +
                                 "*" + ClientOrder.OrderUniqueId + "*\n*Carte Crédit à livrer*\n" +
                                 "Client: *"+ClientOrder.SenderCell+ "*\nCommission: *"+(commission_perc*100)+"%*"+
                                 "\n\n" +product_report+
                                 "\n*Solde Agent: $" + balance + "*\n\nRassurez vous de la livraison du produit\n"+DatabaseRepository.WebUrl;
+                            */
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*"+CurAgent.phone_number+"*"}\r\nVous avez obtenu un profit de {"$"+agentProfit} sur\r\nla commande {"*"+ClientOrder.OrderUniqueId+"*"}\r\n{"*"+orderType+"*"}\r\nClient:{"*"+ ClientOrder.SenderCell+"*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$"+balance}\r\n{DatabaseRepository.WebUrl}";
                             SendWhatsAppMessage("+27722264804", message);
                         }
                     }
@@ -772,11 +816,14 @@ namespace Juni_Web_App.Models.Db
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
                             double balance = GetAgentBalance(CurAgent.id + "");
+                            string orderType = "Carte Crédit à rétirer";
+                            /*
                             string message = "*Rapport Juni*\n\nVous avez obtenu un profit de $" + agentProfit + " sur\n" +
                                 "la commande *" + ClientOrder.OrderUniqueId + "*\nMot de Paiement: *Carte Crédit à rétirer*\n" +
                                 "Client:*" + ClientOrder.SenderCell + "*\nCommission: *" + (commission_perc * 100) + "%*" +
                                 "\n\n" + product_report +
-                                "\n*Solde Agent: $" + balance + "*\n" + DatabaseRepository.WebUrl;
+                                "\n*Solde Agent: $" + balance + "*\n" + DatabaseRepository.WebUrl;*/
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{"*" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
                             SendWhatsAppMessage("+27722264804", message);
                         }
 
