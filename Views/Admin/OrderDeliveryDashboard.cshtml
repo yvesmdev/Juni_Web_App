@@ -243,7 +243,7 @@
                                                         <td>@("$" + Order.GetOrderTotal(CurOrder))</td>
                                                         <td>@(Order.OrderTypeMessage(CurOrder.OrderType))</td>
                                                         <td>
-                                                            <button class="btn btn-primary" id="see_button_@(++i)" data-toggle="collapse" product-names='@Html.Raw(CurOrder.GetJSonProductNames())' product-prices='@Html.Raw(CurOrder.GetJSonProductPrices())' product-qties='@Html.Raw(CurOrder.GetJSonProductQties())'  data-target="#orderPanel" onclick="openProductModal('@(i)',@(CurOrder.DeliveryFee),'@(CurOrder.OrderUniqueId)','@(CurOrder.OrderDate)','@(CurOrder.OrderCompleted)','@(Order.OrderTypeMessage(CurOrder.OrderType))','@(CurOrder.ClientId)','@(CurOrder.SenderFullname)','@(CurOrder.SenderCell)','@(CurOrder.SenderFullname)','@(CurOrder.SenderCell)','@(CurOrder.DestinatorFullname)','@(CurOrder.DestinatorCell)','@(CurOrder.Address)','@(CurOrder.GiftMessage)')">Voir</button>
+                                                            <button class="btn btn-primary" id="see_button_@(++i)" data-toggle="collapse" product-names='@Html.Raw(CurOrder.GetJSonProductNames())' product-prices='@Html.Raw(CurOrder.GetJSonProductPrices())' product-qties='@Html.Raw(CurOrder.GetJSonProductQties())' data-target="#orderPanel" onclick="openProductModal('@(i)',@(CurOrder.DeliveryFee),'@(CurOrder.OrderUniqueId)','@(CurOrder.OrderDate)','@(CurOrder.OrderCompleted)','@(Order.OrderTypeMessage(CurOrder.OrderType))','@(CurOrder.ClientId)','@(CurOrder.SenderFullname)','@(CurOrder.SenderCell)','@(CurOrder.SenderFullname)','@(CurOrder.SenderCell)','@(CurOrder.DestinatorFullname)','@(CurOrder.DestinatorCell)','@(CurOrder.Address)','@(CurOrder.GiftMessage)','@Url.Action("ApproveOrder","Admin")')">Voir</button>
                                                             <!--<button class="btn btn-success">Confirmer</button>-->
                                                             <!-- <button class="btn btn-danger">Archiver</button>-->
                                                         </td>
@@ -344,9 +344,9 @@
                                 </tbody>
                             </table>
 
-                            <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#orderPanel" aria-expanded="false" aria-controls="orderPanel">
+                            <a class="btn btn-danger" id="confirmationButton">
                                 Confirmer La Livraison
-                            </button>
+                            </a>
                             <!-- Toggle Button -->
                             <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#orderPanel" aria-expanded="false" aria-controls="orderPanel">
                                 Fermer Commande
@@ -400,7 +400,7 @@
         $('#bootstrap-data-table-export').DataTable();
     });
        
-    function openProductModal(id,deliveryFee,orderid, orderDate, orderStatus, orderPaymentType, orderClientId, orderClientName, orderClientTel, orderSenderName, orderSenderCell, orderDestName, orderDestCell, orderAddress, orderGiftMessage) {
+    function openProductModal(id,deliveryFee,orderid, orderDate, orderStatus, orderPaymentType, orderClientId, orderClientName, orderClientTel, orderSenderName, orderSenderCell, orderDestName, orderDestCell, orderAddress, orderGiftMessage, approvalLink) {
         // Populate the form with the passed parameters
         $('#orderId').text(" "+orderid);
         $('#orderDate').text(" "+orderDate);
@@ -452,7 +452,14 @@
         $('#deliveryFee_id').text(" $" + deliveryFee.toString());
         $('#netTotal_id').text(" $"+netTotal.toString());
         $('#grossTotal_id').text(" $" + (netTotal+deliveryFee).toString());
+
+        //confirmation button
+        link = approvalLink + "?order_id=" + orderid;
+        //alert(link);
+        $('#confirmationButton').attr("href", link);
+        //----
         $('#orderPanel').collapse('show');    
     
+
     }
 </script>

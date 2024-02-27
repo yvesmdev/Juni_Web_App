@@ -38,7 +38,7 @@ namespace Juni_Web_App.Models
 
         public int id { get; set; }
         public string Name { get; set; }
-        public string Price { get; set; }
+        public string Price { get;set; }
         public string Description { get; set; }
         public double Discount { get; set; }
         public bool IsDiscounted { get; set; }

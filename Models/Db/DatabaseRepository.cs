@@ -914,13 +914,13 @@ namespace Juni_Web_App.Models.Db
                 string messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre effectué<br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Gérer la commande.</a><br/>";
                 string[] emailList = GetNotificationEmails();
                 string[] cellList = GetNotificationCells();
-                string subject = "Juni - Notification de Commande";
-                SendEmailInBackground(emailList, subject, messageOwner);
+                string subject = "Juni - Notification: Nouvelle Commande";
+                //SendEmailInBackground(emailList, subject, messageOwner);
 
                 string messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre effectué\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 for (int i = 0; i < cellList.Length; i++)
                 {
-                   // SendWhatsAppMessage(cellList[i], messageOwnerWApp);
+                   //SendWhatsAppMessage(cellList[i], messageOwnerWApp);
                 }
 
                 //--->
@@ -1164,13 +1164,15 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE order_unique_id='"+orderID+"' OR id="+orderID, DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE order_unique_id='"+orderID+"' OR id='"+orderID+"'", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
+                    CurOrder = new Order();
                     CurOrder.OrderId = Convert.ToInt32(DbReader["id"]);
                     CurOrder.ClientId = Convert.ToInt32(DbReader["customer_id"]) + "";
                     CurOrder.OrderType = Convert.ToInt32(DbReader["order_type_id"]);
+                    CurOrder.AgentCommissionPerc = Convert.ToDouble(DbReader["agent_comission_perc"]);
                     CurOrder.SenderFullname = DbReader["sender_fullname"] as string ?? CurOrder.SenderFullname;
                     CurOrder.SenderCell = DbReader["sender_cell"] as string ?? CurOrder.SenderCell;
                     CurOrder.Address = DbReader["dispatch_address"] as string ?? CurOrder.Address;
@@ -1181,6 +1183,8 @@ namespace Juni_Web_App.Models.Db
                     CurOrder.DeliveryFee = Convert.ToDouble(DbReader["deliveryFee"]);
                     CurOrder.OrderUniqueId = (string)DbReader["order_unique_id"];
                     CurOrder.OrderCompleted = Convert.ToBoolean(DbReader["completed"]);
+                    CurOrder.IsDiscounted = Convert.ToInt32(DbReader["is_discounted"])>0?true:false;
+                    CurOrder.CouponCode = DbReader["coupon_code"] as string ?? CurOrder.CouponCode;
 
                     using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                     {
@@ -1979,6 +1983,140 @@ namespace Juni_Web_App.Models.Db
             }
 
             return new string(randomString);
+        }
+
+        public static void ApproveOrder(Order ClientOrder, string approvalAgentId)
+        {
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                string Query = "UPDATE order_table SET completed=1, approval_agent_id=@approvalAgentId  WHERE (id=@orderId)";// OR (order_unique_id=@orderId);";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@orderId", ClientOrder.OrderId);
+                DbCommand.Parameters.AddWithValue("@approvalAgentId", approvalAgentId);
+                DbCommand.ExecuteNonQuery();//.ExecuteScalar());//fetch the productID use it to rename image files                    
+                DbCon.Close();
+
+                //--- Order Details 
+                double total = 0;
+                double agentProfit = 0;
+                string product_report = "";
+                double commission_perc = ClientOrder.AgentCommissionPerc;
+                
+                using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+                {
+                    DbCon2.Open();
+                    MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM order_details WHERE order_id=" + ClientOrder.OrderId, DbCon2);
+                    MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
+
+                    List<Product> ProductList = new List<Product>();
+                    while (DbReader2.Read())
+                    {
+                        Product CurProduct = new Product();
+                        CurProduct.id = Convert.ToInt32(DbReader2["product_id"]);
+                        CurProduct.Qty = Convert.ToInt32(DbReader2["product_qty"]);
+                        CurProduct.Price = Convert.ToDouble(DbReader2["product_price"]).ToString().Replace(',','.');
+                        CurProduct.IsDiscounted = Convert.ToInt32(DbReader2["product_agent_discounted"])>0?true:false;
+                        CurProduct.Discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
+
+                        total += double.Parse(CurProduct.Price, NumberStyles.Float, culture) * CurProduct.Qty;
+                        if (CurProduct.IsDiscounted)
+                        {
+                            double price_ = (double.Parse(CurProduct.Price, NumberStyles.Float, culture) + CurProduct.Discount);
+                            double unit_profit = price_ * commission_perc;// don't multiply by the quantity of items * product.Qty;
+                            agentProfit += unit_profit;
+                            //var ProductData = GetProductById(CurProduct.id + "");
+                            //product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + " x " + product.Qty + " x " + commission_perc + ": $" + unit_profit+"\n";
+                            //product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + " x " + commission_perc + ": $" + unit_profit + "\n";
+                            //product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + ": $" + unit_profit + "\n";
+                        }
+                    }
+                    DbCon2.Close();                  
+                }
+                //--
+
+                string href = DatabaseRepository.WebUrl + "Login/Admin";
+                string messageOwner;
+                string messageOwnerWApp;
+                string messageClientWApp;
+                string[] emailList = GetNotificationEmails();
+                string[] tempEmailList = new string[] { "yves.matanga@gmail.com" };
+                string[] tempCellList = new string[] { "+27722264804" };
+                string[] cellList = GetNotificationCells();
+                string subject = "Juni - Notification: Nouvelle Commande";
+                string orderType;                
+                
+                //--->
+                if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
+                {
+                    orderType = "Carte-Crédit-Livraison";
+                    messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre livré à l'addresse client<br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Voir la commande</a><br/>";
+                    messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$"+total+"*"} vient d'etre délivrée\r\nClient: {"*"+ ClientOrder.SenderCell + "*"}\r\nID: {"*"+ ClientOrder.OrderUniqueId + "*"}\r\nType: {"*"+orderType+"*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                    messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                }
+                else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
+                {
+                    orderType = "Carte-Crédit-Retrait";
+                    subject = "Juni - Notification: Commande Rétirée";
+                    messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre rétiré au site <br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Voir la commande</a><br/>";
+                    messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                    messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                }
+                else if (ClientOrder.OrderType == (int)OrderType.ProductDelivery)//do nothing
+                {
+                    orderType = "Paiement à la livraison";
+                    messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre livré à l'addresse client<br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Voir la commande</a><br/>";
+                    messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                    messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                }
+                else 
+                {
+                    orderType = "Paiement au retrait";
+                    subject = "Juni - Notification: Commande Rétirée";
+                    messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre rétiré au site <br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Voir la commande</a><br/>";
+                    messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                    messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                }
+                
+                //SendEmailInBackground(emailList, subject, messageOwner);//Inform Business Owner of Purchase                
+                SendEmailInBackground(tempEmailList, subject, messageOwner);//Inform Business Owner of Purchase                                
+                //SendWhatsAppMessage("+27722264804", messageClientWApp);//Inform Client
+
+                //Inform Business Owner
+                for (int i = 0; i < tempCellList.Length; i++)
+                {
+                   // SendWhatsAppMessage(tempCellList[i], messageOwnerWApp);
+                    //SendWhatsAppMessage(cellList[i], messageOwnerWApp);
+                }
+                /*
+                for (int i = 0; i < cellList.Length; i++)
+                {
+                    //SendWhatsAppMessage(tempCellList[i], messageOwnerWApp);
+                    SendWhatsAppMessage(cellList[i], messageOwnerWApp);
+                }
+                */
+                //--> Inform Agent of Profit
+                if (agentProfit > 0 && ClientOrder.IsDiscounted)//just making sure
+                {
+                    if ((ClientOrder.OrderType == (int)OrderType.ProductDelivery) || (ClientOrder.OrderType == (int)OrderType.ProductCollection))//add his money straight to the bank
+                    {
+                        User CurAgent = GetUserByUsername(ClientOrder.CouponCode);
+                        //DatabaseRepository.writeToFile("agent.txt", CurAgent.coupon_code + "|" + CurAgent.id);
+                        if (CurAgent != null)
+                        {
+                            UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
+                            double balance = GetAgentBalance(CurAgent.id + "");
+                            //string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
+                            //SendWhatsAppMessage("+27722264804", message);
+                        }
+                    }
+                   
+                }
+                //-->
+               // return 1;
+            }
+            
         }
 
     }

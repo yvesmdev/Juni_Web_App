@@ -1,4 +1,5 @@
-﻿using Juni_Web_App.Models;
+﻿using Juni_Web.Models;
+using Juni_Web_App.Models;
 using Juni_Web_App.Models.Db;
 using Microsoft.AspNetCore.Mvc;
 using MySqlX.XDevAPI;
@@ -210,7 +211,7 @@ namespace Juni_Web_App.Controllers
             TempData["file2"] = product2UpdateFileName;
             TempData["file3"] = product3UpdateFileName;
             */
-            string contentToWrite;// = product1UpdateFileName+"|"+ product2UpdateFileName+"|"+ product3UpdateFileName;
+            /*string contentToWrite;// = product1UpdateFileName+"|"+ product2UpdateFileName+"|"+ product3UpdateFileName;
 
             if (product1UpdateFileName != null)
             {
@@ -220,7 +221,7 @@ namespace Juni_Web_App.Controllers
                     streamWriter.Write(contentToWrite);
                 }
             }
-            
+            */
 
             DatabaseRepository.UpdateProduct(CurProduct);//Update Product to Database            
             //Update Images
@@ -298,11 +299,38 @@ namespace Juni_Web_App.Controllers
             ViewBag.DeliverableCount = DatabaseRepository.GetTotalForDelivery();
             ViewBag.CollectionCount = DatabaseRepository.GetTotalForCollection();
             ViewBag.OrderCompleteCount = DatabaseRepository.GetTotalCompleted();
-
             List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
             ViewBag.IncompleteOrderList = IncompleteOrderList;
 
             return View();
+        }
+        [HttpGet]
+        public IActionResult ApproveOrder()
+        {
+            string orderId = Request.Query["order_id"];//get orderID
+            Order ClientOrder = DatabaseRepository.GetOrderById(orderId);//get client order
+
+
+            DatabaseRepository.ApproveOrder(ClientOrder,null);
+
+            if(ClientOrder.OrderType == (int)OrderType.ProductDelivery)
+            {
+                return RedirectToAction("OrderDeliveryDashboard", "Admin");//Redirect to All Orders
+            }
+            else if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)
+            {
+                return RedirectToAction("OrderDeliveryDashboard", "Admin");//Redirect to All Orders
+            }
+            else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)
+            {
+                return RedirectToAction("OrderCollectionDashboard", "Admin");//Redirect to All Orders
+            }
+            else if (ClientOrder.OrderType == (int)OrderType.ProductCollection)
+            {
+                return RedirectToAction("OrderCollectionDashboard", "Admin");//Redirect to All Orders
+            }
+                       
+            return RedirectToAction("OrderDashboard", "Admin");//Redirect to All Orders
         }
     }
 }

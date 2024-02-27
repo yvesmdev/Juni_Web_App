@@ -17,7 +17,7 @@ namespace Juni_Web_App.Models
         public bool OrderCompleted { get; set; }
 
         public double DeliveryFee { get; set; }
-                
+        public double AgentCommissionPerc { get; set; }
         public List<Product> Products { get; set; }//list of products
 
         public string CouponCode { get; set; }
