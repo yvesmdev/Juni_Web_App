@@ -2129,5 +2129,19 @@ namespace Juni_Web_App.Models.Db
             
         }
 
+        public static void UpdateAccount(string cell, string email, string first_name, string surname)
+        {
+                using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+                {
+                    DbCon.Open();
+                    string Query = "UPDATE user_profile SET name = @name, surname = @surname, email = @email WHERE phone_number ='" + cell + "'";
+                    MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                    DbCommand.Parameters.AddWithValue("@email", email);
+                    DbCommand.Parameters.AddWithValue("@name", first_name);
+                    DbCommand.Parameters.AddWithValue("@surname", surname);
+                    DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
+                    DbCon.Close();
+                }
+        }
     }
 }

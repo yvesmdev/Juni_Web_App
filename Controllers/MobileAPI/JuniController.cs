@@ -122,25 +122,6 @@ namespace Juni_Web_App.Controllers.MobileAPI
         }
 
 
-        //POST: api/juni/order
-        //[Route("api/juni/order")]
-        //[HttpPost]
-        /*public IActionResult Order([FromBody] string jSonString)
-        {
-            try
-            {
-                DatabaseRepository.writeToFile("order.txt", jSonString);
-                Order ClientOrder = JsonConvert.DeserializeObject<Order>(jSonString);
-                string response = DatabaseRepository.AddOrder(ClientOrder) + "";
-                return Ok(response);
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"[Error: {ex.Message}" );
-            }
-            
-        }*/
         //[Route("api/juni/order")]
         [HttpPost("order")]
         [Consumes("application/json")]
@@ -223,6 +204,20 @@ namespace Juni_Web_App.Controllers.MobileAPI
         }
         #endregion
 
+
+        //GET: api/juni/update_account/{username}/{password}
+        [HttpGet("update_account/{cell}/{email}/{first_name}/{surname}")]
+        public bool UpdateAccount(string cell, string email, string first_name, string surname)
+        {
+            try
+            {
+                DatabaseRepository.UpdateAccount(cell, email, first_name, surname);
+                return true;
+            }catch(Exception ex)
+            {
+                return false;
+            }
+        }
 
 
     }
