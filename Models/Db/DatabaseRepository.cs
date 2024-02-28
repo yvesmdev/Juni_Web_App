@@ -2156,5 +2156,44 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Close();
             }
         }
+
+
+        private static string GenerateRandomNumber()
+        {
+            Random rand = new Random();
+            return rand.Next(10000, 99999)+""; // Generates a random number between 10000 and 99999 (inclusive)
+        }
+
+        public static void ResetPassword(string cell, string country_code)
+        {
+            string tempPassword = GenerateRandomNumber();
+
+            User CurUser = GetUserByUsername(cell);
+            if(CurUser == null)
+            {
+                throw new Exception("User does not exist");
+                return;
+            }
+
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                string Query = "UPDATE user_profile SET password = @password WHERE phone_number ='" + cell + "'";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@password", tempPassword);
+                DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
+                DbCon.Close();
+
+                string whatsappMessage = $"*Rapport Juni*\r\n\r\nUn nouveau mot de passe temporaire vous a été attribué.\r\n\r\nCompte: {"*"+CurUser.phone_number+"*"}\r\nMot de passe: {"*"+tempPassword+"*"}\r\n\r\nVeuillez vous connecter.\r\n\r\n{DatabaseRepository.WebUrl}";
+                string emailMessage = $"<b>Rapport Juni</b><br/><br/>Un nouveau mot de passe temporaire vous a été attribué.<br/><br/>Compte: {CurUser.phone_number}<br/>Mot de passe: {tempPassword}<br/><br/>Veuillez vous connecter.<br/><br/>{DatabaseRepository.WebUrl}";
+                string countryCode = country_code;// "+243";
+                string sendCell = countryCode + cell.Substring(1);
+                SendWhatsAppMessage(sendCell, whatsappMessage);
+                SendEmailInBackground(new string[] { CurUser.email }, "Juni - Nouveau Mote de Passe", emailMessage);
+            }
+
+
+        }
     }
 }
