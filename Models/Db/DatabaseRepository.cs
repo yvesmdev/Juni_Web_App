@@ -1729,6 +1729,12 @@ namespace Juni_Web_App.Models.Db
                         MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
                         DbCommand3.ExecuteNonQuery();
 
+                        string password = "Unchangé";
+                        string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*"+CurApplication.CellNumber+"*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
+                        SendWhatsAppMessage("+1" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
+                        SendWhatsAppMessage("+243" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
+                        SendWhatsAppMessage("+27" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
+                        
                         success = 1;//existing customer
                     }
                     else//create user and grant access
@@ -1745,6 +1751,11 @@ namespace Juni_Web_App.Models.Db
                         DbCommand3.Parameters.AddWithValue("@coupon_code", CouponCode);
                         DbCommand3.ExecuteNonQuery();
 
+                        string password = "12345";
+                        string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
+                        SendWhatsAppMessage("+1" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
+                        SendWhatsAppMessage("+243" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
+                        SendWhatsAppMessage("+27" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
                         success = 2;//new customer
                     }
 
