@@ -9,7 +9,7 @@ namespace Juni_Web_App.Models
         public string OrderUniqueId { get; set; }
 
         public string ClientCell { get; set; }
-
+        public string Date { get; set; }
         public bool IsDiscounted { get; set; }
 
         public List<Product> ProductList { get; set; }

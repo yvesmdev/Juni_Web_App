@@ -310,7 +310,6 @@ namespace Juni_Web_App.Controllers
             string orderId = Request.Query["order_id"];//get orderID
             Order ClientOrder = DatabaseRepository.GetOrderById(orderId);//get client order
 
-
             DatabaseRepository.ApproveOrder(ClientOrder,null);
 
             if(ClientOrder.OrderType == (int)OrderType.ProductDelivery)

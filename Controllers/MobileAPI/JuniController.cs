@@ -104,9 +104,9 @@ namespace Juni_Web_App.Controllers.MobileAPI
 
 
         [HttpGet("get_agent_sales_list/{agentId}")]
-        public string GetAgentSalesList(string agentId)
+        public List<Sale> GetAgentSalesList(string agentId)
         {
-            return DatabaseRepository.GetAgentSalesList(agentId) + "";
+            return DatabaseRepository.GetAgentSalesList(agentId);// + "";
         }
 
         [HttpGet("add_to_agent_market/{product_id}/{agent_id}")]

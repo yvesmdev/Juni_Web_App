@@ -677,22 +677,26 @@ namespace Juni_Web_App.Models.Db
                 return null;
             }
 
-            DatabaseRepository.writeToFile("agentssales.txt", agent_id);
+            //DatabaseRepository.writeToFile("agentssales.txt", agent_id);
 
             List<Sale> SalesList = null;
 
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE coupon_code='"+CurUser.coupon_code+"'", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE coupon_code='"+CurUser.coupon_code+ "' AND (order_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) ORDER BY order_date DESC", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
                 {
+                    if(SalesList == null)
+                    {
+                        SalesList = new List<Sale>();//new sales found
+                    }
                     string orderUniqId = (string)DbReader["order_unique_id"];
                     double commissionPerc = Convert.ToDouble(DbReader["agent_comission_perc"]);
                     string clientCell = (string)DbReader["sender_cell"];
                     bool isDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
-                    int orderId = Convert.ToInt32(DbReader["order_id"]);
+                    int orderId = Convert.ToInt32(DbReader["id"]);
                         
                     Sale CurSale = new Sale();
                     CurSale.OrderUniqueId = orderUniqId;
@@ -700,12 +704,15 @@ namespace Juni_Web_App.Models.Db
                     CurSale.ClientCell = clientCell;
                     CurSale.IsDiscounted = isDiscounted;
                     CurSale.OrderId = orderId;
+                    CurSale.CouponCode = DbReader["coupon_code"] as string ?? CurSale.CouponCode;
+                    CurSale.Date = ((DateTime)DbReader["order_date"]).ToString("dd-MM-yyyy HH:mm");
                     CurSale.ProductList = new List<Product>();
                     using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                     {
                         DbCon2.Open();
                         MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM order_details WHERE order_id='" + orderId + "'", DbCon2);
-                        MySqlDataReader DbReader2 = DbCommand.ExecuteReader();
+                        MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
+                        double profit = 0;
                         while (DbReader2.Read())
                         {
                             
@@ -722,10 +729,12 @@ namespace Juni_Web_App.Models.Db
 
                             double discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
                             double price = Convert.ToDouble(DbReader2["product_price"]);
-                            CurProduct.Price = (price + discount).ToString();
+                            CurProduct.Price = (price + discount).ToString().Replace(',','.');
 
+                            profit += price + discount;
                             CurSale.ProductList.Add(CurProduct);
                         }
+                        CurSale.profit = profit;
                         DbCon2.Close();
                     }
 
