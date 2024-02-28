@@ -219,6 +219,20 @@ namespace Juni_Web_App.Controllers.MobileAPI
             }
         }
 
+        //GET: api/juni/update_account/{username}/{password}
+        [HttpGet("update_password/{cell}/{password}")]
+        public bool UpdatePassword(string cell, string password)
+        {
+            try
+            {
+                DatabaseRepository.UpdatePassword(cell,password);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
     }
 

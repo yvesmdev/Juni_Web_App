@@ -2143,5 +2143,18 @@ namespace Juni_Web_App.Models.Db
                     DbCon.Close();
                 }
         }
+
+        public static void UpdatePassword(string cell, string password)
+        {
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                string Query = "UPDATE user_profile SET password = @password WHERE phone_number ='" + cell + "'";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@password", password);                
+                DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
+                DbCon.Close();
+            }
+        }
     }
 }
