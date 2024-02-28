@@ -146,18 +146,18 @@ namespace Juni_Web_App.Controllers.MobileAPI
         [Consumes("application/json")]
         public string Order([FromBody] string jSonString)
         {
-            //try
-            //{
+            try
+            {
                 Order ClientOrder = JsonConvert.DeserializeObject<Order>(jSonString);
                 //DatabaseRepository.writeToFile("order.txt", ClientOrder.OrderUniqueId);                
                 string response = DatabaseRepository.AddOrder(ClientOrder) + "";
                 return response + "";              
 
-           //}
-           // catch (Exception ex)
-           // {
-           //    return $"[Error: {ex.Message}";
-           // }
+           }
+           catch (Exception ex)
+           {
+             return $"[Error: {ex.Message}";
+           }
 
         }
 

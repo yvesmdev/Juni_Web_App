@@ -730,7 +730,8 @@ namespace Juni_Web_App.Models.Db
                             double discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
                             double price = Convert.ToDouble(DbReader2["product_price"]);
                             CurProduct.Price = (price + discount).ToString().Replace(',','.');
-
+                            CurProduct.PreviewImagePaths = null;
+                            CurProduct.Description = null;
                             profit += price + discount;
                             CurSale.ProductList.Add(CurProduct);
                         }
