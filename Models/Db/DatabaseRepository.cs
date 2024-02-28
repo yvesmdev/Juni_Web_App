@@ -930,7 +930,7 @@ namespace Juni_Web_App.Models.Db
                 string messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre effectué\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 for (int i = 0; i < cellList.Length; i++)
                 {
-                   //SendWhatsAppMessage(cellList[i], messageOwnerWApp);
+                   SendWhatsAppMessage(cellList[i], messageOwnerWApp);
                 }
 
                 //--->
@@ -953,7 +953,9 @@ namespace Juni_Web_App.Models.Db
                                 "\n*Solde Agent: $" + balance + "*\n\nRassurez vous de la livraison du produit\n"+DatabaseRepository.WebUrl;
                             */
                             string message = $"*Rapport Juni*\r\n\r\nAgent: {"*"+CurAgent.phone_number+"*"}\r\nVous avez obtenu un profit de {"$"+agentProfit} sur\r\nla commande {"*"+ClientOrder.OrderUniqueId+"*"}\r\n{"*"+orderType+"*"}\r\nClient:{" *"+ ClientOrder.SenderCell+"*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$"+balance}\r\n{DatabaseRepository.WebUrl}";                                                        
-                            //SendWhatsAppMessage("+27722264804", message);
+                            SendWhatsAppMessage("+27"+CurAgent.phone_number.Substring(1), message);
+                            SendWhatsAppMessage("+243" + CurAgent.phone_number.Substring(1), message);
+                            SendWhatsAppMessage("+1" + CurAgent.phone_number.Substring(1), message);
                         }
                     }
                     else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
@@ -970,8 +972,10 @@ namespace Juni_Web_App.Models.Db
                                 "\n\n" + product_report +
                                 "\n*Solde Agent: $" + balance + "*\n" + DatabaseRepository.WebUrl;*/
                             
-                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";                                                        
-                            //SendWhatsAppMessage("+27722264804", message);
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
+                            SendWhatsAppMessage("+27" + CurAgent.phone_number.Substring(1), message);
+                            SendWhatsAppMessage("+243" + CurAgent.phone_number.Substring(1), message);
+                            SendWhatsAppMessage("+1" + CurAgent.phone_number.Substring(1), message);
                         }
 
                     }
@@ -2088,23 +2092,25 @@ namespace Juni_Web_App.Models.Db
                     messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 }
                 
-                //SendEmailInBackground(emailList, subject, messageOwner);//Inform Business Owner of Purchase                
-                SendEmailInBackground(tempEmailList, subject, messageOwner);//Inform Business Owner of Purchase                                
-                //SendWhatsAppMessage("+27722264804", messageClientWApp);//Inform Client
+               SendEmailInBackground(emailList, subject, messageOwner);//Inform Business Owner of Purchase                
+               // SendEmailInBackground(tempEmailList, subject, messageOwner);//Inform Business Owner of Purchase                                
+                SendWhatsAppMessage("+243"+ClientOrder.SenderCell.Substring(1), messageClientWApp);//Inform Client
+                SendWhatsAppMessage("+27" + ClientOrder.SenderCell.Substring(1), messageClientWApp);//Inform Client
+                SendWhatsAppMessage("+1" + ClientOrder.SenderCell.Substring(1), messageClientWApp);//Inform Client
 
                 //Inform Business Owner
-                for (int i = 0; i < tempCellList.Length; i++)
+                /*for (int i = 0; i < tempCellList.Length; i++)
                 {
                    // SendWhatsAppMessage(tempCellList[i], messageOwnerWApp);
                     //SendWhatsAppMessage(cellList[i], messageOwnerWApp);
-                }
-                /*
+                }*/
+
                 for (int i = 0; i < cellList.Length; i++)
                 {
                     //SendWhatsAppMessage(tempCellList[i], messageOwnerWApp);
                     SendWhatsAppMessage(cellList[i], messageOwnerWApp);
                 }
-                */
+                
                 //--> Inform Agent of Profit
                 if (agentProfit > 0 && ClientOrder.IsDiscounted)//just making sure
                 {
@@ -2118,7 +2124,9 @@ namespace Juni_Web_App.Models.Db
                             double balance = GetAgentBalance(CurAgent.id + "");
                             //string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
                             string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
-                            //SendWhatsAppMessage("+27722264804", message);
+                            SendWhatsAppMessage("+243"+CurAgent.phone_number.Substring(1), message);
+                            SendWhatsAppMessage("+27" + CurAgent.phone_number.Substring(1), message);
+                            SendWhatsAppMessage("+1" + CurAgent.phone_number.Substring(1), message);
                         }
                     }
                    
@@ -2189,7 +2197,9 @@ namespace Juni_Web_App.Models.Db
                 string emailMessage = $"<b>Rapport Juni</b><br/><br/>Un nouveau mot de passe temporaire vous a été attribué.<br/><br/>Compte: {CurUser.phone_number}<br/>Mot de passe: {tempPassword}<br/><br/>Veuillez vous connecter.<br/><br/>{DatabaseRepository.WebUrl}";
                 string countryCode = country_code;// "+243";
                 string sendCell = countryCode + cell.Substring(1);
-                SendWhatsAppMessage(sendCell, whatsappMessage);
+                SendWhatsAppMessage("+27"+cell.Substring(1), whatsappMessage);
+                SendWhatsAppMessage("+1" + cell.Substring(1), whatsappMessage);
+                SendWhatsAppMessage("+243" + cell.Substring(1), whatsappMessage);
                 SendEmailInBackground(new string[] { CurUser.email }, "Juni - Nouveau Mote de Passe", emailMessage);
             }
 
