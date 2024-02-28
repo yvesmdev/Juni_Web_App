@@ -732,7 +732,7 @@ namespace Juni_Web_App.Models.Db
                             CurProduct.Price = (price + discount).ToString().Replace(',','.');
                             CurProduct.PreviewImagePaths = null;
                             CurProduct.Description = null;
-                            profit += price + discount;
+                            profit += (price + discount)* commissionPerc;
                             CurSale.ProductList.Add(CurProduct);
                         }
                         CurSale.profit = profit;
