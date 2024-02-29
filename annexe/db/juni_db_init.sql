@@ -137,14 +137,15 @@ CREATE TABLE order_details(
 
 -- Insert sample data
 INSERT INTO configuration(key_name,value) 
-VALUES('delivery_fee','10'),('notification_mail','yves.matanga.dev@gmail.com;askjuni@outlook.com'),('agent_comission_perc','0.05'),('client_coupon_discount_perc','0.05');
+VALUES('delivery_fee','10'),('notification_mail','yves.matanga@gmail.com;askjuni@outlook.com;bonakap@gmail.com;brucembuangi@gmail.com'),('agent_comission_perc','0.05'),
+('client_coupon_discount_perc','0.05'),('enable_whatsapp_notification','1'),('notification_cell','+27722264804;+12409071435;+243817728150;+243999919176');
 
 INSERT INTO user_role (role_title) VALUES ('admin'), ('customer'), ('agent');
 
 INSERT INTO user_profile (name, surname, phone_number, password, username, email, user_role_id) 
-VALUES ('Yves', 'Matanga', '0722264804', 'password123', 'yvesm', 'yves.matanga.dev@gmail.com', 1),
-       ('Laetitia', 'Kalala', '0816451525', 'kalala123', 'askjuni@outlook.com', 'askjuni@outlook.com', 1),
-       ('Bonaventure', 'Kapay', '0816451525', 'kapay123', 'bonakap@gmail.com', 'bonakap@gmail.com', 1);
+VALUES ('Yves', 'Matanga', '+27722264804', 'password123', 'yvesm', 'yves.matanga.dev@gmail.com', 1),
+       ('Laetitia', 'Kalala', '+12409071435', 'kalala123', 'askjuni@outlook.com', 'askjuni@outlook.com', 1),
+       ('Bonaventure', 'Kapay', '+243999919176', 'kapay123', 'bonakap@gmail.com', 'bonakap@gmail.com', 1);
       
 INSERT INTO product_category (title) VALUES ('Autre'), ('Electronique'), ('Habits'), ('Souliers'), ('Sacs');
 
