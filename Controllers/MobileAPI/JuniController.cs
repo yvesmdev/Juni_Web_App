@@ -157,10 +157,11 @@ namespace Juni_Web_App.Controllers.MobileAPI
             {
                 string[] userData = jSonString.Split(";");
                 string tel = userData[0];
-                string email = userData[1];
-                string password = userData[2];
+                string countryCode = userData[1];
+                string email = userData[2];
+                string password = userData[3];
 
-                int id = DatabaseRepository.AddUser(tel,email, password);
+                int id = DatabaseRepository.AddUser(tel,countryCode,email, password);
                 //Order ClientOrder = JsonConvert.DeserializeObject<Order>(jSonString);
                 //DatabaseRepository.writeToFile("test.txt", jSonString);
                 if(id <= 0)

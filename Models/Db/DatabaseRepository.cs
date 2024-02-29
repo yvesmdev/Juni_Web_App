@@ -1540,17 +1540,19 @@ namespace Juni_Web_App.Models.Db
             return OrderList;
         }
 
-        public static int AddUser(string tel, string email, string password)
+        public static int AddUser(string tel, string countryCode, string email, string password)
         {
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
 
-                string Query = "INSERT INTO user_profile(phone_number,username,email,password) VALUES(@phone,@username,@email,@password); SELECT LAST_INSERT_ID()";
+                string Query = "INSERT INTO user_profile(phone_number,country_code,username,email,password) VALUES(@phone,@countryCode,@username,@email,@password); SELECT LAST_INSERT_ID()";
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                 DbCommand.Parameters.AddWithValue("@phone", tel);
                 DbCommand.Parameters.AddWithValue("@username", tel);
-                if(!email.Contains("@"))
+                DbCommand.Parameters.AddWithValue("@countryCode", countryCode);
+
+                if (!email.Contains("@"))
                 {
                     DbCommand.Parameters.AddWithValue("@email", null);
                 }

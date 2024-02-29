@@ -27,6 +27,7 @@ CREATE TABLE user_profile (
     surname VARCHAR(255) NULL,
     coupon_code VARCHAR(10) NULL,
     phone_number VARCHAR(15) NOT NULL,
+    country_code VARCHAR(10)  NULL,
     password VARCHAR(255) NOT NULL,
     username VARCHAR(50) UNIQUE NULL, -- Added username with unique constraint
     email VARCHAR(255) UNIQUE NULL,    -- Added email with unique constraint
