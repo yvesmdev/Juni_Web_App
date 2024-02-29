@@ -18,5 +18,6 @@ namespace Juni_Web_App.Models
         public double DeliveryFee { get; set; }
         public double CommissionPerc { get; set; }
         public int OrderId { get; set; }
+        public int OrderType { get; set; }
     }
 }
