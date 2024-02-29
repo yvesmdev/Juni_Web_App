@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using Twilio;
+using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
@@ -668,7 +669,7 @@ namespace Juni_Web_App.Models.Db
             return perc;
         }
 
-        public static List<Sale> GetAgentSalesList(string agent_id)
+        public static List<Sale> GetAgentSaleList(string agent_id)
         {
 
             User CurUser = GetUserByUsername(agent_id);
@@ -748,6 +749,88 @@ namespace Juni_Web_App.Models.Db
 
         }
 
+
+        public static List<Sale> GetClientOrderList(string user_id)
+        {
+
+            User CurUser = GetUserByUsername(user_id);
+            if (CurUser == null)
+            {
+                return null;
+            }
+
+            //DatabaseRepository.writeToFile("agentssales.txt", agent_id);
+
+            List<Sale> SalesList = null;
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE customer_id='" + CurUser.id + "' AND (order_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) ORDER BY order_date DESC", DbCon);
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                while (DbReader.Read())
+                {
+                    if (SalesList == null)
+                    {
+                        SalesList = new List<Sale>();//new sales found
+                    }
+                    string orderUniqId = (string)DbReader["order_unique_id"];
+                    double commissionPerc = Convert.ToDouble(DbReader["agent_comission_perc"]);
+                    string clientCell = (string)DbReader["sender_cell"];
+                    bool isDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
+                    int orderId = Convert.ToInt32(DbReader["id"]);
+
+                    Sale CurSale = new Sale();
+                    CurSale.OrderUniqueId = orderUniqId;
+                    CurSale.commissionPerc = commissionPerc;
+                    CurSale.ClientCell = clientCell;
+                    CurSale.IsDiscounted = isDiscounted;
+                    CurSale.OrderId = orderId;
+                    CurSale.CouponCode = DbReader["coupon_code"] as string ?? CurSale.CouponCode;
+                    CurSale.Date = ((DateTime)DbReader["order_date"]).ToString("dd-MM-yyyy HH:mm");
+                    CurSale.deliveryFee = Convert.ToDouble(DbReader["deliveryFee"]);
+                    CurSale.ProductList = new List<Product>();
+                    using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+                    {
+                        DbCon2.Open();
+                        MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM order_details WHERE order_id='" + orderId + "'", DbCon2);
+                        MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
+                        double total = 0;
+                        while (DbReader2.Read())
+                        {
+
+                            bool prdDiscounted = Convert.ToInt32(DbReader2["product_agent_discounted"]) > 0 ? true : false;
+                            /*
+                            if (!prdDiscounted)
+                            {
+                                continue;
+                            }
+                            */
+                            Product CurProduct = new Product();
+                            CurProduct.id = Convert.ToInt32(DbReader2["product_id"]);
+                            CurProduct = GetProductById(CurProduct.id + "");
+
+                            double discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
+                            double price = Convert.ToDouble(DbReader2["product_price"]);
+                            CurProduct.Price = (price).ToString().Replace(',', '.');
+                            CurProduct.PreviewImagePaths = null;
+                            CurProduct.Description = null;
+                            total += price;// (price + discount) * commissionPerc;
+                            CurSale.ProductList.Add(CurProduct);
+                        }
+                        CurSale.netTotal = total;
+                        CurSale.total = total + CurSale.deliveryFee;
+                        DbCon2.Close();
+                    }
+
+                    SalesList.Add(CurSale);
+
+                }
+                DbCon.Close();
+            }
+            return SalesList;
+
+        }
 
         public static string GetAgentCommissionPerc()
         {
