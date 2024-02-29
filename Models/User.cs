@@ -9,8 +9,21 @@
         public string username { get; set; }
         public int user_role_id { get; set; }
         public string phone_number { get; set; }
+        public string country_code { get; set; }
         public string coupon_code { get; set; }
         public bool is_agent_approved { get; set; }
+
+        public string GetCountryNumber()
+        {
+            if (phone_number[0] == '0')
+            {
+                return country_code + phone_number.Substring(1);
+            }
+            else
+            {
+                return country_code + phone_number;//.Substring(1);
+            }
+        }
         public static string UserTypeMessage(int type)
         {
             switch (type)

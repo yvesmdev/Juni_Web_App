@@ -284,6 +284,7 @@ namespace Juni_Web_App.Models.Db
                     AgentApplication CurApplication = new AgentApplication();
                     CurApplication.id = Convert.ToInt32(DbReader["id"]);
                     CurApplication.CellNumber = (string)DbReader["tel"];
+                    CurApplication.CountryCode = DbReader["country_code"] as string ?? CurApplication.CountryCode;
                     CurApplication.Name = (string)DbReader["full_name"];
                     CurApplication.Email = (string)DbReader["email"];
                     CurApplication.StreetAddress = (string)DbReader["street_address"];
@@ -318,6 +319,7 @@ namespace Juni_Web_App.Models.Db
                     CurApplication = new AgentApplication();
                     CurApplication.id = Convert.ToInt32(DbReader["id"]);
                     CurApplication.CellNumber = (string)DbReader["tel"];
+                    CurApplication.CountryCode = DbReader["country_code"] as string ?? CurApplication.CountryCode;
                     CurApplication.Name = (string)DbReader["full_name"];
                     CurApplication.Email = (string)DbReader["email"];
                     CurApplication.StreetAddress = (string)DbReader["street_address"];
@@ -1051,9 +1053,7 @@ namespace Juni_Web_App.Models.Db
 
                             if (enableWhatsAppNotification)
                             {
-                                SendWhatsAppMessage("+27" + CurAgent.phone_number.Substring(1), message);
-                                SendWhatsAppMessage("+243" + CurAgent.phone_number.Substring(1), message);
-                                SendWhatsAppMessage("+1" + CurAgent.phone_number.Substring(1), message);
+                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);                                
                             }
 
                          }
@@ -1074,9 +1074,9 @@ namespace Juni_Web_App.Models.Db
 
                             string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
                             if (enableWhatsAppNotification) { 
-                            SendWhatsAppMessage("+27" + CurAgent.phone_number.Substring(1), message);
-                            SendWhatsAppMessage("+243" + CurAgent.phone_number.Substring(1), message);
-                            SendWhatsAppMessage("+1" + CurAgent.phone_number.Substring(1), message);
+                            
+                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);
+                            
                             }
                         }
 
@@ -1195,6 +1195,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.country_code = DbReader["country_code"] as string ?? CurUser.country_code;
                     CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"])>0?true:false;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email; 
@@ -1222,6 +1223,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.name = DbReader["name"] as string ?? CurUser.name;
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.country_code = DbReader["country_code"] as string ?? CurUser.country_code;
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email;
@@ -1261,6 +1263,7 @@ namespace Juni_Web_App.Models.Db
                     CurUser.name = DbReader["name"] as string ?? CurUser.name;
                     CurUser.surname = DbReader["surname"] as string ?? CurUser.surname;
                     CurUser.phone_number = (string)DbReader["phone_number"];
+                    CurUser.country_code = DbReader["country_code"] as string ?? CurUser.country_code;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.email = DbReader["email"] as string ?? CurUser.email;
@@ -1764,11 +1767,12 @@ namespace Juni_Web_App.Models.Db
             {
                 DbCon.Open();
 
-                string Query = "INSERT INTO agent_application(tel,full_name,email,street_address,suburb,municipality,city,province,application_date,application_approved)" +
-                    " VALUES(@tel,@fullName,@email,@streetAddress,@suburb,@municipality,@city,@province,@applicationDate,@applicationStatus); SELECT LAST_INSERT_ID()";
+                string Query = "INSERT INTO agent_application(tel,country_code,full_name,email,street_address,suburb,municipality,city,province,application_date,application_approved)" +
+                    " VALUES(@tel,@countryCode,@fullName,@email,@streetAddress,@suburb,@municipality,@city,@province,@applicationDate,@applicationStatus); SELECT LAST_INSERT_ID()";
 
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                 DbCommand.Parameters.AddWithValue("@tel", CurApplication.CellNumber);
+                DbCommand.Parameters.AddWithValue("@countryCode", CurApplication.CountryCode);//.CellNumber);
                 DbCommand.Parameters.AddWithValue("@fullName", CurApplication.Name);
                 DbCommand.Parameters.AddWithValue("@email", CurApplication.Email);
                 DbCommand.Parameters.AddWithValue("@streetAddress", CurApplication.StreetAddress);
@@ -1836,10 +1840,8 @@ namespace Juni_Web_App.Models.Db
                         string password = "Unchangé";
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
                         if (enableWhatsAppNotification) { 
-                        SendWhatsAppMessage("+1" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
-                        SendWhatsAppMessage("+243" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
-                        SendWhatsAppMessage("+27" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
-                    }
+                            SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                        
+                        }
                         success = 1;//existing customer
                     }
                     else//create user and grant access
@@ -1860,9 +1862,7 @@ namespace Juni_Web_App.Models.Db
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
 
                         if (enableWhatsAppNotification) {
-                            SendWhatsAppMessage("+1" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
-                            SendWhatsAppMessage("+243" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
-                            SendWhatsAppMessage("+27" + CurApplication.CellNumber.Substring(1), messageClientWApp);//Inform Client
+                            SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                            
                         }
                             success = 2;//new customer
                     }
@@ -2215,9 +2215,9 @@ namespace Juni_Web_App.Models.Db
                                                                        // SendEmailInBackground(tempEmailList, subject, messageOwner);//Inform Business Owner of Purchase                                
                 if (enableWhatsAppNotification)
                 {
-                    SendWhatsAppMessage("+243" + ClientOrder.SenderCell.Substring(1), messageClientWApp);//Inform Client
-                    SendWhatsAppMessage("+27" + ClientOrder.SenderCell.Substring(1), messageClientWApp);//Inform Client
-                    SendWhatsAppMessage("+1" + ClientOrder.SenderCell.Substring(1), messageClientWApp);//Inform Client
+
+                    User CurUser = GetUserByUsername(ClientOrder.SenderCell);
+                    SendWhatsAppMessage(CurUser.GetCountryNumber(), messageClientWApp);//Inform Client                    
                 }
                 //Inform Business Owner
                 /*for (int i = 0; i < tempCellList.Length; i++)
@@ -2249,11 +2249,9 @@ namespace Juni_Web_App.Models.Db
                             string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
                             if (enableWhatsAppNotification)
                             {
-                                SendWhatsAppMessage("+243" + CurAgent.phone_number.Substring(1), message);
-                                SendWhatsAppMessage("+27" + CurAgent.phone_number.Substring(1), message);
-                                SendWhatsAppMessage("+1" + CurAgent.phone_number.Substring(1), message);
+                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);                                
                             }
-                            }
+                        }
                     }
                    
                 }
@@ -2325,9 +2323,7 @@ namespace Juni_Web_App.Models.Db
                 string sendCell = countryCode + cell.Substring(1);
                 if (enableWhatsAppNotification)
                 {
-                    SendWhatsAppMessage("+27" + cell.Substring(1), whatsappMessage);
-                    SendWhatsAppMessage("+1" + cell.Substring(1), whatsappMessage);
-                    SendWhatsAppMessage("+243" + cell.Substring(1), whatsappMessage);
+                    SendWhatsAppMessage(CurUser.GetCountryNumber(), whatsappMessage);
                 }
                 SendEmailInBackground(new string[] { CurUser.email }, "Juni - Nouveau Mote de Passe", emailMessage);
             }

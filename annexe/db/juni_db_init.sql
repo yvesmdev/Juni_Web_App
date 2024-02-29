@@ -27,7 +27,7 @@ CREATE TABLE user_profile (
     surname VARCHAR(255) NULL,
     coupon_code VARCHAR(10) NULL,
     phone_number VARCHAR(15) NOT NULL,
-    country_code VARCHAR(10)  NULL,
+    country_code VARCHAR(10) NULL,
     password VARCHAR(255) NOT NULL,
     username VARCHAR(50) UNIQUE NULL, -- Added username with unique constraint
     email VARCHAR(255) UNIQUE NULL,    -- Added email with unique constraint
@@ -40,6 +40,7 @@ CREATE TABLE agent_application
 (
  id INT UNSIGNED AUTO_INCREMENT NOT NULL, 
  tel VARCHAR(15) NOT NULL,
+ country_code VARCHAR(7) NULL,
  full_name VARCHAR(20) NOT NULL,
  email VARCHAR(50) NOT NULL,
  street_address VARCHAR(30) NOT NULL,
