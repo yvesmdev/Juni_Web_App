@@ -819,6 +819,7 @@ namespace Juni_Web_App.Models.Db
                             CurProduct.id = Convert.ToInt32(DbReader2["product_id"]);
                             CurProduct = GetProductById(CurProduct.id + "");
 
+                            CurProduct.Qty = Convert.ToInt32(DbReader2["product_qty"]);
                             double discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
                             double price = Convert.ToDouble(DbReader2["product_price"]);
                             CurProduct.Price = (price).ToString().Replace(',', '.');
