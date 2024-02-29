@@ -697,6 +697,7 @@ namespace Juni_Web_App.Models.Db
                     double commissionPerc = Convert.ToDouble(DbReader["agent_comission_perc"]);
                     string clientCell = (string)DbReader["sender_cell"];
                     bool isDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
+                    bool isCompleted = Convert.ToInt32(DbReader["completed"]) > 0 ? true : false;
                     int orderId = Convert.ToInt32(DbReader["id"]);
                         
                     Sale CurSale = new Sale();
@@ -705,6 +706,7 @@ namespace Juni_Web_App.Models.Db
                     CurSale.ClientCell = clientCell;
                     CurSale.IsDiscounted = isDiscounted;
                     CurSale.OrderId = orderId;
+                    CurSale.IsCompleted = isCompleted;
                     CurSale.CouponCode = DbReader["coupon_code"] as string ?? CurSale.CouponCode;
                     CurSale.Date = ((DateTime)DbReader["order_date"]).ToString("dd-MM-yyyy HH:mm");
                     CurSale.ProductList = new List<Product>();
@@ -778,6 +780,8 @@ namespace Juni_Web_App.Models.Db
                     double commissionPerc = Convert.ToDouble(DbReader["agent_comission_perc"]);
                     string clientCell = (string)DbReader["sender_cell"];
                     bool isDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
+                    bool isCompleted = Convert.ToInt32(DbReader["completed"]) > 0 ? true : false;
+
                     int orderId = Convert.ToInt32(DbReader["id"]);
 
                     Sale CurSale = new Sale();
@@ -785,6 +789,7 @@ namespace Juni_Web_App.Models.Db
                     CurSale.CommissionPerc = commissionPerc;
                     CurSale.ClientCell = clientCell;
                     CurSale.IsDiscounted = isDiscounted;
+                    CurSale.IsCompleted = isCompleted;
                     CurSale.OrderId = orderId;
                     CurSale.CouponCode = DbReader["coupon_code"] as string ?? CurSale.CouponCode;
                     CurSale.Date = ((DateTime)DbReader["order_date"]).ToString("dd-MM-yyyy HH:mm");

@@ -10,6 +10,7 @@ namespace Juni_Web_App.Models
         public string ClientCell { get; set; }
         public string Date { get; set; }
         public bool IsDiscounted { get; set; }
+        public bool IsCompleted { get; set; }
         public List<Product> ProductList { get; set; }
         public double Profit { get; set; }
         public double NetTotal { get; set; }
