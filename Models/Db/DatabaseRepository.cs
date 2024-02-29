@@ -701,7 +701,7 @@ namespace Juni_Web_App.Models.Db
                         
                     Sale CurSale = new Sale();
                     CurSale.OrderUniqueId = orderUniqId;
-                    CurSale.commissionPerc = commissionPerc;
+                    CurSale.CommissionPerc = commissionPerc;
                     CurSale.ClientCell = clientCell;
                     CurSale.IsDiscounted = isDiscounted;
                     CurSale.OrderId = orderId;
@@ -736,7 +736,7 @@ namespace Juni_Web_App.Models.Db
                             profit += (price + discount)* commissionPerc;
                             CurSale.ProductList.Add(CurProduct);
                         }
-                        CurSale.profit = profit;
+                        CurSale.Profit = profit;
                         DbCon2.Close();
                     }
 
@@ -782,13 +782,13 @@ namespace Juni_Web_App.Models.Db
 
                     Sale CurSale = new Sale();
                     CurSale.OrderUniqueId = orderUniqId;
-                    CurSale.commissionPerc = commissionPerc;
+                    CurSale.CommissionPerc = commissionPerc;
                     CurSale.ClientCell = clientCell;
                     CurSale.IsDiscounted = isDiscounted;
                     CurSale.OrderId = orderId;
                     CurSale.CouponCode = DbReader["coupon_code"] as string ?? CurSale.CouponCode;
                     CurSale.Date = ((DateTime)DbReader["order_date"]).ToString("dd-MM-yyyy HH:mm");
-                    CurSale.deliveryFee = Convert.ToDouble(DbReader["deliveryFee"]);
+                    CurSale.DeliveryFee = Convert.ToDouble(DbReader["deliveryFee"]);
                     CurSale.ProductList = new List<Product>();
                     using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                     {
@@ -818,8 +818,8 @@ namespace Juni_Web_App.Models.Db
                             total += price;// (price + discount) * commissionPerc;
                             CurSale.ProductList.Add(CurProduct);
                         }
-                        CurSale.netTotal = total;
-                        CurSale.total = total + CurSale.deliveryFee;
+                        CurSale.NetTotal = total;
+                        CurSale.Total = total + CurSale.DeliveryFee;
                         DbCon2.Close();
                     }
 
