@@ -52,10 +52,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJEZWxpdmVyeURhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/github-dev/Juni_Web_App/Views/Admin/Sales.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2FsZXMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/github-dev/Juni_Web_App/Views/Admin/SalesDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2FsZXNEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

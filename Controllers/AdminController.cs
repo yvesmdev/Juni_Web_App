@@ -10,14 +10,46 @@ namespace Juni_Web_App.Controllers
 {
     public class AdminController : Controller
     {
+        private IActionResult redirectAuthentication()//quick user if access is unauthorised
+        {
+            string userJson = HttpContext.Session.GetString("user");
+            if (userJson == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();//clear session variable
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Index()//user name and password received
         {
+
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if(CurView != null)
+            {
+                return CurView;
+            }
+
             return View();
 
         }
 
         public IActionResult ApplicationDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             List<AgentApplication> ApplicationList = DatabaseRepository.GetAgentApplicationList();
             //get order list
             List<Order> IncompleteOrderList = DatabaseRepository.GetAllOrderIncomplete();
@@ -30,6 +62,12 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult AccountDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             //Get user list
             List<User> UserList = DatabaseRepository.GetUserList();
             List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
@@ -51,6 +89,12 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult AdminAccountDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             //Get user list            
             List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
             List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
@@ -71,8 +115,13 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult AgentAccountDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             //Get user list
-           
             List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
             List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
             List<User> AdminList = DatabaseRepository.GetUserListByType((int)UserRole.Admin);
@@ -92,8 +141,14 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult ClientAccountDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             //Get user list
-            
+
             List<User> ClientList = DatabaseRepository.GetUserListByType((int)UserRole.Client);
             List<User> AgentList = DatabaseRepository.GetUserListByType((int)UserRole.Agent);
             List<User> AdminList = DatabaseRepository.GetUserListByType((int)UserRole.Admin);
@@ -111,9 +166,13 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult SalesDashboard()
         {
-            
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
 
-                List<Order> OrderList = DatabaseRepository.GetAllSoldOrder();
+            List<Order> OrderList = DatabaseRepository.GetAllSoldOrder();
                 ViewBag.OrderList = OrderList;
                 ViewBag.TotalRevenue = DatabaseRepository.GetTotalRevenue();
                 int visitCount = DatabaseRepository.GetVisitCount();
@@ -131,6 +190,11 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult InventoryDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
 
             //HttpContext.Session.SetString("user", JsonConvert.SerializeObject(CurUser));//save session variable                
             /*
@@ -166,6 +230,12 @@ namespace Juni_Web_App.Controllers
         [HttpPost]
         public IActionResult CreateProduct()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             Product CurProduct = new Product();
             CurProduct.Name = Request.Form["productName"];
             CurProduct.CategoryId = Int32.Parse(Request.Form["productCategory"]);
@@ -186,6 +256,12 @@ namespace Juni_Web_App.Controllers
         [HttpPost]
         public IActionResult ApproveApplication()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             string applicationId = Request.Form["applicationId"];
             int status = DatabaseRepository.ApproveApplication(applicationId);
             return RedirectToAction("ApplicationDashboard", "Admin");
@@ -196,6 +272,12 @@ namespace Juni_Web_App.Controllers
         [HttpPost]
         public IActionResult UpdateProduct()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             Product CurProduct = new Product();
             CurProduct.id = Convert.ToInt32(Request.Form["productShowHiddenProductId"]);
             CurProduct.Name = Request.Form["productShowName"];
@@ -244,6 +326,8 @@ namespace Juni_Web_App.Controllers
         [HttpPost]
         public IActionResult LoginUser()
         {
+            //redirectAuthentication();//Redirect View If Not Logged In
+
             string email = Request.Form["admin_email"];
             string password = Request.Form["admin_password"];
             bool check = DatabaseRepository.IsUserAuthorised(email, password, (int)UserRole.Admin);
@@ -274,6 +358,8 @@ namespace Juni_Web_App.Controllers
         [HttpPost]
         public IActionResult LoginUserMFA()
         {
+            //redirectAuthentication();//Redirect View If Not Logged In
+
             string email = Request.Form["admin_email"];
             string code_mfa = Request.Form["code_mfa"];
             //string password = Request.Form["admin_password"];
@@ -283,7 +369,12 @@ namespace Juni_Web_App.Controllers
             {
                 DatabaseRepository.UpdateCodeMFA(email, null);//clear code mfa
                 //User CurUser = DatabaseRepository.GetUserByUsername(email);
-                //HttpContext.Session.SetString("user", JsonConvert.SerializeObject(CurUser));//save session variable                
+                //HttpContext.Session.SetString("user", JsonConvert.SerializeObject(CurUser));//save session variable
+                //Session["data"] = "email";
+                //Sess
+                User CurUser = DatabaseRepository.GetUserByUsername(email);//get user object
+                string userJson = JsonConvert.SerializeObject(CurUser);
+                HttpContext.Session.SetString("user",userJson);
                 return RedirectToAction("InventoryDashboard", "Admin");//Redirect to Inventory
             }
             else
@@ -296,6 +387,12 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult OrderDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             List<Order> OrderList = DatabaseRepository.GetAllOrder();
             ViewBag.OrderList = OrderList;
             ViewBag.DeliverableCount = DatabaseRepository.GetTotalForDelivery();
@@ -310,6 +407,12 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult OrderCollectionDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             List<Order> OrderList = DatabaseRepository.GetAllOrderForCollection();
             ViewBag.OrderList = OrderList;
             ViewBag.DeliverableCount = DatabaseRepository.GetTotalForDelivery();
@@ -325,6 +428,12 @@ namespace Juni_Web_App.Controllers
 
         public IActionResult OrderDeliveryDashboard()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             List<Order> OrderList = DatabaseRepository.GetAllOrderForDelivery();
             ViewBag.OrderList = OrderList;
             ViewBag.DeliverableCount = DatabaseRepository.GetTotalForDelivery();
@@ -338,6 +447,12 @@ namespace Juni_Web_App.Controllers
         [HttpGet]
         public IActionResult ApproveOrder()
         {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
             string orderId = Request.Query["order_id"];//get orderID
             Order ClientOrder = DatabaseRepository.GetOrderById(orderId);//get client order
 

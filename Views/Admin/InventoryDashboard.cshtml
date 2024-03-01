@@ -133,7 +133,7 @@
 
                           <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>-->
 
-                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Se deconnecter</a>
+                        <a class="nav-link" href="@Url.Action("Logout","Admin")"><i class="fa fa-power -off"></i>Se deconnecter</a>
                     </div>
                 </div>
 
@@ -299,7 +299,7 @@
                                                 <th>Nom</th>
                                                 <th>Prix</th>
                                                 <th>Qté</th>
-                                                <th>Ajouter</th>
+                                                <!--<th>Ajouter</th>-->
                                                 <th>Operation</th>
                                             </tr>
                                         </thead>
@@ -309,7 +309,7 @@
                                                         <td>@CurProduct.Name</td>
                                                         <td>$@CurProduct.Price</td>
                                                         <td>@CurProduct.Qty </td>
-                                                        <td> + <input type="number" style="border: solid 1px black; width:50px; border-radius:10px;" /> <button class="btn btn-primary">Ajouter</button></td>
+                                                        <!--<td> + <input type="number" style="border: solid 1px black; width:50px; border-radius:10px;" /> <button class="btn btn-primary">Ajouter</button></td>-->
                                                         <td>
                                                         <button class="btn btn-primary" data-toggle="collapse" data-target="#productShowForm" image-path-array='@Html.Raw(CurProduct.GetSerialisedImages())' id="see_button_@CurProduct.id" onclick="openProductModal('@CurProduct.id','@CurProduct.Name', '@CurProduct.Price', '@CurProduct.Qty', '@CurProduct.Description', '@CurProduct.CategoryId')">Voir</button>
                                                             <button class="btn btn-danger">Archiver</button>                                                            

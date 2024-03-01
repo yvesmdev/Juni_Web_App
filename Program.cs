@@ -3,6 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//--start enable session
+builder.Services.AddSession();
+builder.Services.AddDistributedMemoryCache();
+//end enable session
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,7 +27,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//app.UseSession();//Enable the use of session variables
+app.UseSession();//Enable the use of session variables
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
