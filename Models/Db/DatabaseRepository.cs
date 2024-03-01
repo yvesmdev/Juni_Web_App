@@ -1918,7 +1918,6 @@ namespace Juni_Web_App.Models.Db
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
                         string messageClientEmailApp = $"<b>Rapport Juni</b><br/><br/>Bonjour {CurApplication.Name}, votre application agent a été accepté<br/>Veuillez vous connecter avec les détails:<br/><br/>Compte: {"<b>" + CurApplication.CellNumber + "</b>"}<br/>Mot de passe:{password}<br/><br/>{DatabaseRepository.WebUrl}";
 
-
                         if (GetWhatsappNotificationFlag())
                         {
                             SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                            
