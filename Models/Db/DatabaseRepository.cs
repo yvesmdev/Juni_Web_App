@@ -1887,33 +1887,43 @@ namespace Juni_Web_App.Models.Db
 
                         string password = "Unchangé";
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
+                        string messageClientEmailApp = $"<b>Rapport Juni</b><br/><br/>Bonjour {CurApplication.Name}, votre application agent a été accepté<br/>Veuillez vous connecter avec les détails:<br/><br/>Compte: {"<b>" + CurApplication.CellNumber + "</b>"}<br/>Mot de passe:{password}<br/><br/>{DatabaseRepository.WebUrl}";
+
                         if (GetWhatsappNotificationFlag())
                         {
                             SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                        
                         }
+                        SendEmailInBackground(new string[] {CurApplication.Email}, "Juni - Application Agent: Approuvé", messageClientEmailApp);
+
                         success = 1;//existing customer
                     }
                     else//create user and grant access
                     {
                         Query = "INSERT INTO user_profile (phone_number,password,username,email," +
                             "user_role_id,agent_approved,coupon_code) VALUES(@phone,@password,@username,@email,@userRole,@agentApproved,@coupon_code)";
+
+                        string password = GenerateRandomString();
+
                         MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
                         DbCommand3.Parameters.AddWithValue("@phone", CurApplication.CellNumber);
                         DbCommand3.Parameters.AddWithValue("@email", CurApplication.Email);
                         DbCommand3.Parameters.AddWithValue("@username", CurApplication.CellNumber);
                         DbCommand3.Parameters.AddWithValue("@userRole", (int)UserRole.Agent);
                         DbCommand3.Parameters.AddWithValue("@agentApproved", 1);
-                        DbCommand3.Parameters.AddWithValue("@password", "12345");
+                        DbCommand3.Parameters.AddWithValue("@password", password);
                         DbCommand3.Parameters.AddWithValue("@coupon_code", CouponCode);
                         DbCommand3.ExecuteNonQuery();
 
-                        string password = "12345";
+                        
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
+                        string messageClientEmailApp = $"<b>Rapport Juni</b><br/><br/>Bonjour {CurApplication.Name}, votre application agent a été accepté<br/>Veuillez vous connecter avec les détails:<br/><br/>Compte: {"<b>" + CurApplication.CellNumber + "</b>"}<br/>Mot de passe:{password}<br/><br/>{DatabaseRepository.WebUrl}";
+
 
                         if (GetWhatsappNotificationFlag())
                         {
                             SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                            
                         }
+                        SendEmailInBackground(new string[] { CurApplication.Email }, "Juni - Application Agent: Approuvé", messageClientEmailApp);
                         success = 2;//new customer
                     }
 
