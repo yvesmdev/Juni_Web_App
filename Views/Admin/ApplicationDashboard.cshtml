@@ -376,7 +376,14 @@
                                 <!-- Your form fields here -->
                                 <!-- Hidden input field for additional data -->
                                 <input type="hidden" name="applicationId" value="" id="applicationId">
-                                <button class="btn btn-danger " type="button" onclick="submitForm()">Approuvez</button>
+                                <button class="btn btn-info " type="button" onclick="submitForm()">Approuvez</button>
+                            </form>
+
+                            <form id="applicationForm" action="@Url.Action("DisApproveApplication","Admin")" method="post" style="display:inline; margin-right:20px;">
+                                <!-- Your form fields here -->
+                                <!-- Hidden input field for additional data -->
+                                <input type="hidden" name="applicationId" value="" id="applicationId">
+                                <button class="btn btn-danger " type="button" onclick="submitForm()">Rétirez</button>
                             </form>
 
 
