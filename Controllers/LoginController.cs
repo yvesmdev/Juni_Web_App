@@ -9,7 +9,17 @@ namespace Juni_Web_App.Controllers
             return View();
         }
 
-		public IActionResult Admin()
+        public IActionResult AdminMFA()
+        {
+            ViewBag.LoginSuccess = true;
+            if (TempData["login_mfa"] != null)
+            {
+                ViewBag.LoginSuccess = false;
+            }
+            return View();
+        }
+
+        public IActionResult Admin()
 		{
             ViewBag.LoginSuccess = true;
             if (TempData["login"] != null)

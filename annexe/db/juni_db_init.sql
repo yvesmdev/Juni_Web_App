@@ -33,6 +33,7 @@ CREATE TABLE user_profile (
     email VARCHAR(255) UNIQUE NULL,    -- Added email with unique constraint
     user_role_id INT NOT NULL DEFAULT 2,
     agent_approved BIT DEFAULT 0,
+    code_mfa VARCHAR(10) NULL,
     FOREIGN KEY (user_role_id) REFERENCES user_role(role_id)
 );
 

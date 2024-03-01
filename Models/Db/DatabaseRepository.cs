@@ -1,6 +1,8 @@
 ﻿using Juni_Web.Models;
 using Juni_Web_App.Models.Mobile;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1;
+using System;
 using System.Data;
 using System.Globalization;
 using System.Net;
@@ -33,7 +35,7 @@ namespace Juni_Web_App.Models.Db
         #region 
         //mesaging
 
-        static void SendEmailInBackground(string[] recipientEmail,string subject, string body)
+        public static void SendEmailInBackground(string[] recipientEmail, string subject, string body)
         {
             // Configure SMTP client for cPanel webmail
             SmtpClient smtpClient = new SmtpClient(MailStmpDomain);
@@ -75,7 +77,6 @@ namespace Juni_Web_App.Models.Db
 
             // Optionally continue with other operations after the email is sent
         }
-
         public static void SendWhatsAppMessage(string receiverPhoneNumber, string messageBody)
         {
             // Send WhatsApp message in a separate thread
@@ -132,7 +133,7 @@ namespace Juni_Web_App.Models.Db
                 DbCommand.Parameters.AddWithValue("@price", product.Price);
                 DbCommand.Parameters.AddWithValue("@quantity", product.Qty);
                 DbCommand.Parameters.AddWithValue("@desc", product.Description);
-                
+
                 int productID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
                 DbCon.Close();
 
@@ -144,11 +145,12 @@ namespace Juni_Web_App.Models.Db
         public static bool AddProductImages(int productID, IFormFileCollection files)
         {
             int count = 0;
-            foreach (IFormFile file in files) {
+            foreach (IFormFile file in files)
+            {
                 int id = file.FileName.IndexOf(".");
-                string newName = productID+"_"+(++count)+file.FileName.Substring(id);
+                string newName = productID + "_" + (++count) + file.FileName.Substring(id);
 
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img","product", newName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "product", newName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyTo(stream);
@@ -162,7 +164,7 @@ namespace Juni_Web_App.Models.Db
                         DbCommand.ExecuteNonQuery();
                         DbCon.Close();
                     }
-                }              
+                }
             }
             return true;
         }
@@ -184,7 +186,7 @@ namespace Juni_Web_App.Models.Db
                 DbCommand.Parameters.AddWithValue("@productID", product.id);
                 DbCommand.Parameters.AddWithValue("@name", product.Name);
                 DbCommand.Parameters.AddWithValue("@categoryID", product.CategoryId);
-                DbCommand.Parameters.AddWithValue("@price", product.Price.Replace(',','.'));
+                DbCommand.Parameters.AddWithValue("@price", product.Price.Replace(',', '.'));
                 DbCommand.Parameters.AddWithValue("@quantity", product.Qty);
                 DbCommand.Parameters.AddWithValue("@desc", product.Description);
 
@@ -198,7 +200,7 @@ namespace Juni_Web_App.Models.Db
 
         public static bool UpdateProductImage(int productID, int imageCountId, string imageName, IFormFileCollection files)
         {
-            
+
             foreach (IFormFile file in files)
             {
                 int id = file.FileName.IndexOf(".");
@@ -214,10 +216,10 @@ namespace Juni_Web_App.Models.Db
                     using (DbCon = new MySqlConnection(ConnectionString))
                     {
                         DbCon.Open();
-                        string Query = "SELECT path, image_id FROM product_image WHERE path LIKE 'img/product/" + rawPath+".%'";
+                        string Query = "SELECT path, image_id FROM product_image WHERE path LIKE 'img/product/" + rawPath + ".%'";
                         MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                         MySqlDataReader DbReader = DbCommand.ExecuteReader();
-                        
+
 
                         if (DbReader.Read())//check existing image and delete it
                         {
@@ -235,11 +237,11 @@ namespace Juni_Web_App.Models.Db
                                     MySqlCommand DbCommand2 = new MySqlCommand(Query, DbCon2);
                                     DbCommand2.ExecuteScalar();//delete the image from the database
                                     DbCon2.Close();
-                                }                                
+                                }
                             }
                         }
 
-                        DbCon.Close(); 
+                        DbCon.Close();
 
                         //copy new image
                         using (var stream = new FileStream(path, FileMode.Create))
@@ -261,8 +263,8 @@ namespace Juni_Web_App.Models.Db
                     }
 
                     return true;//leave the loop
-                }               
-            
+                }
+
             }
             return false;
         }
@@ -310,7 +312,7 @@ namespace Juni_Web_App.Models.Db
             {
                 DbCon.Open();
                 MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM agent_application LEFT JOIN application_docs ON " +
-                    "agent_application.id = application_docs.app_id WHERE id="+id, DbCon);
+                    "agent_application.id = application_docs.app_id WHERE id=" + id, DbCon);
                 DatabaseRepository.writeToFile("sql.txt", DbCommand.CommandText);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
@@ -329,7 +331,7 @@ namespace Juni_Web_App.Models.Db
                     CurApplication.IdFileName = (string)DbReader["path"];
                     CurApplication.IsApproved = Convert.ToUInt64(DbReader["application_approved"]) > 0 ? true : false;
                     CurApplication.Date = DbReader.GetDateTime(DbReader.GetOrdinal("application_date")).ToString("yyyy-MM-dd");
-                    
+
                 }
                 DbCon.Close();
             }
@@ -352,7 +354,7 @@ namespace Juni_Web_App.Models.Db
                     CurProduct.id = Convert.ToInt32(DbReader["product_id"]);
                     CurProduct.Name = (string)DbReader["name"];
                     CurProduct.Description = (string)DbReader["description"];
-                    CurProduct.Price = ""+DbReader["price"];
+                    CurProduct.Price = "" + DbReader["price"];
                     CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
                     CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);
                     CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
@@ -371,7 +373,7 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM product WHERE product_id="+id, DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM product WHERE product_id=" + id, DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -394,11 +396,11 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT path, SUBSTR(path, instr(path,'_')+1, instr(path,'.')-instr(path,'_')-1) AS prd_order FROM product_image  WHERE product_id=" + productID+ " ORDER BY prd_order ASC", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT path, SUBSTR(path, instr(path,'_')+1, instr(path,'.')-instr(path,'_')-1) AS prd_order FROM product_image  WHERE product_id=" + productID + " ORDER BY prd_order ASC", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
                 {
-                    ProductImagePaths.Add((string)DbReader["path"]);  
+                    ProductImagePaths.Add((string)DbReader["path"]);
                 }
                 DbCon.Close();
             }
@@ -414,17 +416,17 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Open();
                 MySqlCommand DbCommand = new MySqlCommand("SELECT COUNT(*) AS 'active_products' FROM product WHERE archived=0 ", DbCon);
                 int activeProducts = 0;
-                
+
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
-                    activeProducts = Convert.ToInt32(DbReader["active_products"]);                   
+                    activeProducts = Convert.ToInt32(DbReader["active_products"]);
                 }
                 DbCon.Close();
 
                 return activeProducts;
             }
-            
+
         }
 
         public static int GetArchivedProductCount()
@@ -449,14 +451,14 @@ namespace Juni_Web_App.Models.Db
 
         }
 
-        public static int GetUnderStockProductCount(int threshold=5)
+        public static int GetUnderStockProductCount(int threshold = 5)
         {
             var ProductList = new List<Product>();
 
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT COUNT(*) AS 'understock_products' FROM product WHERE quantity < "+threshold, DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT COUNT(*) AS 'understock_products' FROM product WHERE quantity < " + threshold, DbCon);
                 int activeProducts = 0;
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
@@ -498,13 +500,13 @@ namespace Juni_Web_App.Models.Db
         //Profile API functions
         #region 
         public static bool IsUserAuthorised(string username, string password)
-        {           
+        {
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
                 MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (" +
-                    " username = '"+username+"' OR phone_number ='"+username+"' " +
-                    "OR email ='"+username+"') AND (password='"+password+"')", DbCon);
+                    " username = '" + username + "' OR phone_number ='" + username + "' " +
+                    "OR email ='" + username + "') AND (password='" + password + "')", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -524,9 +526,9 @@ namespace Juni_Web_App.Models.Db
                 {
                     DbCon.Close();
                     return false;
-                }                
+                }
             }
-           
+
         }
 
         public static bool IsUserAuthorised(string username, string password, int userRoleId)
@@ -536,7 +538,30 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Open();
                 MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (" +
                     " username = '" + username + "' OR phone_number ='" + username + "' " +
-                    "OR email ='" + username + "') AND (password='" + password + "') AND (user_role_id="+userRoleId+")", DbCon);
+                    "OR email ='" + username + "') AND (password='" + password + "') AND (user_role_id=" + userRoleId + ")", DbCon);
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    DbCon.Close();
+                    return true;
+                }
+                else
+                {
+                    DbCon.Close();
+                    return false;
+                }
+            }
+
+        }
+
+        public static bool IsUserMFAAuthorised(string username, string code_mfa, int userRoleId)
+        {
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (" +
+                    " username = '" + username + "' OR phone_number ='" + username + "' " +
+                    "OR email ='" + username + "') AND (code_mfa='" + code_mfa + "') AND (user_role_id=" + userRoleId + ")", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -638,14 +663,14 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='delivery_fee'", DbCon);                
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='delivery_fee'", DbCon);
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
                     deliveryFee = (string)DbReader["value"];
                 }
-                DbCon.Close();                
+                DbCon.Close();
             }
             return deliveryFee;
         }
@@ -693,7 +718,7 @@ namespace Juni_Web_App.Models.Db
         {
 
             User CurUser = GetUserByUsername(agent_id);
-            if(CurUser == null)
+            if (CurUser == null)
             {
                 return null;
             }
@@ -705,11 +730,11 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE coupon_code='"+CurUser.coupon_code+ "' AND (order_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) ORDER BY order_date DESC", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE coupon_code='" + CurUser.coupon_code + "' AND (order_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)) ORDER BY order_date DESC", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
                 {
-                    if(SalesList == null)
+                    if (SalesList == null)
                     {
                         SalesList = new List<Sale>();//new sales found
                     }
@@ -719,7 +744,7 @@ namespace Juni_Web_App.Models.Db
                     bool isDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
                     bool isCompleted = Convert.ToInt32(DbReader["completed"]) > 0 ? true : false;
                     int orderId = Convert.ToInt32(DbReader["id"]);
-                    
+
                     Sale CurSale = new Sale();
                     CurSale.OrderUniqueId = orderUniqId;
                     CurSale.CommissionPerc = commissionPerc;
@@ -740,7 +765,7 @@ namespace Juni_Web_App.Models.Db
                         double profit = 0;
                         while (DbReader2.Read())
                         {
-                            
+
                             bool prdDiscounted = Convert.ToInt32(DbReader2["product_agent_discounted"]) > 0 ? true : false;
 
                             if (!prdDiscounted)
@@ -750,14 +775,14 @@ namespace Juni_Web_App.Models.Db
 
                             Product CurProduct = new Product();
                             CurProduct.id = Convert.ToInt32(DbReader2["product_id"]);
-                            CurProduct = GetProductById(CurProduct.id+"");
+                            CurProduct = GetProductById(CurProduct.id + "");
 
                             double discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
                             double price = Convert.ToDouble(DbReader2["product_price"]);
-                            CurProduct.Price = (price + discount).ToString().Replace(',','.');
+                            CurProduct.Price = (price + discount).ToString().Replace(',', '.');
                             CurProduct.PreviewImagePaths = null;
                             CurProduct.Description = null;
-                            profit += (price + discount)* commissionPerc;
+                            profit += (price + discount) * commissionPerc;
                             CurSale.ProductList.Add(CurProduct);
                         }
                         CurSale.Profit = profit;
@@ -884,7 +909,7 @@ namespace Juni_Web_App.Models.Db
         //Generate Unique Order ID
         public static string GetOrderUniqueID(int orderType)
         {
-            string  orderUniqueID = null;
+            string orderUniqueID = null;
             //Get the current date and time
             DateTime now = DateTime.Now;
             //Format the date and time as YYMMDDHHmm
@@ -895,7 +920,7 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT (COUNT(*)+1) AS num_orders FROM order_table WHERE DATE_FORMAT(order_date,'%Y-%m-%d %H:%i') = DATE_FORMAT('" + dateForSql+ "','%Y-%m-%d %H:%i')", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT (COUNT(*)+1) AS num_orders FROM order_table WHERE DATE_FORMAT(order_date,'%Y-%m-%d %H:%i') = DATE_FORMAT('" + dateForSql + "','%Y-%m-%d %H:%i')", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -918,7 +943,8 @@ namespace Juni_Web_App.Models.Db
                     {
                         orderTypeStr = "LP";//cash on delivery
                     }
-                    else{
+                    else
+                    {
                         orderTypeStr = "XX";//Inconny
                     }
                     orderUniqueID = orderTypeStr + formattedDateTime + orderNumber;
@@ -931,7 +957,7 @@ namespace Juni_Web_App.Models.Db
 
         public static bool AddOrder(Order ClientOrder)
         {
-           
+
             bool orderSuccess = false;
             double total = 0;
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
@@ -978,7 +1004,8 @@ namespace Juni_Web_App.Models.Db
                     Query = "INSERT INTO order_details (order_id,product_id,product_qty,product_price,product_agent_price_discount, product_agent_price_profit," +
                         "product_agent_discounted) VALUES(@orderID,@productID,@productQty,@productPrice,@productDiscount,@productAgentProfit,@productDiscounted)";
 
-                    foreach (var product in ClientOrder.Products) {
+                    foreach (var product in ClientOrder.Products)
+                    {
                         using (var DataCommand = new MySqlCommand(Query, DbCon2))
                         {
                             DataCommand.Parameters.AddWithValue("@orderID", orderID);
@@ -1041,7 +1068,8 @@ namespace Juni_Web_App.Models.Db
                 //SendEmailInBackground(emailList, subject, messageOwner);
 
                 string messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre effectué\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
-                if (GetWhatsappNotificationFlag()) { 
+                if (GetWhatsappNotificationFlag())
+                {
                     for (int i = 0; i < cellList.Length; i++)
                     {
                         SendWhatsAppMessage(cellList[i], messageOwnerWApp);
@@ -1058,7 +1086,7 @@ namespace Juni_Web_App.Models.Db
                         if (CurAgent != null)
                         {
                             UpdateAgentBalance(CurAgent.id + "", agentProfit);//update the agent money and let him know
-                            double balance = GetAgentBalance(CurAgent.id+"");                            
+                            double balance = GetAgentBalance(CurAgent.id + "");
                             /*string message = "*Rapport Juni*\n\n"+
                                 "Agent: *"+CurAgent.phone_number+"*\n"
                                 +"Vous avez obtenu un profit de $" + agentProfit + " sur la commande\n" +
@@ -1067,14 +1095,14 @@ namespace Juni_Web_App.Models.Db
                                 "\n\n" +product_report+
                                 "\n*Solde Agent: $" + balance + "*\n\nRassurez vous de la livraison du produit\n"+DatabaseRepository.WebUrl;
                             */
-                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*"+CurAgent.phone_number+"*"}\r\nVous avez obtenu un profit de {"$"+agentProfit} sur\r\nla commande {"*"+ClientOrder.OrderUniqueId+"*"}\r\n{"*"+orderType+"*"}\r\nClient:{" *"+ ClientOrder.SenderCell+"*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$"+balance}\r\n{DatabaseRepository.WebUrl}";
+                            string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
 
                             if (GetWhatsappNotificationFlag())
                             {
-                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);                                
+                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);
                             }
 
-                         }
+                        }
                     }
                     else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
                     {
@@ -1091,10 +1119,11 @@ namespace Juni_Web_App.Models.Db
                                 "\n*Solde Agent: $" + balance + "*\n" + DatabaseRepository.WebUrl;*/
 
                             string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
-                            if (GetWhatsappNotificationFlag()) { 
-                            
+                            if (GetWhatsappNotificationFlag())
+                            {
+
                                 SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);
-                            
+
                             }
                         }
 
@@ -1112,17 +1141,17 @@ namespace Juni_Web_App.Models.Db
 
                     }
                 }
-                
+
 
             }
             return orderSuccess;
         }
-        
+
         public static void UpdateAgentBalance(string agent_id, double amount)
         {
-            
+
             bool agentRegistered = IsAgentBankRegistered(agent_id);
-            DatabaseRepository.writeToFile("agent.txt", agentRegistered+"");
+            DatabaseRepository.writeToFile("agent.txt", agentRegistered + "");
             if (agentRegistered)
             {
                 using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
@@ -1147,7 +1176,7 @@ namespace Juni_Web_App.Models.Db
                     string Query = "INSERT INTO agent_bank(agent_id,balance) VALUES(@agentId,@balance)";
                     MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
                     DbCommand.Parameters.AddWithValue("@agentId", agent_id);
-                    DbCommand.Parameters.AddWithValue("@balance", amount);     
+                    DbCommand.Parameters.AddWithValue("@balance", amount);
 
                     int productID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
                     DbCon.Close();
@@ -1155,7 +1184,7 @@ namespace Juni_Web_App.Models.Db
 
             }
 
-           
+
 
         }
 
@@ -1201,8 +1230,8 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (email='"+username+"') OR " +
-                    "(username='"+username+"') OR (phone_number='"+username+"') OR (coupon_code='"+username+"')", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (email='" + username + "') OR " +
+                    "(username='" + username + "') OR (phone_number='" + username + "') OR (coupon_code='" + username + "')", DbCon);
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
@@ -1214,9 +1243,9 @@ namespace Juni_Web_App.Models.Db
                     CurUser.coupon_code = DbReader["coupon_code"] as string ?? CurUser.coupon_code;
                     CurUser.phone_number = (string)DbReader["phone_number"];
                     CurUser.country_code = DbReader["country_code"] as string ?? CurUser.country_code;
-                    CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"])>0?true:false;
+                    CurUser.is_agent_approved = Convert.ToInt32(DbReader["agent_approved"]) > 0 ? true : false;
                     CurUser.username = DbReader["username"] as string ?? CurUser.username;
-                    CurUser.email = DbReader["email"] as string ?? CurUser.email; 
+                    CurUser.email = DbReader["email"] as string ?? CurUser.email;
                     CurUser.user_role_id = Convert.ToInt32(DbReader["user_role_id"]);
                 }
                 DbCon.Close();
@@ -1227,7 +1256,7 @@ namespace Juni_Web_App.Models.Db
         public static List<User> GetUserList()
         {
             List<User> UserList = new List<User>();
-            
+
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
@@ -1265,13 +1294,13 @@ namespace Juni_Web_App.Models.Db
                 MySqlCommand DbCommand;
                 if (user_role_id == (int)(UserRole.Agent))
                 {
-                     DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (agent_approved=1) OR (user_role_id=" + user_role_id+")", DbCon);
+                    DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (agent_approved=1) OR (user_role_id=" + user_role_id + ")", DbCon);
                 }
                 else
                 {
-                     DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE user_role_id=" + user_role_id, DbCon);
+                    DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE user_role_id=" + user_role_id, DbCon);
                 }
-                
+
 
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 while (DbReader.Read())
@@ -1301,7 +1330,7 @@ namespace Juni_Web_App.Models.Db
             using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE order_unique_id='"+orderID+"' OR id='"+orderID+"'", DbCon);
+                MySqlCommand DbCommand = new MySqlCommand("SELECT * FROM order_table WHERE order_unique_id='" + orderID + "' OR id='" + orderID + "'", DbCon);
                 MySqlDataReader DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -1320,7 +1349,7 @@ namespace Juni_Web_App.Models.Db
                     CurOrder.DeliveryFee = Convert.ToDouble(DbReader["deliveryFee"]);
                     CurOrder.OrderUniqueId = (string)DbReader["order_unique_id"];
                     CurOrder.OrderCompleted = Convert.ToBoolean(DbReader["completed"]);
-                    CurOrder.IsDiscounted = Convert.ToInt32(DbReader["is_discounted"])>0?true:false;
+                    CurOrder.IsDiscounted = Convert.ToInt32(DbReader["is_discounted"]) > 0 ? true : false;
                     CurOrder.CouponCode = DbReader["coupon_code"] as string ?? CurOrder.CouponCode;
 
                     using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
@@ -1341,7 +1370,7 @@ namespace Juni_Web_App.Models.Db
                         DbCon2.Close();
 
                         CurOrder.Products = ProductList;
-                    }                                    
+                    }
 
                 }
                 DbCon.Close();
@@ -1377,7 +1406,7 @@ namespace Juni_Web_App.Models.Db
                     using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                     {
                         DbCon2.Open();
-                        MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM order_details WHERE order_id="+CurOrder.OrderId, DbCon2);
+                        MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM order_details WHERE order_id=" + CurOrder.OrderId, DbCon2);
                         MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
 
                         List<Product> ProductList = new List<Product>();
@@ -1581,9 +1610,9 @@ namespace Juni_Web_App.Models.Db
                 {
                     DbCommand.Parameters.AddWithValue("@email", email);
                 }
-                
+
                 DbCommand.Parameters.AddWithValue("@password", password);
-                
+
 
                 int userID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
                 DbCon.Close();
@@ -1650,13 +1679,14 @@ namespace Juni_Web_App.Models.Db
         {
             List<Order> OrderList = GetAllSoldOrder();
             double total = 0;
-            foreach(Order CurOrder in OrderList){
-               total+= Order.GetOrderTotal(CurOrder);
+            foreach (Order CurOrder in OrderList)
+            {
+                total += Order.GetOrderTotal(CurOrder);
             }
             return total;
         }
         #region
-        
+
         public static int GetTotalForDelivery()
         {
             int count = 0;
@@ -1801,7 +1831,7 @@ namespace Juni_Web_App.Models.Db
                 CurApplication.Date = DatabaseRepository.DateNow();//get current date
                 DbCommand.Parameters.AddWithValue("@applicationDate", CurApplication.Date);
                 DbCommand.Parameters.AddWithValue("@applicationStatus", CurApplication.IsApproved);
-               
+
 
                 int applicationID = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files
                 DatabaseRepository.writeToFile("db.txt", applicationID + "");
@@ -1810,7 +1840,7 @@ namespace Juni_Web_App.Models.Db
 
                 //save the file
                 int id = CurApplication.IdFileName.IndexOf(".");
-                string newName = "identité_"+applicationID + "_" + CurApplication.CellNumber +CurApplication.IdFileName.Substring(id);
+                string newName = "identité_" + applicationID + "_" + CurApplication.CellNumber + CurApplication.IdFileName.Substring(id);
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "application", newName);
                 File.WriteAllBytes(path, CurApplication.IdFileContent);
 
@@ -1835,7 +1865,7 @@ namespace Juni_Web_App.Models.Db
         public static int ApproveApplication(string application_id)
         {
             int success = 0;
-            AgentApplication CurApplication = DatabaseRepository.GetAgentApplicationById(application_id);           
+            AgentApplication CurApplication = DatabaseRepository.GetAgentApplicationById(application_id);
             using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
             {
                 DbCon2.Open();
@@ -1857,7 +1887,8 @@ namespace Juni_Web_App.Models.Db
 
                         string password = "Unchangé";
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
-                        if (GetWhatsappNotificationFlag()) { 
+                        if (GetWhatsappNotificationFlag())
+                        {
                             SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                        
                         }
                         success = 1;//existing customer
@@ -1867,22 +1898,23 @@ namespace Juni_Web_App.Models.Db
                         Query = "INSERT INTO user_profile (phone_number,password,username,email," +
                             "user_role_id,agent_approved,coupon_code) VALUES(@phone,@password,@username,@email,@userRole,@agentApproved,@coupon_code)";
                         MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
-                        DbCommand3.Parameters.AddWithValue("@phone",CurApplication.CellNumber);
+                        DbCommand3.Parameters.AddWithValue("@phone", CurApplication.CellNumber);
                         DbCommand3.Parameters.AddWithValue("@email", CurApplication.Email);
                         DbCommand3.Parameters.AddWithValue("@username", CurApplication.CellNumber);
                         DbCommand3.Parameters.AddWithValue("@userRole", (int)UserRole.Agent);
                         DbCommand3.Parameters.AddWithValue("@agentApproved", 1);
-                        DbCommand3.Parameters.AddWithValue("@password","12345");
+                        DbCommand3.Parameters.AddWithValue("@password", "12345");
                         DbCommand3.Parameters.AddWithValue("@coupon_code", CouponCode);
                         DbCommand3.ExecuteNonQuery();
 
                         string password = "12345";
                         string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été accepté\r\n\r\nVeuillez vous connecter avec les détails:\r\nCompte: {"*" + CurApplication.CellNumber + "*"}\r\nMot de passe:{password}\r\n\r\n{DatabaseRepository.WebUrl}";
 
-                        if (GetWhatsappNotificationFlag()) {
+                        if (GetWhatsappNotificationFlag())
+                        {
                             SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                            
                         }
-                            success = 2;//new customer
+                        success = 2;//new customer
                     }
 
                     //approve application
@@ -1891,7 +1923,7 @@ namespace Juni_Web_App.Models.Db
                     DbCommand4.ExecuteNonQuery();
 
                     DbCon3.Close();
-                }                        
+                }
                 DbCon2.Close();
             }
 
@@ -1938,13 +1970,13 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Close();
             }
 
-            if(CurUser != null)
+            if (CurUser != null)
             {
                 CurCouponProfile = new CouponProfile();
                 CurCouponProfile.Agent = CurUser;//store Agent details
             }
 
-            
+
             using (DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
@@ -1971,14 +2003,14 @@ namespace Juni_Web_App.Models.Db
                 }
                 DbCon.Close();
 
-               
+
             }
             /*
             if(ProductList.Count > 0 && CurCouponProfile != null)
             {
                 CurCouponProfile.ProductList = ProductList;//add product list
             }*/
-            if(CurCouponProfile != null)
+            if (CurCouponProfile != null)
             {
                 CurCouponProfile.Id = couponCode;
             }
@@ -2052,7 +2084,7 @@ namespace Juni_Web_App.Models.Db
                     CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
                     CurCouponProfile.ProductList.Add(CurProduct);
 
-                   // DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name + " " + query);
+                    // DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name + " " + query);
                 }
                 DbCon.Close();
 
@@ -2095,8 +2127,8 @@ namespace Juni_Web_App.Models.Db
             {
                 DbCon.Open();
 
-                string Query = "DELETE FROM agent_market WHERE (product_id=" + product_id + ") AND (agent_id=" + agent_id+")";
-                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);          
+                string Query = "DELETE FROM agent_market WHERE (product_id=" + product_id + ") AND (agent_id=" + agent_id + ")";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
 
                 int num_rows_affected = Convert.ToInt32(DbCommand.ExecuteScalar());//fetch the productID use it to rename image files                    
                 DbCon.Close();
@@ -2153,7 +2185,7 @@ namespace Juni_Web_App.Models.Db
                 double agentProfit = 0;
                 string product_report = "";
                 double commission_perc = ClientOrder.AgentCommissionPerc;
-                
+
                 using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
                 {
                     DbCon2.Open();
@@ -2166,8 +2198,8 @@ namespace Juni_Web_App.Models.Db
                         Product CurProduct = new Product();
                         CurProduct.id = Convert.ToInt32(DbReader2["product_id"]);
                         CurProduct.Qty = Convert.ToInt32(DbReader2["product_qty"]);
-                        CurProduct.Price = Convert.ToDouble(DbReader2["product_price"]).ToString().Replace(',','.');
-                        CurProduct.IsDiscounted = Convert.ToInt32(DbReader2["product_agent_discounted"])>0?true:false;
+                        CurProduct.Price = Convert.ToDouble(DbReader2["product_price"]).ToString().Replace(',', '.');
+                        CurProduct.IsDiscounted = Convert.ToInt32(DbReader2["product_agent_discounted"]) > 0 ? true : false;
                         CurProduct.Discount = Convert.ToDouble(DbReader2["product_agent_price_discount"]);
 
                         total += double.Parse(CurProduct.Price, NumberStyles.Float, culture) * CurProduct.Qty;
@@ -2182,7 +2214,7 @@ namespace Juni_Web_App.Models.Db
                             //product_report += "[" + (++count) + "] " + ProductData.Name + " - $" + price_ + ": $" + unit_profit + "\n";
                         }
                     }
-                    DbCon2.Close();                  
+                    DbCon2.Close();
                 }
                 //--
 
@@ -2195,14 +2227,14 @@ namespace Juni_Web_App.Models.Db
                 string[] tempCellList = new string[] { "+27722264804" };
                 string[] cellList = GetNotificationCells();
                 string subject = "Juni - Notification: Nouvelle Commande";
-                string orderType;                
-                
+                string orderType;
+
                 //--->
                 if (ClientOrder.OrderType == (int)OrderType.CreditCardDelivery)//add his money straight to the bank
                 {
                     orderType = "Carte-Crédit-Livraison";
                     messageOwner = $"<b>Rapport Juni</b><br/><br/>Une commande de {"<b>$" + total + "</b>"} vient d'etre livré à l'addresse client<br/><br/>Client: {"<b>" + ClientOrder.SenderCell + "</b>"}<br/>ID: {"<b>" + ClientOrder.OrderUniqueId + "</b>"}<br/>Type: {"<b>" + orderType + "</b>"}<br/><br/><a href='{href}'>Voir la commande</a><br/>";
-                    messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$"+total+"*"} vient d'etre délivrée\r\nClient: {"*"+ ClientOrder.SenderCell + "*"}\r\nID: {"*"+ ClientOrder.OrderUniqueId + "*"}\r\nType: {"*"+orderType+"*"}\r\n\r\n{DatabaseRepository.WebUrl}";
+                    messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                     messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 }
                 else if (ClientOrder.OrderType == (int)OrderType.CreditCardCollection)//add his money straight to the bank
@@ -2220,7 +2252,7 @@ namespace Juni_Web_App.Models.Db
                     messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                     messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre délivrée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 }
-                else 
+                else
                 {
                     orderType = "Paiement au retrait";
                     subject = "Juni - Notification: Commande Rétirée";
@@ -2228,9 +2260,9 @@ namespace Juni_Web_App.Models.Db
                     messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                     messageClientWApp = $"*Rapport Juni*\r\n\r\nVotre commande de {"*$" + total + "*"} vient d'etre rétirée\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 }
-                
-               SendEmailInBackground(emailList, subject, messageOwner);//Inform Business Owner of Purchase                
-                                                                       // SendEmailInBackground(tempEmailList, subject, messageOwner);//Inform Business Owner of Purchase                                
+
+                SendEmailInBackground(emailList, subject, messageOwner);//Inform Business Owner of Purchase                
+                                                                        // SendEmailInBackground(tempEmailList, subject, messageOwner);//Inform Business Owner of Purchase                                
                 if (GetWhatsappNotificationFlag())
                 {
                     User CurUser = GetUserByUsername(ClientOrder.SenderCell);
@@ -2266,31 +2298,31 @@ namespace Juni_Web_App.Models.Db
                             string message = $"*Rapport Juni*\r\n\r\nAgent: {"*" + CurAgent.phone_number + "*"}\r\nVous avez obtenu un profit de {"$" + agentProfit} sur\r\nla commande {"*" + ClientOrder.OrderUniqueId + "*"}\r\n{"*" + orderType + "*"}\r\nClient:{" *" + ClientOrder.SenderCell + "*"} \r\nPour plus de détails, verifier votre inventaire.\r\nNouveau solde Agent: {"$" + balance}\r\n{DatabaseRepository.WebUrl}";
                             if (GetWhatsappNotificationFlag())
                             {
-                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);                                
+                                SendWhatsAppMessage(CurAgent.GetCountryNumber(), message);
                             }
                         }
                     }
-                   
+
                 }
                 //-->
-               // return 1;
+                // return 1;
             }
-            
+
         }
 
         public static void UpdateAccount(string cell, string email, string first_name, string surname)
         {
-                using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
-                {
-                    DbCon.Open();
-                    string Query = "UPDATE user_profile SET name = @name, surname = @surname, email = @email WHERE phone_number ='" + cell + "'";
-                    MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
-                    DbCommand.Parameters.AddWithValue("@email", email);
-                    DbCommand.Parameters.AddWithValue("@name", first_name);
-                    DbCommand.Parameters.AddWithValue("@surname", surname);
-                    DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
-                    DbCon.Close();
-                }
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                string Query = "UPDATE user_profile SET name = @name, surname = @surname, email = @email WHERE phone_number ='" + cell + "'";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@email", email);
+                DbCommand.Parameters.AddWithValue("@name", first_name);
+                DbCommand.Parameters.AddWithValue("@surname", surname);
+                DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
+                DbCon.Close();
+            }
         }
 
         public static void UpdatePassword(string cell, string password)
@@ -2300,17 +2332,29 @@ namespace Juni_Web_App.Models.Db
                 DbCon.Open();
                 string Query = "UPDATE user_profile SET password = @password WHERE phone_number ='" + cell + "'";
                 MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
-                DbCommand.Parameters.AddWithValue("@password", password);                
+                DbCommand.Parameters.AddWithValue("@password", password);
                 DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
                 DbCon.Close();
             }
         }
 
+        public static void UpdateCodeMFA(string email, string code_mfa)
+        {
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                string Query = "UPDATE user_profile SET code_mfa = @codeMFA WHERE (email ='" + email + "') OR (username ='" + email + "')";
+                MySqlCommand DbCommand = new MySqlCommand(Query, DbCon);
+                DbCommand.Parameters.AddWithValue("@codeMFA", code_mfa);
+                DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
+                DbCon.Close();
+            }
+        }
 
-        private static string GenerateRandomNumber()
+        public static string GenerateRandomNumber()
         {
             Random rand = new Random();
-            return rand.Next(10000, 99999)+""; // Generates a random number between 10000 and 99999 (inclusive)
+            return rand.Next(10000, 99999) + ""; // Generates a random number between 10000 and 99999 (inclusive)
         }
 
         public static void ResetPassword(string cell, string country_code)
@@ -2318,7 +2362,7 @@ namespace Juni_Web_App.Models.Db
             string tempPassword = GenerateRandomNumber();
 
             User CurUser = GetUserByUsername(cell);
-            if(CurUser == null)
+            if (CurUser == null)
             {
                 throw new Exception("User does not exist");
                 return;
@@ -2334,7 +2378,7 @@ namespace Juni_Web_App.Models.Db
                 DbCommand.ExecuteScalar();//fetch the productID use it to rename image files                    
                 DbCon.Close();
 
-                string whatsappMessage = $"*Rapport Juni*\r\n\r\nUn nouveau mot de passe temporaire vous a été attribué.\r\n\r\nCompte: {"*"+CurUser.phone_number+"*"}\r\nMot de passe: {"*"+tempPassword+"*"}\r\n\r\nVeuillez vous connecter.\r\n\r\n{DatabaseRepository.WebUrl}";
+                string whatsappMessage = $"*Rapport Juni*\r\n\r\nUn nouveau mot de passe temporaire vous a été attribué.\r\n\r\nCompte: {"*" + CurUser.phone_number + "*"}\r\nMot de passe: {"*" + tempPassword + "*"}\r\n\r\nVeuillez vous connecter.\r\n\r\n{DatabaseRepository.WebUrl}";
                 string emailMessage = $"<b>Rapport Juni</b><br/><br/>Un nouveau mot de passe temporaire vous a été attribué.<br/><br/>Compte: {CurUser.phone_number}<br/>Mot de passe: {tempPassword}<br/><br/>Veuillez vous connecter.<br/><br/>{DatabaseRepository.WebUrl}";
                 string countryCode = country_code;// "+243";
                 string sendCell = countryCode + cell.Substring(1);
@@ -2346,6 +2390,49 @@ namespace Juni_Web_App.Models.Db
             }
 
 
+        }
+
+        public static string EmailCodify(string email, double perc)
+        {
+            if (!email.Contains('@'))
+            {
+                return email;
+            }
+
+            perc = perc >= 1? 0.9:perc;
+            perc = perc <= 0 ? 0.2 : perc;
+
+            int id = email.IndexOf('@');
+            string suffixEmail = email.Substring(id);
+            string prefixEmail = email.Substring(0,id);
+
+            char[] emailArr = prefixEmail.ToCharArray();
+            int codeLength = (int)(perc * prefixEmail.Length);
+            //get a list of indexes
+            HashSet<int> indList = GenerateRandomUniqueIndices(codeLength, 0, prefixEmail.Length-1);
+
+            foreach(int index in indList)
+            {
+                emailArr[index] = '*';
+            }
+
+            return (new string(emailArr))+suffixEmail;
+
+        }
+        //Generate Unique Random set of indexes
+        public static HashSet<int> GenerateRandomUniqueIndices(int n, int minIndex, int maxIndex)
+        {
+            HashSet<int> indices = new HashSet<int>();
+            Random random = new Random();
+
+            // Generate n random and unique indices
+            while (indices.Count < n)
+            {
+                int index = random.Next(minIndex, maxIndex + 1);
+                indices.Add(index);
+            }
+
+            return indices;
         }
     }
 }

@@ -250,10 +250,16 @@ namespace Juni_Web_App.Controllers
 
             if (check)
             {
+                string code_mfa = DatabaseRepository.GenerateRandomNumber();
+                string messageOwner = $"<b>Rapport Juni</b><br/><br/>Votre code d'acces temporaire est {"<b>" + code_mfa + "</b>"}<br/><br/> {DatabaseRepository.WebUrl}";
                 
-                User CurUser = DatabaseRepository.GetUserByUsername(email);
-                //HttpContext.Session.SetString("user", JsonConvert.SerializeObject(CurUser));//save session variable                
-                return RedirectToAction("InventoryDashboard", "Admin");//Redirect to Inventory
+                DatabaseRepository.UpdateCodeMFA(email, code_mfa);//update code mfa
+                //SendEmail
+                DatabaseRepository.SendEmailInBackground(new string[] {email}, "Juni - Admin: Code MFA", messageOwner);
+                //User CurUser = DatabaseRepository.GetUserByUsername(email);
+                //HttpContext.Session.SetString("user", JsonConvert.SerializeObject(CurUser));//save session variable
+                TempData["login_email"] = email;
+                return RedirectToAction("AdminMFA", "Login");//Redirect to Inventory
             }
             else
             {
@@ -261,6 +267,31 @@ namespace Juni_Web_App.Controllers
                 return RedirectToAction("Admin", "Login");//return to login
             }
             
+        }
+
+        //Login User
+        //Create Product
+        [HttpPost]
+        public IActionResult LoginUserMFA()
+        {
+            string email = Request.Form["admin_email"];
+            string code_mfa = Request.Form["code_mfa"];
+            //string password = Request.Form["admin_password"];
+
+            bool check = DatabaseRepository.IsUserMFAAuthorised(email, code_mfa, (int)UserRole.Admin);//, (int)UserRole.Admin);
+            if (check)
+            {
+                DatabaseRepository.UpdateCodeMFA(email, null);//clear code mfa
+                //User CurUser = DatabaseRepository.GetUserByUsername(email);
+                //HttpContext.Session.SetString("user", JsonConvert.SerializeObject(CurUser));//save session variable                
+                return RedirectToAction("InventoryDashboard", "Admin");//Redirect to Inventory
+            }
+            else
+            {
+                TempData["login_mfa"] = false;
+                return RedirectToAction("AdminMFA", "Login");//return to login
+            }
+
         }
 
         public IActionResult OrderDashboard()

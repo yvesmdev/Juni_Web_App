@@ -1,5 +1,6 @@
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\appsettings.Development.json
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\appsettings.json
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\aroma-master\vendors\themify-icons\Themify IconFonts 5-23-2014.json
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Juni_Web_App.staticwebassets.runtime.json
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Juni_Web_App.exe
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Juni_Web_App.deps.json
@@ -11,18 +12,24 @@ C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Google.Protobuf.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\K4os.Compression.LZ4.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\K4os.Compression.LZ4.Streams.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\K4os.Hash.xxHash.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\MySql.Data.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.IO.Pipelines.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Security.Permissions.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Text.Json.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Twilio.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\ZstdSharp.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\github-dev\Juni_Web_App\bin\Debug\net6.0\runtimes\win-x64\native\comerr64.dll
@@ -59,10 +66,3 @@ C:\github-dev\Juni_Web_App\obj\Debug\net6.0\refint\Juni_Web_App.dll
 C:\github-dev\Juni_Web_App\obj\Debug\net6.0\Juni_Web_App.pdb
 C:\github-dev\Juni_Web_App\obj\Debug\net6.0\Juni_Web_App.genruntimeconfig.cache
 C:\github-dev\Juni_Web_App\obj\Debug\net6.0\ref\Juni_Web_App.dll
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\aroma-master\vendors\themify-icons\Themify IconFonts 5-23-2014.json
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\github-dev\Juni_Web_App\bin\Debug\net6.0\Twilio.dll
