@@ -50,7 +50,8 @@ CREATE TABLE agent_application
  city VARCHAR(30) NOT NULL,
  province VARCHAR(30) NOT NULL,
  application_date DATE NOT NULL,
- application_approved BIT DEFAULT 0,
+ -- application_approved BIT DEFAULT 0,
+ application_approved TINYINT NOT NULL DEFAULT 0,
  PRIMARY KEY(id)
 );
 

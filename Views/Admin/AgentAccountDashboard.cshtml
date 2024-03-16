@@ -190,7 +190,7 @@
                         </div>
                     </div>
                 </div>
-
+               
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -226,10 +226,8 @@
                                             <tr>
                                                 <th>Numero</th>
                                                 <th>Prenom</th>
-                                                <th>Nom</th>
-                                                
-                                                <th>Email</th>
-                                               
+                                                <th>Nom</th>                                                
+                                                <th>Email</th>                                               
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -298,9 +296,36 @@
                             </table>
                          
 
-                            <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#clientPanel" aria-expanded="false" aria-controls="clientPanel">
-                                Rétirer Comme Agent
-                            </button>
+
+                            <button class="btn btn-danger " type="button" data-toggle="modal" data-target="#exampleModal">Rétirez Agent</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Rétirez Un Agent</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="agentFailureForm" method="post" style="display:inline; margin-right:20px;">
+                                                <input type="hidden" name="agentFailureId" value="" id="agentFailureId">
+                                                <div class="form-group">
+                                                    <label for="agentRetrievalReason">Raison de retrait:</label>
+                                                    <textarea class="form-control" id="agentRetrievalReason" name="agentRetrievalReason" rows="4" required></textarea>
+                                                </div>
+                                                <button class="btn btn-danger " type="button" onclick="submitFailureForm()" data-toggle="modal" data-target="#exampleModal">Rétirez</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <!-- Additional buttons can be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Toggle Button -->
                             <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#clientPanel" aria-expanded="false" aria-controls="clientPanel">
                                 Fermer l'Onglet
@@ -363,8 +388,17 @@
         $('#clientEmail').text(" "+clientEmail);
         $('#clientCoupon').text(" " + clientCoupon);
 
+        $("#agentFailureId").val(id + "");
         var element = document.getElementById("see_button_"+id)        
         $('#clientPanel').collapse('show');    
     
+    }
+
+    function submitFailureForm() {
+        // Get the form element
+        var form = document.getElementById("agentFailureForm");
+
+        // Submit the form
+        form.submit();
     }
 </script>

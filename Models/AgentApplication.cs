@@ -16,7 +16,7 @@ namespace Juni_Web_App.Models
         public string Province { get; set; }
         public string IdFileName { get; set; }
         public byte[] IdFileContent { get; set; }
-        public bool IsApproved { get; set; }
+        public int IsApproved { get; set; }
         public string Date { get; set; }
 
         public string GetCountryNumber()

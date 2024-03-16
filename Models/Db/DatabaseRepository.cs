@@ -294,7 +294,7 @@ namespace Juni_Web_App.Models.Db
                     CurApplication.City = (string)DbReader["city"];
                     CurApplication.Province = (string)DbReader["province"];
                     CurApplication.IdFileName = (string)DbReader["path"];
-                    CurApplication.IsApproved = Convert.ToUInt64(DbReader["application_approved"]) > 0 ? true : false;
+                    CurApplication.IsApproved = Convert.ToInt16(DbReader["application_approved"]);//> 0 ? true : false;
                     CurApplication.Date = DbReader.GetDateTime(DbReader.GetOrdinal("application_date")).ToString("yyyy-MM-dd");
                     ApplicationList.Add(CurApplication);
                 }
@@ -329,7 +329,7 @@ namespace Juni_Web_App.Models.Db
                     CurApplication.City = (string)DbReader["city"];
                     CurApplication.Province = (string)DbReader["province"];
                     CurApplication.IdFileName = (string)DbReader["path"];
-                    CurApplication.IsApproved = Convert.ToUInt64(DbReader["application_approved"]) > 0 ? true : false;
+                    CurApplication.IsApproved = Convert.ToInt16(DbReader["application_approved"]);//> 0 ? true : false;
                     CurApplication.Date = DbReader.GetDateTime(DbReader.GetOrdinal("application_date")).ToString("yyyy-MM-dd");
 
                 }
@@ -1940,6 +1940,95 @@ namespace Juni_Web_App.Models.Db
 
         }
 
+        public static int DismissAgent(string agent_id, string reason)
+        {
+            int success = 0;
+            User CurUser = DatabaseRepository.GetUserByUsername(agent_id);
+            using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+            {
+                DbCon2.Open();
+                MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM user_profile WHERE phone_number='" + CurUser.phone_number + "'", DbCon2);
+                MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
+                using (MySqlConnection DbCon3 = new MySqlConnection(ConnectionString))
+                {
+                    DbCon3.Open();
+                    string Query;
+                    //string CouponCode = GenerateCouponCode(CurApplication.id);
+                    //if it is an existing user
+                    if (DbReader2.Read())
+                    {
+                        //approve agent status
+                        Query = "UPDATE user_profile SET agent_approved=0 WHERE phone_number='" + CurUser.phone_number + "'";
+                        MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
+                        DbCommand3.ExecuteNonQuery();
+                        success = 1;//existing customer
+                    }
+                    //Send Notification
+                    string comfort = "Veuillez contacter Juni";
+                    string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurUser.name}, vous avez été rétiré comme agent Juni.\r\n\r\nRaison: {reason}\r\n\r\n{comfort}\r\n{DatabaseRepository.WebUrl}";
+                    //string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurUser.name}, votre application agent a été refusé\r\n\r\nRaison: {reason}\r\n\r\n{comfort}\r\n{DatabaseRepository.WebUrl}";
+                    string messageClientEmailApp = $"<b>Rapport Juni</b><br/><br/>Bonjour {CurUser.name}, vous avez été rétiré comme agent Juni.<br/><br/>Raison: {reason}<br/><br/>{comfort}<br/>{DatabaseRepository.WebUrl}";
+
+                    if (GetWhatsappNotificationFlag())
+                    {
+                        SendWhatsAppMessage(CurUser.GetCountryNumber(), messageClientWApp);//Inform Client                            
+                    }
+                    SendEmailInBackground(new string[] { CurUser.email}, "Juni - Application Agent: Approuvé", messageClientEmailApp);
+                    //Approve application
+                   /* Query = "UPDATE agent_application SET application_approved=-1 WHERE id=" + CurApplication.id;
+                    MySqlCommand DbCommand4 = new MySqlCommand(Query, DbCon3);
+                    DbCommand4.ExecuteNonQuery();*/
+                    DbCon3.Close();
+                }
+                DbCon2.Close();
+            }
+            return success;
+        }
+
+
+        public static int DisApproveApplication(string application_id, string reason)
+        {
+            int success = 0;
+            AgentApplication CurApplication = DatabaseRepository.GetAgentApplicationById(application_id);
+            using (MySqlConnection DbCon2 = new MySqlConnection(ConnectionString))
+            {
+                DbCon2.Open();
+                MySqlCommand DbCommand2 = new MySqlCommand("SELECT * FROM user_profile WHERE phone_number='" + CurApplication.CellNumber + "'", DbCon2);
+                MySqlDataReader DbReader2 = DbCommand2.ExecuteReader();
+                using (MySqlConnection DbCon3 = new MySqlConnection(ConnectionString))
+                {
+                    DbCon3.Open();
+                    string Query;
+                    //string CouponCode = GenerateCouponCode(CurApplication.id);
+                    //if it is an existing user
+                    if (DbReader2.Read())
+                    {
+                        //approve agent status
+                        Query = "UPDATE user_profile SET agent_approved=0 WHERE phone_number='" + CurApplication.CellNumber + "'";
+                        MySqlCommand DbCommand3 = new MySqlCommand(Query, DbCon3);
+                        DbCommand3.ExecuteNonQuery();   
+                        success = 1;//existing customer
+                    }
+                    //Send Notification
+                    string comfort = "Veuillez réessayer ultérieurement";
+                    string messageClientWApp = $"*Rapport Juni*\r\n\r\nBonjour {CurApplication.Name}, votre application agent a été refusé\r\n\r\nRaison: {reason}\r\n\r\n{comfort}\r\n{DatabaseRepository.WebUrl}";
+                    string messageClientEmailApp = $"<b>Rapport Juni</b><br/><br/>Bonjour {CurApplication.Name}, votre application agent a été refusé<br/><br/>Raison: {reason}<br/><br/>{comfort}<br/><br/>{DatabaseRepository.WebUrl}";
+
+                    if (GetWhatsappNotificationFlag())
+                    {
+                        SendWhatsAppMessage(CurApplication.GetCountryNumber(), messageClientWApp);//Inform Client                            
+                    }
+                    SendEmailInBackground(new string[] { CurApplication.Email }, "Juni - Application Agent: Approuvé", messageClientEmailApp);                    
+                    //Approve application
+                    Query = "UPDATE agent_application SET application_approved=-1 WHERE id=" + CurApplication.id;
+                    MySqlCommand DbCommand4 = new MySqlCommand(Query, DbCon3);
+                    DbCommand4.ExecuteNonQuery();
+                    DbCon3.Close();
+                }
+                DbCon2.Close();
+            }
+            return success;
+        }
         #endregion
 
         public static String DateNow()

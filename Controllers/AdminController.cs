@@ -267,7 +267,38 @@ namespace Juni_Web_App.Controllers
             return RedirectToAction("ApplicationDashboard", "Admin");
         }
 
-      
+        [HttpPost]
+        public IActionResult DisApproveApplication()
+        {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
+            string applicationId = Request.Form["applicationId"];
+            string applicationFailureReason = Request.Form["applicationFailureReason"]; 
+            int status = DatabaseRepository.DisApproveApplication(applicationId, applicationFailureReason);
+            return RedirectToAction("ApplicationDashboard", "Admin");
+        }
+
+
+
+        [HttpPost]
+        public IActionResult AgentDismiss()
+        {
+            IActionResult CurView = redirectAuthentication();//Redirect View If Not Logged In
+            if (CurView != null)
+            {
+                return CurView;
+            }
+
+            string agentid = Request.Form["agentid"];
+            string dismissalReason = Request.Form["agentRetrievalReason"];
+            int status = DatabaseRepository.DismissAgent(agentid, dismissalReason);//.DisApproveApplication(applicationId, applicationFailureReason);
+            return RedirectToAction("AgentAccountDashboard", "Admin");
+        }
+
         //Update Product
         [HttpPost]
         public IActionResult UpdateProduct()
