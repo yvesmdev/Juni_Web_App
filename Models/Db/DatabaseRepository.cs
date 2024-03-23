@@ -1065,7 +1065,7 @@ namespace Juni_Web_App.Models.Db
                 string[] emailList = GetNotificationEmails();
                 string[] cellList = GetNotificationCells();
                 string subject = "Juni - Notification: Nouvelle Commande";
-                //SendEmailInBackground(emailList, subject, messageOwner);
+                
 
                 string messageOwnerWApp = $"*Rapport Juni*\r\n\r\nUne commande de {"*$" + total + "*"} vient d'etre effectué\r\nClient: {"*" + ClientOrder.SenderCell + "*"}\r\nID: {"*" + ClientOrder.OrderUniqueId + "*"}\r\nType: {"*" + orderType + "*"}\r\n\r\n{DatabaseRepository.WebUrl}";
                 if (GetWhatsappNotificationFlag())
@@ -1075,6 +1075,7 @@ namespace Juni_Web_App.Models.Db
                         SendWhatsAppMessage(cellList[i], messageOwnerWApp);
                     }
                 }
+                SendEmailInBackground(emailList, subject, messageOwner);
 
                 //--->
                 if (agentProfit > 0 && ClientOrder.IsDiscounted)//just making sure
