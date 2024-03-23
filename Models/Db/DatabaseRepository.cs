@@ -1973,7 +1973,7 @@ namespace Juni_Web_App.Models.Db
                     {
                         SendWhatsAppMessage(CurUser.GetCountryNumber(), messageClientWApp);//Inform Client                            
                     }
-                    SendEmailInBackground(new string[] { CurUser.email}, "Juni - Application Agent: Approuvé", messageClientEmailApp);
+                    SendEmailInBackground(new string[] { CurUser.email}, "Juni - Retrait d'Agent", messageClientEmailApp);
                     //Approve application
                    /* Query = "UPDATE agent_application SET application_approved=-1 WHERE id=" + CurApplication.id;
                     MySqlCommand DbCommand4 = new MySqlCommand(Query, DbCon3);
@@ -2050,7 +2050,7 @@ namespace Juni_Web_App.Models.Db
             using (DbCon = new MySqlConnection(ConnectionString))
             {
                 DbCon.Open();
-                DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE coupon_code='" + couponCode + "'", DbCon);
+                DbCommand = new MySqlCommand("SELECT * FROM user_profile WHERE (coupon_code='" + couponCode + "') AND agent_approved=1 ", DbCon);
                 DbReader = DbCommand.ExecuteReader();
                 if (DbReader.Read())
                 {
@@ -2072,36 +2072,35 @@ namespace Juni_Web_App.Models.Db
             {
                 CurCouponProfile = new CouponProfile();
                 CurCouponProfile.Agent = CurUser;//store Agent details
-            }
-
-
-            using (DbCon = new MySqlConnection(ConnectionString))
-            {
-                DbCon.Open();
-                string query = "SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile " +
-                    "ON user_profile.user_id = agent_market.agent_id WHERE user_profile.coupon_code='" + couponCode + "'";
-                DbCommand = new MySqlCommand(query, DbCon);
-                DbReader = DbCommand.ExecuteReader();
-                while (DbReader.Read())
+            
+                using (DbCon = new MySqlConnection(ConnectionString))
                 {
-                    if (CurCouponProfile.ProductList == null)
-                        CurCouponProfile.ProductList = new List<Product>();
+                    DbCon.Open();
+                    string query = "SELECT product.* FROM agent_market JOIN product ON agent_market.product_id = product.product_id JOIN user_profile " +
+                        "ON user_profile.user_id = agent_market.agent_id WHERE user_profile.coupon_code='" + couponCode + "'";
+                    DbCommand = new MySqlCommand(query, DbCon);
+                    DbReader = DbCommand.ExecuteReader();
+                    while (DbReader.Read())
+                    {
+                        if (CurCouponProfile.ProductList == null)
+                            CurCouponProfile.ProductList = new List<Product>();
 
-                    Product CurProduct = new Product();
-                    CurProduct.id = Convert.ToInt32(DbReader["product_id"]);
-                    CurProduct.Name = (string)DbReader["name"];
-                    CurProduct.Description = (string)DbReader["description"];
-                    CurProduct.Price = "" + DbReader["price"];
-                    CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
-                    CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);
-                    CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
-                    CurCouponProfile.ProductList.Add(CurProduct);
+                        Product CurProduct = new Product();
+                        CurProduct.id = Convert.ToInt32(DbReader["product_id"]);
+                        CurProduct.Name = (string)DbReader["name"];
+                        CurProduct.Description = (string)DbReader["description"];
+                        CurProduct.Price = "" + DbReader["price"];
+                        CurProduct.Qty = Convert.ToInt32(DbReader["quantity"]);
+                        CurProduct.CategoryId = Convert.ToInt32(DbReader["category_id"]);
+                        CurProduct.PreviewImagePaths = GetProductImagePaths(CurProduct.id);//Get Product Image Paths
+                        CurCouponProfile.ProductList.Add(CurProduct);
 
-                    //DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name+ " "+query);
+                        //DatabaseRepository.writeToFile("agent_market.txt", CurProduct.Name+ " "+query);
+                    }
+                    DbCon.Close();
+
+
                 }
-                DbCon.Close();
-
-
             }
             /*
             if(ProductList.Count > 0 && CurCouponProfile != null)
