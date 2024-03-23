@@ -140,7 +140,7 @@ CREATE TABLE order_details(
 -- Insert sample data
 INSERT INTO configuration(key_name,value) 
 VALUES('delivery_fee','10'),('notification_mail','yves.matanga@gmail.com;askjuni@outlook.com;bonakap@gmail.com;brucembuangi@gmail.com'),('agent_comission_perc','0.05'),
-('client_coupon_discount_perc','0.05'),('enable_whatsapp_notification','1'),('notification_cell','+27722264804;+12409071435;+243817728150;+243999919176');
+('client_coupon_discount_perc','0.05'),('enable_whatsapp_notification','1'),('enable_email_notification','1'),('notification_cell','+27722264804;+12409071435;+243817728150;+243999919176');
 
 INSERT INTO user_role (role_title) VALUES ('admin'), ('customer'), ('agent');
 

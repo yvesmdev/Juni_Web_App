@@ -694,6 +694,25 @@ namespace Juni_Web_App.Models.Db
             return flag;
         }
 
+        public static bool GetEmailNotificationFlag()
+        {
+            bool flag = false;// deliveryFee = null;
+
+            using (MySqlConnection DbCon = new MySqlConnection(ConnectionString))
+            {
+                DbCon.Open();
+                MySqlCommand DbCommand = new MySqlCommand("SELECT value FROM configuration WHERE key_name='enable_email_notification'", DbCon);
+
+                MySqlDataReader DbReader = DbCommand.ExecuteReader();
+                if (DbReader.Read())
+                {
+                    flag = Convert.ToInt32(DbReader["value"]) > 0 ? true : false;
+                }
+                DbCon.Close();
+            }
+            return flag;
+        }
+
         //Delivery
         public static string GetClientDiscountPerc()
         {
@@ -1075,7 +1094,10 @@ namespace Juni_Web_App.Models.Db
                         SendWhatsAppMessage(cellList[i], messageOwnerWApp);
                     }
                 }
-                SendEmailInBackground(emailList, subject, messageOwner);
+                if (GetEmailNotificationFlag())
+                {
+                    SendEmailInBackground(emailList, subject, messageOwner);
+                }
 
                 //--->
                 if (agentProfit > 0 && ClientOrder.IsDiscounted)//just making sure
